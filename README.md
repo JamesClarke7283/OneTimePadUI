@@ -12,4 +12,6 @@ A Libre, One Time Pad program written in .net 5 and GTK for UI.
 
 - Options (*Optional*) 
 
+# Posible Security issues
 
+- Key randomness (Need to generate random keys) 
