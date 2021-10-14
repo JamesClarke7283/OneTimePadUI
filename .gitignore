@@ -1,0 +1,10 @@
+# CSharp
+bin/
+obj/
+
+# System
+*~
+
+# IDE
+.vs/
+.vscode/*
