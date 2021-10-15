@@ -82,7 +82,5 @@ namespace otlib
             return OTP(ToBytes(msg), keystream, false);
         }
 
-
-
     }
 }
