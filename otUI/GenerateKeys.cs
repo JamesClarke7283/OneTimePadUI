@@ -19,6 +19,26 @@ public class GenerateKeys : Gtk.Dialog
         this.builder = builder;
 
         builder.Autoconnect(this);
+        AddButton("Close", ResponseType.Close);
     }
+
+    protected void OnGenerateClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OnCharsetClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void OnHelpClicked(object sender, EventArgs e)
+    {
+
+    }
+
+
+
+
 
 }

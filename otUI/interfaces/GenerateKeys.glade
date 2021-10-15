@@ -2,6 +2,7 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkAction" id="action1"/>
   <object class="GtkAdjustment" id="adjustment">
     <property name="upper">1000</property>
     <property name="value">200</property>
@@ -22,17 +23,7 @@
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">Close</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -53,6 +44,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <signal name="clicked" handler="OnGenerateClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -102,6 +94,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
+                            <signal name="clicked" handler="OnCharsetClicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -115,6 +108,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
+                            <signal name="clicked" handler="OnHelpClicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>

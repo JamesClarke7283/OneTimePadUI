@@ -17,17 +17,7 @@
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <object class="GtkButton" id="btnClose">
-                <property name="label" translatable="yes">Close</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -47,6 +37,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="use-stock">True</property>
+                <signal name="clicked" handler="OnHelpClicked" swapped="no"/>
               </object>
             </child>
             <child>
@@ -55,6 +46,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <signal name="clicked" handler="OnEncryptClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -66,6 +58,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <signal name="clicked" handler="OnDecryptClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -77,6 +70,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <signal name="clicked" handler="OnCharsetClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">3</property>
