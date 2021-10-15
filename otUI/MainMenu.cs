@@ -24,13 +24,18 @@ public partial class MainMenu : Gtk.Window
 
     protected void OnKeygenClicked(object sender, EventArgs e)
     {
+        //Hide();
         GenerateKeys gk = GenerateKeys.Create();
-        gk.Show();
+        gk.Run();
+        gk.Destroy();
     }
 
     protected void OnCryptoClicked(object sender, EventArgs e)
     {
-        Hide();
+        //Hide();
+        CryptDialog cd = CryptDialog.Create();
+        cd.Run();
+        cd.Destroy();
     }
 
 

@@ -12,7 +12,10 @@
   <ItemGroup>
     <EmbeddedResource Include="interfaces\MainWindow.glade" />
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
-    <EmbeddedResource Include="interfaces\CryptWindow.ui" />
+    <EmbeddedResource Include="interfaces\Crypt.ui" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="interfaces\Crypt.ui" />
+  </ItemGroup>
 </Project>
