@@ -13,10 +13,12 @@
     <EmbeddedResource Include="interfaces\MainWindow.glade" />
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
     <EmbeddedResource Include="interfaces\Crypt.ui" />
+    <EmbeddedResource Include="interfaces\CharSet.glade" />
   </ItemGroup>
 	
   <ItemGroup>
     <None Remove="interfaces\Crypt.ui" />
+    <None Remove="interfaces\CharSet.glade" />
   </ItemGroup>
 
 <ItemGroup>
