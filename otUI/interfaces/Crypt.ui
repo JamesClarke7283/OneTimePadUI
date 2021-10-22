@@ -95,7 +95,7 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView">
+                  <object class="GtkTextView" id="keyInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                   </object>
@@ -129,7 +129,7 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView">
+                  <object class="GtkTextView" id="msgCipherInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                   </object>
@@ -163,7 +163,7 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView">
+                  <object class="GtkTextView" id="output">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="editable">False</property>

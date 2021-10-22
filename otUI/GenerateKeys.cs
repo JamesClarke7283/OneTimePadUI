@@ -26,7 +26,6 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnGenerateClicked(object sender, EventArgs e)
     {
-        otlib.otp otp = new otp();
         byte[] keystream = otp.GenerateKeystream((int)keyLength.Value);
         KeyOutputView.Buffer.Text = otp.ToString(keystream);
 

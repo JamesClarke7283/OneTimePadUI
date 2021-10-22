@@ -6,15 +6,14 @@ namespace otlib
 {
     public class otp
     {
-        public string charset;
-       
+        public static string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        public otp(string charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") 
+        public otp(string charset= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") 
         {
-            this.charset = charset;
+            otp.charset = charset;
         }
 
-        public byte[] GenerateKeystream(int length) 
+        public static byte[] GenerateKeystream(int length) 
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
 
@@ -25,7 +24,7 @@ namespace otlib
             return keystream;
         }
 
-        public byte[] ToBytes(string txt) 
+        public static byte[] ToBytes(string txt) 
         {
             List<byte> byteArr = new List<byte> {};
             foreach(char c in txt) 
@@ -36,7 +35,7 @@ namespace otlib
             return byteArr.ToArray();
         }
 
-        public string ToString(byte[] byteArr) 
+        public static string ToString(byte[] byteArr) 
         {
             string cipherString = "";
             foreach (byte cipherByte in byteArr) 
@@ -47,7 +46,7 @@ namespace otlib
             return cipherString;
         }
 
-        private int nfmod(float a, float b) 
+        private static int nfmod(float a, float b) 
         {
             return (int)(a - b * Math.Floor(a / b));
         }
