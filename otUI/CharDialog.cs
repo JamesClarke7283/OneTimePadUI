@@ -12,7 +12,7 @@ public class CharDialog : Gtk.Dialog
     public static CharDialog Create()
     {
         Builder builder = new Builder(null, "otUI.interfaces.GenerateKeys.glade", null);
-        return new CharDialog(builder, builder.GetObject("generatekeysdialog").Handle);
+        return new CharDialog(builder, builder.GetObject("chardialog").Handle);
     }
 
     protected CharDialog(Builder builder, IntPtr handle) : base(handle)

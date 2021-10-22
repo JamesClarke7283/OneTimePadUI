@@ -3,8 +3,6 @@ namespace otlib
 {
     public class Settings
     {
-        public Settings()
-        {
-        }
+        public static string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; 
     }
 }
