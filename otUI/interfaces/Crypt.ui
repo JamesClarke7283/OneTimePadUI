@@ -133,6 +133,7 @@
                   <object class="GtkTextView" id="msgCipherInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="wrap-mode">char</property>
                   </object>
                 </child>
               </object>
@@ -168,6 +169,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="editable">False</property>
+                    <property name="wrap-mode">char</property>
                   </object>
                 </child>
               </object>
