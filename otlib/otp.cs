@@ -53,7 +53,7 @@ namespace otlib
 
         private byte[] OTP(byte[] msg, byte[] key, bool dir)
         {
-            if (msg.Length == key.Length) 
+            if (msg.Length == key.Length)
             {
                 List<byte> cipherBytes = new List<byte> { };
 
@@ -65,10 +65,20 @@ namespace otlib
 
                 return cipherBytes.ToArray();
             }
-            else 
+            else if (msg.Length < key.Length)
             {
-               throw new Exception("Key needs to be same length as Message");
+                int addedkeys = key.Length - msg.Length;
+                string addedmsg = otp.ToString(otp.GenerateKeystream(addedkeys));
+                string strMsg = otp.ToString(msg);
+                strMsg += addedmsg;
+                return OTP(ToBytes(strMsg), key, dir);
+
+            } else if (msg.Length > key.Length)
+            {
+                throw new Exception("Message is longer than the key");
             }
+
+            return new byte[] { };
         }
 
         public byte[] Encrypt(string msg, byte[] keystream) 

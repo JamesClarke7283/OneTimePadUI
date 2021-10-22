@@ -98,6 +98,7 @@
                   <object class="GtkTextView" id="keyInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="wrap-mode">char</property>
                   </object>
                 </child>
               </object>
