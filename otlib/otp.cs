@@ -6,6 +6,13 @@ namespace otlib
 {
     public class otp
     {
+        public static string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        public otp(string charset= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") 
+        {
+            otp.charset = charset;
+        }
+
         public static byte[] GenerateKeystream(int length) 
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
@@ -17,7 +24,7 @@ namespace otlib
             return keystream;
         }
 
-        public static byte[] ToBytes(string txt, string charset) 
+        public static byte[] ToBytes(string txt) 
         {
             List<byte> byteArr = new List<byte> {};
             foreach(char c in txt) 
@@ -28,7 +35,7 @@ namespace otlib
             return byteArr.ToArray();
         }
 
-        public static string ToString(byte[] byteArr, string charset) 
+        public static string ToString(byte[] byteArr) 
         {
             string cipherString = "";
             foreach (byte cipherByte in byteArr) 
@@ -44,7 +51,7 @@ namespace otlib
             return (int)(a - b * Math.Floor(a / b));
         }
 
-        private static byte[] OTP(byte[] msg, byte[] key, bool dir , string charset)
+        private byte[] OTP(byte[] msg, byte[] key, bool dir)
         {
             if (msg.Length == key.Length)
             {
@@ -60,13 +67,11 @@ namespace otlib
             }
             else if (msg.Length < key.Length)
             {
-                otlib.otp o = new otlib.otp();
-
                 int addedkeys = key.Length - msg.Length;
-                string addedmsg = ToString(otp.GenerateKeystream(addedkeys), Settings.charset);
-                string strMsg = ToString(msg,Settings.charset);
+                string addedmsg = otp.ToString(otp.GenerateKeystream(addedkeys));
+                string strMsg = otp.ToString(msg);
                 strMsg += addedmsg;
-                return OTP(ToBytes(strMsg,Settings.charset), key, dir, Settings.charset);
+                return OTP(ToBytes(strMsg), key, dir);
 
             } else if (msg.Length > key.Length)
             {
@@ -76,14 +81,14 @@ namespace otlib
             return new byte[] { };
         }
 
-        public static byte[] Encrypt(string msg, byte[] keystream, string charset) 
+        public byte[] Encrypt(string msg, byte[] keystream) 
         {
-            return OTP(ToBytes(msg, charset), keystream, true, charset);
+            return OTP(ToBytes(msg), keystream, true);
         }
 
-        public static byte[] Decrypt(string msg, byte[] keystream, string charset)
+        public byte[] Decrypt(string msg, byte[] keystream)
         {
-            return OTP(ToBytes(msg, charset), keystream, false, charset);
+            return OTP(ToBytes(msg), keystream, false);
         }
 
     }
