@@ -14,8 +14,12 @@
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
     <EmbeddedResource Include="interfaces\Crypt.ui" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <None Remove="interfaces\Crypt.ui" />
   </ItemGroup>
+
+<ItemGroup>
+<ProjectReference Include="..\otlib\otlib.csproj" />
+</ItemGroup>
 </Project>

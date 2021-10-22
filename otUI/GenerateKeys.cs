@@ -1,11 +1,12 @@
 ﻿using System;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
-
+using otlib;
 
 public class GenerateKeys : Gtk.Dialog
 {
     [UI] Gtk.TextView KeyOutputView = new Gtk.TextView();
+    [UI] Gtk.SpinButton keyLength;
 
     Builder builder;
 
@@ -25,7 +26,9 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnGenerateClicked(object sender, EventArgs e)
     {
-        KeyOutputView.Buffer.Text = "0";
+        otlib.otp otp = new otp();
+        byte[] keystream = otp.GenerateKeystream((int)keyLength.Value);
+        KeyOutputView.Buffer.Text = otp.ToString(keystream);
 
     }
 
@@ -38,9 +41,5 @@ public class GenerateKeys : Gtk.Dialog
     {
 
     }
-
-
-
-
 
 }

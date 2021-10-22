@@ -9,7 +9,7 @@ namespace otlib
         public string charset;
        
 
-        public otp(string charset) 
+        public otp(string charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") 
         {
             this.charset = charset;
         }
