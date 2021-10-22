@@ -2,10 +2,11 @@
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
-//[UI] Gtk.TextView tv = new Gtk.TextView();
 
 public class GenerateKeys : Gtk.Dialog
 {
+    [UI] Gtk.TextView KeyOutputView = new Gtk.TextView();
+
     Builder builder;
 
     public static GenerateKeys Create()
@@ -24,6 +25,7 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnGenerateClicked(object sender, EventArgs e)
     {
+        KeyOutputView.Buffer.Text = "0";
 
     }
 
