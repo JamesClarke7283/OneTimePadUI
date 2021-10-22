@@ -65,6 +65,7 @@
                 <property name="receives-default">False</property>
                 <property name="active">True</property>
                 <property name="draw-indicator">True</property>
+                <property name="group">UpperNum</property>
                 <signal name="clicked" handler="on_UpperLowerNum_clicked" swapped="no"/>
               </object>
               <packing>
@@ -79,8 +80,8 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
-                <property name="active">True</property>
                 <property name="draw-indicator">True</property>
+                <property name="group">Numerical</property>
                 <signal name="clicked" handler="on_UpperNum_clicked" swapped="no"/>
               </object>
               <packing>
@@ -95,8 +96,8 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
-                <property name="active">True</property>
                 <property name="draw-indicator">True</property>
+                <property name="group">UpperNum</property>
                 <signal name="clicked" handler="on_Numerical_clicked" swapped="no"/>
               </object>
               <packing>
