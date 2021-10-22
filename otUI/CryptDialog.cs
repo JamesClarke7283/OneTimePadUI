@@ -33,18 +33,20 @@ public class CryptDialog : Gtk.Dialog
     protected void OnEncryptClicked(object sender, EventArgs e)
     {
         otp o = new otp();
-        byte[] ks =  otp.ToBytes(keyInput.Buffer.Text);
+        otlib.PrettyPrint pp = new otlib.PrettyPrint();
+        byte[] ks =  otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text));
         string msg = msgCipherInput.Buffer.Text;
 
         byte[] ciphertext = o.Encrypt(msg, ks);
-        output.Buffer.Text = otp.ToString(ciphertext);
+        output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext));
     }
 
     protected void OnDecryptClicked(object sender, EventArgs e)
     {
         otp o = new otp();
-        byte[] ks = otp.ToBytes(keyInput.Buffer.Text);
-        string ciphertext = msgCipherInput.Buffer.Text;
+        otlib.PrettyPrint pp = new otlib.PrettyPrint();
+        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text));
+        string ciphertext = pp.UnPrettify(msgCipherInput.Buffer.Text);
 
         byte[] msg = o.Decrypt(ciphertext, ks);
         output.Buffer.Text = otp.ToString(msg);
