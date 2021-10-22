@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
@@ -27,10 +27,9 @@ public class CharDialog : Gtk.Dialog
     {
 
     }
-
     protected void on_UpperLowerNum_clicked(object sender, EventArgs e)
     {
-
+        
     }
     protected void on_UpperNum_clicked(object sender, EventArgs e)
     {
