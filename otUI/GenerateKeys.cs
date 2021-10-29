@@ -42,6 +42,10 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnHelpClicked(object sender, EventArgs e)
     {
+       
+        GenHelpDialog ghd = GenHelpDialog.Create();
+        ghd.Run();
+        ghd.Destroy();
 
     }
 
