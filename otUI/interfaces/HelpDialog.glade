@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkDialog" id="helpdialog">
     <property name="can-focus">False</property>
@@ -29,11 +34,18 @@
           <object class="GtkTextView" id="HelpText">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="vadjustment">adjustment1</property>
+            <property name="editable">False</property>
+            <property name="left-margin">5</property>
+            <property name="right-margin">5</property>
+            <property name="top-margin">5</property>
+            <property name="bottom-margin">5</property>
+            <property name="cursor-visible">False</property>
             <property name="buffer">textbuffer1</property>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
+            <property name="expand">True</property>
+            <property name="fill">False</property>
             <property name="position">1</property>
           </packing>
         </child>
