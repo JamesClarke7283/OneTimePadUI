@@ -43,10 +43,11 @@
         </child>
         <child>
           <object class="GtkButton" id="SettingsButton">
-            <property name="label" translatable="yes">Settings</property>
+            <property name="label">gtk-preferences</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
             <signal name="clicked" handler="On_SettingsButton_clicked" swapped="no"/>
           </object>
           <packing>
