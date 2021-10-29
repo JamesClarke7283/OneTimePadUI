@@ -17,6 +17,7 @@
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can-focus">False</property>
+        <property name="resize-mode">immediate</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
@@ -135,10 +136,12 @@
             <property name="height-request">200</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="is-focus">True</property>
             <property name="valign">baseline</property>
             <property name="margin-top">10</property>
             <property name="margin-bottom">10</property>
-            <property name="wrap-mode">char</property>
+            <property name="resize-mode">immediate</property>
+            <property name="wrap-mode">word-char</property>
             <property name="buffer">textbuffer1</property>
           </object>
           <packing>

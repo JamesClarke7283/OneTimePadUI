@@ -5,6 +5,7 @@
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkDialog" id="cryptdialog">
     <property name="can-focus">False</property>
+    <property name="is-focus">True</property>
     <property name="default-width">450</property>
     <property name="default-height">400</property>
     <property name="type-hint">dialog</property>
@@ -87,6 +88,7 @@
                   <object class="GtkTextView" id="keyInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="resize-mode">immediate</property>
                     <property name="wrap-mode">char</property>
                   </object>
                 </child>
@@ -122,6 +124,7 @@
                   <object class="GtkTextView" id="msgCipherInput">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="resize-mode">immediate</property>
                     <property name="wrap-mode">char</property>
                     <property name="buffer">textbuffer1</property>
                     <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
@@ -159,6 +162,7 @@
                   <object class="GtkTextView" id="output">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="resize-mode">immediate</property>
                     <property name="editable">False</property>
                     <property name="wrap-mode">char</property>
                   </object>
