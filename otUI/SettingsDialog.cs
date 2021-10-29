@@ -9,7 +9,7 @@ public class SettingsDialog : Gtk.Dialog
 
     Builder builder;
 
-    public string charset;
+    public string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     [UI] Gtk.RadioButton UpperLowerNum;
     [UI] Gtk.RadioButton UpperNum;

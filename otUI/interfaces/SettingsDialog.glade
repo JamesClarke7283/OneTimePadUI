@@ -2,14 +2,6 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkRadioButton" id="radiobutton1">
-    <property name="label" translatable="yes">radiobutton</property>
-    <property name="visible">True</property>
-    <property name="can-focus">True</property>
-    <property name="receives-default">False</property>
-    <property name="active">True</property>
-    <property name="draw-indicator">True</property>
-  </object>
   <object class="GtkDialog" id="settingsdialog">
     <property name="can-focus">False</property>
     <property name="default-width">320</property>
@@ -77,7 +69,6 @@
                             <property name="receives-default">False</property>
                             <property name="active">True</property>
                             <property name="draw-indicator">True</property>
-                            <property name="group">radiobutton1</property>
                             <signal name="clicked" handler="On_UpperLowerNum_clicked" swapped="no"/>
                           </object>
                           <packing>
@@ -94,7 +85,7 @@
                             <property name="receives-default">False</property>
                             <property name="active">True</property>
                             <property name="draw-indicator">True</property>
-                            <property name="group">radiobutton1</property>
+                            <property name="group">UpperLowerNum</property>
                             <signal name="clicked" handler="On_UpperNum_clicked" swapped="no"/>
                           </object>
                           <packing>
@@ -111,7 +102,7 @@
                             <property name="receives-default">False</property>
                             <property name="active">True</property>
                             <property name="draw-indicator">True</property>
-                            <property name="group">radiobutton1</property>
+                            <property name="group">UpperLowerNum</property>
                             <signal name="clicked" handler="On_Numerical_clicked" swapped="no"/>
                           </object>
                           <packing>
@@ -128,7 +119,7 @@
                             <property name="receives-default">False</property>
                             <property name="active">True</property>
                             <property name="draw-indicator">True</property>
-                            <property name="group">radiobutton1</property>
+                            <property name="group">UpperLowerNum</property>
                             <signal name="clicked" handler="On_CustomBtn_clicked" swapped="no"/>
                           </object>
                           <packing>
