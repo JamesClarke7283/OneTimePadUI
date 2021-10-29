@@ -33,26 +33,36 @@ public class SettingsDialog : Gtk.Dialog
     protected void On_Save_clicked(object sender, EventArgs e)
     {
         otlib.Settings.charset = charset;
+        Destroy();
+    }
+
+    protected void On_CustomBtn_clicked(object sender, EventArgs e)
+    {
+        Custom.IsEditable = true;
     }
 
     protected void On_Custom_changed(object sender, EventArgs e)
     {
         charset = Custom.Text;
+        Console.WriteLine(Custom.Text);
     }
 
     protected void On_UpperLowerNum_clicked(object sender, EventArgs e)
     {
         charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Custom.IsEditable = false;
     }
 
     protected void On_UpperNum_clicked(object sender, EventArgs e)
     {
         charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Custom.IsEditable = false;
     }
 
     protected void On_Numerical_clicked(object sender, EventArgs e)
     {
         charset = "0123456789";
+        Custom.IsEditable = false;
     }
 
 
