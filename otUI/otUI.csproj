@@ -14,7 +14,7 @@
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
     <EmbeddedResource Include="interfaces\Crypt.ui" />
     <EmbeddedResource Include="interfaces\CharSet.glade" />
-    <EmbeddedResource Include="interfaces\GenHelp.glade" />
+    <EmbeddedResource Include="interfaces\HelpDialog.glade" />
   </ItemGroup>
 	
   <ItemGroup>
