@@ -24,7 +24,6 @@ public partial class MainMenu : Gtk.Window
 
     protected void OnKeygenClicked(object sender, EventArgs e)
     {
-        //Hide();
         GenerateKeys gk = GenerateKeys.Create();
         gk.Run();
         gk.Destroy();
@@ -32,13 +31,17 @@ public partial class MainMenu : Gtk.Window
 
     protected void OnCryptoClicked(object sender, EventArgs e)
     {
-        //Hide();
         CryptDialog cd = CryptDialog.Create();
         cd.Run();
         cd.Destroy();
     }
 
-
+    protected void On_SettingsButton_clicked(object sender, EventArgs e)
+    {
+        SettingsDialog sd = SettingsDialog.Create();
+        sd.Run();
+        sd.Destroy();
+    }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
     {

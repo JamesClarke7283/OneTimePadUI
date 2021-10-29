@@ -50,14 +50,9 @@ public class CryptDialog : Gtk.Dialog
         output.Buffer.Text = otp.ToString(msg, otlib.Settings.charset);
     }
 
-    protected void OnCharsetClicked(object sender, EventArgs e)
-    {
-
-    }
-
     protected void OnHelpClicked(object sender, EventArgs e)
     {
-        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.CryptKeysHelp);
+        HelpDialog hd = HelpDialog.Create("hello");
         hd.Run();
         hd.Destroy();
     }

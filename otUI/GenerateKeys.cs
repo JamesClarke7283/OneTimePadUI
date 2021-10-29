@@ -33,13 +33,6 @@ public class GenerateKeys : Gtk.Dialog
 
     }
 
-    protected void OnCharsetClicked(object sender, EventArgs e)
-    {
-        CharDialog cd = CharDialog.Create();
-        cd.Run();
-        cd.Destroy();
-    }
-
     protected void OnHelpClicked(object sender, EventArgs e)
     {
        
