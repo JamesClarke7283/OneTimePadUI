@@ -57,7 +57,9 @@ public class CryptDialog : Gtk.Dialog
 
     protected void OnHelpClicked(object sender, EventArgs e)
     {
-
+        HelpDialog hd = HelpDialog.Create("hello");
+        hd.Run();
+        hd.Destroy();
     }
 
 }

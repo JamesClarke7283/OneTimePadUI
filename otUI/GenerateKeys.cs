@@ -42,6 +42,10 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnHelpClicked(object sender, EventArgs e)
     {
+       
+        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.GenerateKeysHelp);
+        hd.Run();
+        hd.Destroy();
 
     }
 
