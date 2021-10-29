@@ -14,7 +14,6 @@
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
     <EmbeddedResource Include="interfaces\Crypt.ui" />
     <EmbeddedResource Include="interfaces\HelpDialog.glade" />
-    <EmbeddedResource Include="interfaces\CharsetDialog.glade" />
     <EmbeddedResource Include="interfaces\SettingsDialog.glade" />
   </ItemGroup>
 	
@@ -22,7 +21,6 @@
     <None Remove="interfaces\Crypt.ui" />
     <None Remove="interfaces\CharSet.glade" />
     <None Remove="interfaces\GenHelp.glade" />
-    <None Remove="interfaces\CharsetDialog.glade" />
     <None Remove="interfaces\SettingsDialog.glade" />
   </ItemGroup>
 
