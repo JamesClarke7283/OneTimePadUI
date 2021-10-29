@@ -13,14 +13,15 @@
     <EmbeddedResource Include="interfaces\MainWindow.glade" />
     <EmbeddedResource Include="interfaces\GenerateKeys.glade" />
     <EmbeddedResource Include="interfaces\Crypt.ui" />
-    <EmbeddedResource Include="interfaces\CharSet.glade" />
     <EmbeddedResource Include="interfaces\HelpDialog.glade" />
+    <EmbeddedResource Include="interfaces\CharsetDialog.glade" />
   </ItemGroup>
 	
   <ItemGroup>
     <None Remove="interfaces\Crypt.ui" />
     <None Remove="interfaces\CharSet.glade" />
     <None Remove="interfaces\GenHelp.glade" />
+    <None Remove="interfaces\CharsetDialog.glade" />
   </ItemGroup>
 
 <ItemGroup>
