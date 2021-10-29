@@ -14,6 +14,7 @@ public class SettingsDialog : Gtk.Dialog
     [UI] Gtk.RadioButton UpperLowerNum;
     [UI] Gtk.RadioButton UpperNum;
     [UI] Gtk.RadioButton Numerical;
+    [UI] Gtk.RadioButton CustomBtn;
     [UI] Gtk.Entry Custom = new Gtk.Entry();
 
     public static SettingsDialog Create()
@@ -32,6 +33,11 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_Save_clicked(object sender, EventArgs e)
     {
+        if (CustomBtn.Active) 
+        {
+            charset = Custom.Text;
+            Console.WriteLine(charset); 
+        }
         otlib.Settings.charset = charset;
         Destroy();
     }
@@ -41,11 +47,13 @@ public class SettingsDialog : Gtk.Dialog
         Custom.IsEditable = true;
     }
 
+    /*
     protected void On_Custom_changed(object sender, EventArgs e)
     {
         charset = Custom.Text;
         Console.WriteLine(Custom.Text);
     }
+    */
 
     protected void On_UpperLowerNum_clicked(object sender, EventArgs e)
     {
