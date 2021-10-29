@@ -5,8 +5,6 @@ using otlib;
 
 public class SettingsDialog : Gtk.Dialog
 {
-    //[UI] Gtk.Button CharsetButton = new Gtk.Button();
-
     Builder builder;
 
     public string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -46,14 +44,6 @@ public class SettingsDialog : Gtk.Dialog
     {
         Custom.IsEditable = true;
     }
-
-    /*
-    protected void On_Custom_changed(object sender, EventArgs e)
-    {
-        charset = Custom.Text;
-        Console.WriteLine(Custom.Text);
-    }
-    */
 
     protected void On_UpperLowerNum_clicked(object sender, EventArgs e)
     {
