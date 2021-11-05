@@ -5,9 +5,9 @@ namespace otlib
     {
         public char separator = ' ';
 
-        public PrettyPrint(char Separator = ' ') 
+        public PrettyPrint(char Separator = ' ')
         {
-            this.separator = Separator; 
+            this.separator = Separator;
         }
         public string Prettify(string key)
         {

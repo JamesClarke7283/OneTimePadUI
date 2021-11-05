@@ -4,16 +4,11 @@ using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
 using System.IO;
 using System.Collections.Generic;
-using System.Security.Permissions;
-using System.Security;
 
 public class SettingsDialog : Gtk.Dialog
 {
     Builder builder;
-    public string codeCharset = "0123456789";
-    public string textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    public string rngDevicePath = null;
-
+    private AppSettings appSettings;
     [UI] Gtk.RadioButton codeUpperLowerNum;
     [UI] Gtk.RadioButton codeUpperNum;
     [UI] Gtk.RadioButton codeNumerical;
@@ -30,79 +25,72 @@ public class SettingsDialog : Gtk.Dialog
 
     [UI] Gtk.Button btn_help = new Gtk.Button();
 
-    public static SettingsDialog Create()
+    public static SettingsDialog Create(AppSettings appSettings)
     {
         Builder builder = new Builder(null, "otUI.interfaces.SettingsDialog.glade", null);
-        return new SettingsDialog(builder, builder.GetObject("settingsdialog").Handle);
+        return new SettingsDialog(builder, builder.GetObject("settingsdialog").Handle, appSettings);
     }
 
-    protected SettingsDialog(Builder builder, IntPtr handle) : base(handle)
+    protected SettingsDialog(Builder builder, IntPtr handle, AppSettings appSettings) : base(handle)
     {
         this.builder = builder;
+        this.appSettings = appSettings;
 
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
 
-
-        if(OperatingSystem.IsWindows()) 
+        if (OperatingSystem.IsWindows())
         {
             RNGDeviceComboBox.Sensitive = false;
         }
-        else 
+        else
         {
             IEnumerable<string> l = Directory.EnumerateFiles("/dev", "*", SearchOption.AllDirectories);
 
             foreach (string item in l)
             {
-
-                    RNGDeviceComboBox.AppendText(item);
-             
+                RNGDeviceComboBox.AppendText(item);
             }
-               
-
         }
     }
 
     protected void On_Save_clicked(object sender, EventArgs e)
     {
-        if (codeCustomBtn.Active) 
+        if (codeCustomBtn.Active)
         {
-            codeCharset = codeCustom.Text;
+            appSettings.CodeCharSetCustom = codeCustom.Text;
         }
 
-        if (textCustomBtn.Active) 
+        if (textCustomBtn.Active)
         {
-            textCharset = textCustom.Text;
+            appSettings.TextCharSetCustom = textCustom.Text;
         }
-
-
-        otlib.Settings.codeCharset = codeCharset;
-        otlib.Settings.textCharset = textCharset;
-        otlib.Settings.rngDevicePath = rngDevicePath;
+        appSettings.Write();
         Destroy();
     }
 
     // Code charset events
     protected void On_codeCustomBtn_clicked(object sender, EventArgs e)
     {
-       codeCustom.IsEditable = true;
+        appSettings.CodeCharSet = CharSetTypes.CUSTOM;
+        codeCustom.IsEditable = true;
     }
 
     protected void On_codeUpperLowerNum_clicked(object sender, EventArgs e)
     {
-        codeCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        appSettings.CodeCharSet = CharSetTypes.UPPER_LOWER_NUMERIC;
         codeCustom.IsEditable = false;
     }
 
     protected void On_codeUpperNum_clicked(object sender, EventArgs e)
     {
-        codeCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        appSettings.CodeCharSet = CharSetTypes.UPPER_NUMERIC;
         codeCustom.IsEditable = false;
     }
 
     protected void On_codeNumerical_clicked(object sender, EventArgs e)
     {
-        codeCharset = "0123456789";
+        appSettings.CodeCharSet = CharSetTypes.NUMERIC;
         codeCustom.IsEditable = false;
     }
 
@@ -110,46 +98,44 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_textCustomBtn_clicked(object sender, EventArgs e)
     {
+        appSettings.TextCharSet = CharSetTypes.CUSTOM;
         textCustom.IsEditable = true;
     }
 
     protected void On_textUpperLowerNum_clicked(object sender, EventArgs e)
     {
-        textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        appSettings.TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC;
         textCustom.IsEditable = false;
     }
 
     protected void On_textUpperNum_clicked(object sender, EventArgs e)
     {
-        textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        appSettings.TextCharSet = CharSetTypes.UPPER_NUMERIC;
         textCustom.IsEditable = false;
     }
 
     protected void On_textNumerical_clicked(object sender, EventArgs e)
     {
-        textCharset = "0123456789";
+        appSettings.TextCharSet = CharSetTypes.UPPER_NUMERIC;
         textCustom.IsEditable = false;
     }
 
     protected void On_RNGDeviceComboBox_changed(object sender, EventArgs e)
     {
-        if (RNGDeviceComboBox.ActiveText == "Default") 
+        if (RNGDeviceComboBox.ActiveText == "Default")
         {
-            rngDevicePath = null;
+            appSettings.RngDevicePath = null;
         }
-        else 
+        else
         {
-            rngDevicePath = RNGDeviceComboBox.ActiveText; 
+            appSettings.RngDevicePath = RNGDeviceComboBox.ActiveText;
         }
     }
 
-    protected void On_btn_help_clicked(object sender, EventArgs e) 
+    protected void On_btn_help_clicked(object sender, EventArgs e)
     {
         HelpDialog hd = HelpDialog.Create(otUI.HelpConst.SettingsHelp);
         hd.Run();
         hd.Destroy();
     }
-
-
-
 }
