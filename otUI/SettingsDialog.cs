@@ -23,6 +23,9 @@ public class SettingsDialog : Gtk.Dialog
 
     [UI] Gtk.ComboBoxText RNGDeviceComboBox = new Gtk.ComboBoxText();
 
+    [UI] Gtk.ComboBoxText themeComboBox = new Gtk.ComboBoxText();
+
+
     [UI] Gtk.Button btn_help = new Gtk.Button();
 
     public static SettingsDialog Create(AppSettings appSettings)
@@ -172,5 +175,9 @@ public class SettingsDialog : Gtk.Dialog
         HelpDialog hd = HelpDialog.Create(otUI.HelpConst.SettingsHelp);
         hd.Run();
         hd.Destroy();
+    }
+    protected void On_themeComboBox_changed(object sender, EventArgs e)
+    {
+
     }
 }

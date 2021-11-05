@@ -416,6 +416,7 @@
                                   <item id="0" translatable="yes">Light</item>
                                   <item id="1" translatable="yes">Dark</item>
                                 </items>
+                                <signal name="changed" handler="On_themeComboBox_changed" swapped="no"/>
                               </object>
                             </child>
                           </object>
