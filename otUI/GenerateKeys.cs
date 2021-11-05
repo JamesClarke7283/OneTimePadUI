@@ -46,8 +46,12 @@ public class GenerateKeys : Gtk.Dialog
         }
         catch (System.UnauthorizedAccessException) 
         {
-            ErrorDialog.ShowAlert(this, "Error: Permission Denied, cannot access this device");
+            ErrorDialog.ShowAlert(this, "Error: Permission Denied, cannot access this device\n Try running 'sudo chmod +644 " + otlib.Settings.rngDevicePath+"'");
         }
+        catch (Exception err) 
+        {
+            ErrorDialog.ShowAlert(this, "Unknown error with device: "+err.Message+"\n Try a different RNG device");
+         }
 
 
     }
