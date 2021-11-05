@@ -74,10 +74,10 @@ namespace otlib
                 otlib.otp o = new otlib.otp();
 
                 int addedkeys = key.Length - msg.Length;
-                string addedmsg = ToString(otp.GenerateKeystream(addedkeys), Settings.codeCharset);
-                string strMsg = ToString(msg,Settings.codeCharset);
+                string addedmsg = ToString(otp.GenerateKeystream(addedkeys), charset);
+                string strMsg = ToString(msg, charset);
                 strMsg += addedmsg;
-                return OTP(ToBytes(strMsg,Settings.codeCharset), key, dir, Settings.codeCharset);
+                return OTP(ToBytes(strMsg,charset), key, dir, charset);
 
             } else if (msg.Length > key.Length)
             {
