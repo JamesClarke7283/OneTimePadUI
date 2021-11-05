@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gtk;
 using otlib;
 
@@ -9,10 +10,12 @@ namespace otUI
 
         public static void Main(string[] args)
         {
+
             Application.Init();
             MainMenu win = MainMenu.Create();
             win.Show();
             Application.Run();
+
         }
     }
 }

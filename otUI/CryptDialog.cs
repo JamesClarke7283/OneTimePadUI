@@ -33,21 +33,21 @@ public class CryptDialog : Gtk.Dialog
     protected void OnEncryptClicked(object sender, EventArgs e)
     {
         otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text),otlib.Settings.charset);
+        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text),otlib.Settings.codeCharset);
         string msg = msgCipherInput.Buffer.Text;
 
-        byte[] ciphertext = otp.Encrypt(msg, ks, otlib.Settings.charset);
-        output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext,otlib.Settings.charset));
+        byte[] ciphertext = otp.Encrypt(msg, ks, otlib.Settings.codeCharset,otlib. Settings.textCharset);
+        output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext,otlib.Settings.codeCharset));
     }
 
     protected void OnDecryptClicked(object sender, EventArgs e)
     {
         otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), otlib.Settings.charset);
+        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), otlib.Settings.codeCharset);
         string ciphertext = pp.UnPrettify(msgCipherInput.Buffer.Text);
 
-        byte[] msg = otp.Decrypt(ciphertext, ks, otlib.Settings.charset);
-        output.Buffer.Text = otp.ToString(msg, otlib.Settings.charset);
+        byte[] msg = otp.Decrypt(ciphertext, ks, otlib.Settings.codeCharset,otlib.Settings.textCharset);
+        output.Buffer.Text = otp.ToString(msg, otlib.Settings.textCharset);
     }
 
     protected void OnHelpClicked(object sender, EventArgs e)

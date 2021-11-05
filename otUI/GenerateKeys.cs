@@ -28,8 +28,16 @@ public class GenerateKeys : Gtk.Dialog
     {
 
         otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] keystream = otp.GenerateKeystream((int)keyLength.Value);
-        KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, otlib.Settings.charset));
+        byte[] keystream = {};
+        if (otlib.Settings.rngDevicePath == null)
+        {
+            keystream = otp.GenerateKeystream((int)keyLength.Value);
+        }
+        else 
+        {
+            keystream = otp.GenerateKeystreamRNGDevice(otlib.Settings.rngDevicePath, (int)keyLength.Value); 
+        }
+        KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, otlib.Settings.codeCharset));
 
     }
 

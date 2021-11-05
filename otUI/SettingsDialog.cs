@@ -6,14 +6,23 @@ using otlib;
 public class SettingsDialog : Gtk.Dialog
 {
     Builder builder;
+    public string codeCharset = "0123456789";
+    public string textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public string rngDevicePath = null;
 
-    public string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    [UI] Gtk.RadioButton codeUpperLowerNum;
+    [UI] Gtk.RadioButton codeUpperNum;
+    [UI] Gtk.RadioButton codeNumerical;
+    [UI] Gtk.RadioButton codeCustomBtn;
+    [UI] Gtk.Entry codeCustom = new Gtk.Entry();
 
-    [UI] Gtk.RadioButton UpperLowerNum;
-    [UI] Gtk.RadioButton UpperNum;
-    [UI] Gtk.RadioButton Numerical;
-    [UI] Gtk.RadioButton CustomBtn;
-    [UI] Gtk.Entry Custom = new Gtk.Entry();
+    [UI] Gtk.RadioButton textUpperLowerNum;
+    [UI] Gtk.RadioButton textUpperNum;
+    [UI] Gtk.RadioButton textNumerical;
+    [UI] Gtk.RadioButton textCustomBtn;
+    [UI] Gtk.Entry textCustom = new Gtk.Entry();
+
+    [UI] Gtk.ComboBoxText RNGDeviceComboBox = new Gtk.ComboBoxText();
 
     public static SettingsDialog Create()
     {
@@ -27,41 +36,90 @@ public class SettingsDialog : Gtk.Dialog
 
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
+        RNGDeviceComboBox.AppendText("test");
     }
 
     protected void On_Save_clicked(object sender, EventArgs e)
     {
-        if (CustomBtn.Active) 
+        if (codeCustomBtn.Active) 
         {
-            charset = Custom.Text;
-            Console.WriteLine(charset); 
+            codeCharset = codeCustom.Text;
         }
-        otlib.Settings.charset = charset;
+
+        if (textCustomBtn.Active) 
+        {
+            textCharset = textCustom.Text;
+        }
+
+
+        otlib.Settings.codeCharset = codeCharset;
+        otlib.Settings.textCharset = textCharset;
+        otlib.Settings.rngDevicePath = rngDevicePath;
         Destroy();
     }
 
-    protected void On_CustomBtn_clicked(object sender, EventArgs e)
+    // Code charset events
+    protected void On_codeCustomBtn_clicked(object sender, EventArgs e)
     {
-        Custom.IsEditable = true;
+       codeCustom.IsEditable = true;
     }
 
-    protected void On_UpperLowerNum_clicked(object sender, EventArgs e)
+    protected void On_codeUpperLowerNum_clicked(object sender, EventArgs e)
     {
-        charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Custom.IsEditable = false;
+        codeCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        codeCustom.IsEditable = false;
     }
 
-    protected void On_UpperNum_clicked(object sender, EventArgs e)
+    protected void On_codeUpperNum_clicked(object sender, EventArgs e)
     {
-        charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Custom.IsEditable = false;
+        codeCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        codeCustom.IsEditable = false;
     }
 
-    protected void On_Numerical_clicked(object sender, EventArgs e)
+    protected void On_codeNumerical_clicked(object sender, EventArgs e)
     {
-        charset = "0123456789";
-        Custom.IsEditable = false;
+        codeCharset = "0123456789";
+        codeCustom.IsEditable = false;
     }
+
+    // Text charset events
+
+    // Code charset events
+    protected void On_textCustomBtn_clicked(object sender, EventArgs e)
+    {
+        textCustom.IsEditable = true;
+    }
+
+    protected void On_textUpperLowerNum_clicked(object sender, EventArgs e)
+    {
+        textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        textCustom.IsEditable = false;
+    }
+
+    protected void On_textUpperNum_clicked(object sender, EventArgs e)
+    {
+        textCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        textCustom.IsEditable = false;
+    }
+
+    protected void On_textNumerical_clicked(object sender, EventArgs e)
+    {
+        textCharset = "0123456789";
+        textCustom.IsEditable = false;
+    }
+
+    protected void On_RNGDeviceComboBox_changed(object sender, EventArgs e)
+    {
+        if (RNGDeviceComboBox.ActiveText == "Default") 
+        {
+            rngDevicePath = null;
+        }
+        else 
+        {
+            rngDevicePath = RNGDeviceComboBox.ActiveText; 
+        }
+    }
+
 
 
 }
