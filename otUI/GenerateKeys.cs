@@ -35,7 +35,7 @@ public class GenerateKeys : Gtk.Dialog
         }
         else 
         {
-            keystream = otp.GenerateKeystreamRNGDevice(otlib.Settings.rngDevicePath, (int)keyLength.Value); 
+            keystream = otp.GenerateKeystreamRNGDevice(otlib.Settings.rngDevicePath, (int)keyLength.Value);
         }
         KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, otlib.Settings.codeCharset));
 

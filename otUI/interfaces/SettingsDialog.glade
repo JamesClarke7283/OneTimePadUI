@@ -355,6 +355,12 @@
                           <item translatable="yes">Default</item>
                         </items>
                         <signal name="changed" handler="On_RNGDeviceComboBox_changed" swapped="no"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="editable">False</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

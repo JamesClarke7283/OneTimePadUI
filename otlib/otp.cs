@@ -22,7 +22,7 @@ namespace otlib
         {
             using (BinaryReader file = new BinaryReader(File.OpenRead(devicePath)))
             {
-                return file.ReadBytes(length);
+                return file.ReadBytes(length);        
             }
 
         }

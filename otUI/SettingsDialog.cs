@@ -2,7 +2,10 @@
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
-using System.Runtime.InteropServices;
+using System.IO;
+using System.Collections.Generic;
+using System.Security.Permissions;
+using System.Security;
 
 public class SettingsDialog : Gtk.Dialog
 {
@@ -39,11 +42,24 @@ public class SettingsDialog : Gtk.Dialog
 
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
-        RNGDeviceComboBox.AppendText("test");
+
 
         if(OperatingSystem.IsWindows()) 
         {
             RNGDeviceComboBox.Sensitive = false;
+        }
+        else 
+        {
+            IEnumerable<string> l = Directory.EnumerateFiles("/dev", "*", SearchOption.AllDirectories);
+
+            foreach (string item in l)
+            {
+
+                    RNGDeviceComboBox.AppendText(item);
+             
+            }
+               
+
         }
     }
 
@@ -92,7 +108,6 @@ public class SettingsDialog : Gtk.Dialog
 
     // Text charset events
 
-    // Code charset events
     protected void On_textCustomBtn_clicked(object sender, EventArgs e)
     {
         textCustom.IsEditable = true;
