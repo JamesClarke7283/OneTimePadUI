@@ -52,8 +52,43 @@ public class SettingsDialog : Gtk.Dialog
                 RNGDeviceComboBox.AppendText(item);
             }
         }
+        LoadConfig();
     }
-
+    private void LoadConfig()
+    {
+        switch (appSettings.CodeCharSet)
+        {
+            case CharSetTypes.UPPER_LOWER_NUMERIC:
+                codeUpperLowerNum.Click();
+                break;
+            case CharSetTypes.UPPER_NUMERIC:
+                codeUpperNum.Click();
+                break;
+            case CharSetTypes.NUMERIC:
+                codeNumerical.Click();
+                break;
+            default:
+                codeCustomBtn.Click();
+                break;
+        }
+        switch (appSettings.TextCharSet)
+        {
+            case CharSetTypes.UPPER_LOWER_NUMERIC:
+                textUpperLowerNum.Click();
+                break;
+            case CharSetTypes.UPPER_NUMERIC:
+                textUpperNum.Click();
+                break;
+            case CharSetTypes.NUMERIC:
+                textNumerical.Click();
+                break;
+            default:
+                textCustomBtn.Click();
+                break;
+        }
+        codeCustom.Text = appSettings.CodeCharSetCustom;
+        textCustom.Text = appSettings.TextCharSetCustom;
+    }
     protected void On_Save_clicked(object sender, EventArgs e)
     {
         if (codeCustomBtn.Active)
@@ -116,7 +151,7 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_textNumerical_clicked(object sender, EventArgs e)
     {
-        appSettings.TextCharSet = CharSetTypes.UPPER_NUMERIC;
+        appSettings.TextCharSet = CharSetTypes.NUMERIC;
         textCustom.IsEditable = false;
     }
 
