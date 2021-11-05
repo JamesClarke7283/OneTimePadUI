@@ -34,5 +34,6 @@ namespace otUI
                                                 "\nOutput Box\n" +
                                                 "Will Display the Finished text, whether Encypted or Decrypted.\n";
 
+        public static string SettingsHelp = "Test\n";
     }
 }

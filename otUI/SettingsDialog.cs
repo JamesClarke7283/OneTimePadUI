@@ -24,6 +24,8 @@ public class SettingsDialog : Gtk.Dialog
 
     [UI] Gtk.ComboBoxText RNGDeviceComboBox = new Gtk.ComboBoxText();
 
+    [UI] Gtk.Button btn_help = new Gtk.Button();
+
     public static SettingsDialog Create()
     {
         Builder builder = new Builder(null, "otUI.interfaces.SettingsDialog.glade", null);
@@ -118,6 +120,13 @@ public class SettingsDialog : Gtk.Dialog
         {
             rngDevicePath = RNGDeviceComboBox.ActiveText; 
         }
+    }
+
+    protected void On_btn_help_clicked(object sender, EventArgs e) 
+    {
+        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.SettingsHelp);
+        hd.Run();
+        hd.Destroy();
     }
 
 
