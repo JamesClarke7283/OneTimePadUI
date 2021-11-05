@@ -9,6 +9,8 @@ public class GenerateKeys : Gtk.Dialog
     private AppSettings appSettings;
     [UI] Gtk.TextView KeyOutputView = new Gtk.TextView();
     [UI] Gtk.SpinButton keyLength;
+    [UI] Gtk.Button copyBtn = new Gtk.Button();
+    [UI] Gtk.Button printBtn = new Gtk.Button();
 
     Builder builder;
 
@@ -59,4 +61,19 @@ public class GenerateKeys : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
+
+    protected void OnCopyClicked(object sender, EventArgs e)
+    {
+        Gtk.Clipboard clipboard = Gtk.Clipboard.Get(Gdk.Atom.Intern("CLIPBOARD", false));
+        clipboard.Text = KeyOutputView.Buffer.Text;
+    }
+
+    protected void OnPrintClicked(object sender, EventArgs e)
+    {
+
+    }
+
+   
+
+
 }

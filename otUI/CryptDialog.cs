@@ -69,4 +69,10 @@ public class CryptDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
+
+    protected void OnCopyClicked(object sender, EventArgs e)
+    {
+        Gtk.Clipboard clipboard = Gtk.Clipboard.Get(Gdk.Atom.Intern("CLIPBOARD", false));
+        clipboard.Text = output.Buffer.Text;
+    }
 }
