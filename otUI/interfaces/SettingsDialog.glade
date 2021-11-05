@@ -187,6 +187,8 @@
                               <object class="GtkLabel" id="codeCharse">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="xpad">5</property>
+                                <property name="ypad">5</property>
                                 <property name="label" translatable="yes">Code Charset</property>
                               </object>
                             </child>
@@ -305,6 +307,8 @@
                               <object class="GtkLabel" id="Charset1">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="xpad">5</property>
+                                <property name="ypad">5</property>
                                 <property name="label" translatable="yes">Text Charset</property>
                               </object>
                             </child>
@@ -369,6 +373,8 @@
                   <object class="GtkLabel" id="rngDeviceFrame">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="xpad">5</property>
+                    <property name="ypad">5</property>
                     <property name="label" translatable="yes">RNG Device</property>
                   </object>
                 </child>
@@ -380,7 +386,68 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">none</property>
+                <child>
+                  <object class="GtkAlignment">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="left-padding">12</property>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">none</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <object class="GtkComboBoxText" id="themeComboBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="active">0</property>
+                                <items>
+                                  <item id="0" translatable="yes">Light</item>
+                                  <item id="1" translatable="yes">Dark</item>
+                                </items>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="xpad">5</property>
+                            <property name="ypad">5</property>
+                            <property name="label" translatable="yes">Change Theme</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="xpad">5</property>
+                    <property name="ypad">5</property>
+                    <property name="label" translatable="yes">Appearance</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
             </child>
           </object>
           <packing>
