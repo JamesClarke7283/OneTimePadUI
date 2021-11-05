@@ -33,16 +33,6 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <child>
-              <object class="GtkButton" id="copy">
-                <property name="label">gtk-copy</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
-                <signal name="clicked" handler="OnCopyClicked" swapped="no"/>
-              </object>
-            </child>
-            <child>
               <object class="GtkButton" id="btn_encrypt">
                 <property name="label" translatable="yes">Encrypt</property>
                 <property name="visible">True</property>
@@ -50,9 +40,6 @@
                 <property name="receives-default">True</property>
                 <signal name="clicked" handler="OnEncryptClicked" swapped="no"/>
               </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton" id="btn_decrypt">
@@ -61,6 +48,19 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <signal name="clicked" handler="OnDecryptClicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="copy">
+                <property name="label">gtk-copy</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="use-stock">True</property>
+                <signal name="clicked" handler="OnCopyClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">2</property>
