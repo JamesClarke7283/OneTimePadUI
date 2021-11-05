@@ -2,6 +2,7 @@
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
+using otUI;
 
 public class GenerateKeys : Gtk.Dialog
 {
@@ -26,18 +27,28 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnGenerateClicked(object sender, EventArgs e)
     {
+        try
+        {
+            otlib.PrettyPrint pp = new otlib.PrettyPrint();
+            byte[] keystream = { };
+            if (otlib.Settings.rngDevicePath == null)
+            {
+                keystream = otp.GenerateKeystream((int)keyLength.Value);
+            }
+            else
+            {
 
-        otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] keystream = {};
-        if (otlib.Settings.rngDevicePath == null)
-        {
-            keystream = otp.GenerateKeystream((int)keyLength.Value);
+
+                keystream = otp.GenerateKeystreamRNGDevice(otlib.Settings.rngDevicePath, (int)keyLength.Value);
+
+            }
+            KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, otlib.Settings.codeCharset));
         }
-        else 
+        catch (System.UnauthorizedAccessException) 
         {
-            keystream = otp.GenerateKeystreamRNGDevice(otlib.Settings.rngDevicePath, (int)keyLength.Value);
+            ErrorDialog.ShowAlert(this, "Error: Permission Denied, cannot access this device");
         }
-        KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, otlib.Settings.codeCharset));
+
 
     }
 

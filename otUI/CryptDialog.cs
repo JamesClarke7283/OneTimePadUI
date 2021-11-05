@@ -2,6 +2,7 @@
 using Gtk;
 using otlib;
 using UI = Gtk.Builder.ObjectAttribute;
+using otUI;
 
 //[UI] Gtk.TextView tv = new Gtk.TextView();
 
@@ -32,12 +33,19 @@ public class CryptDialog : Gtk.Dialog
 
     protected void OnEncryptClicked(object sender, EventArgs e)
     {
-        otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text),otlib.Settings.codeCharset);
-        string msg = msgCipherInput.Buffer.Text;
+        try
+        {
+            otlib.PrettyPrint pp = new otlib.PrettyPrint();
+            byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), otlib.Settings.codeCharset);
+            string msg = msgCipherInput.Buffer.Text;
 
-        byte[] ciphertext = otp.Encrypt(msg, ks, otlib.Settings.codeCharset,otlib. Settings.textCharset);
-        output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext,otlib.Settings.codeCharset));
+            byte[] ciphertext = otp.Encrypt(msg, ks, otlib.Settings.codeCharset, otlib.Settings.textCharset);
+            output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, otlib.Settings.codeCharset));
+        }
+        catch (System.Collections.Generic.KeyNotFoundException error)
+        {
+            ErrorDialog.ShowAlert(this, "Message contains character that is not in textCode characterset");
+        }
     }
 
     protected void OnDecryptClicked(object sender, EventArgs e)
