@@ -30,13 +30,20 @@ namespace otUI
                                                 "\nOutput Box\n" +
                                                 "Will Display the Finished text, whether Encypted or Decrypted.\n";
 
-        public static string SettingsHelp = "Settings Help\n"+
-                                            "Welcome to the Preferences help box!\n"+
-                                            "\nChange Charset\n"+
-                                            "\nCode Charset\n"+
-                                            "Input the Character Set that you would like to be used in the Key, in the 'Generate Keys' Feature. If Custom is selected, then input the characters you would like to be used in the 'Custom' Box.\n"+
-                                            "\nText Charset\n"+
-                                            "Input the Character Set needed to -\n"+
-                                            "\nRNG Device\n";
+        public static string SettingsHelp = "Settings Help\n" +
+                                            "Welcome to the Preferences help box!\n" +
+                                            "\nChange Charset\n" +
+                                            "Code Charset\n" +
+                                            "Input the Character Set that is required to be used in the Key, in the 'Generate Keys' Feature. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
+                                            "\nText Charset\n" +
+                                            "Input the Character Set that is going to be used in the message that needs to be encrypted or Decrypted. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
+                                            "\nRNG Device\n" +
+                                            "Select Random Number Device to get random key material.\n" +
+                                            "\nChange Theme\n"+
+                                            "Dark Theme\n" +
+                                            "Dark theme alters the UI to display mostly dark colours. This is displayed as light text on a dark background. Dark theme is used to relieve eye strain and match the current lighting conditions of the user.\n"+
+                                            "\nLight Theme\n" +
+                                            "Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.\n";
+                                            
     }
 }
