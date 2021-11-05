@@ -9,38 +9,39 @@ using otUI;
 public class CryptDialog : Gtk.Dialog
 {
     Builder builder;
+    private AppSettings appSettings;
 
     [UI] Gtk.TextView keyInput = new Gtk.TextView();
     [UI] Gtk.TextView msgCipherInput = new Gtk.TextView();
     [UI] Gtk.TextView output = new Gtk.TextView();
 
 
-    public static CryptDialog Create()
+    public static CryptDialog Create(AppSettings appSettings)
     {
         Builder builder = new Builder(null, "otUI.interfaces.Crypt.ui", null);
-        return new CryptDialog(builder, builder.GetObject("cryptdialog").Handle);
+        return new CryptDialog(builder, builder.GetObject("cryptdialog").Handle, appSettings);
     }
 
 
-    protected CryptDialog(Builder builder, IntPtr handle) : base(handle)
+    protected CryptDialog(Builder builder, IntPtr handle, AppSettings appSettings) : base(handle)
     {
         this.builder = builder;
+        this.appSettings = appSettings;
 
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
-
     }
 
     protected void OnEncryptClicked(object sender, EventArgs e)
     {
         try
         {
-            otlib.PrettyPrint pp = new otlib.PrettyPrint();
-            byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), otlib.Settings.codeCharset);
+            PrettyPrint pp = new PrettyPrint();
+            byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
             string msg = msgCipherInput.Buffer.Text;
 
-            byte[] ciphertext = otp.Encrypt(msg, ks, otlib.Settings.codeCharset, otlib.Settings.textCharset);
-            output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, otlib.Settings.codeCharset));
+            byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+            output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, appSettings.CodeCharSetString));
         }
         catch (System.Collections.Generic.KeyNotFoundException error)
         {
@@ -50,12 +51,12 @@ public class CryptDialog : Gtk.Dialog
 
     protected void OnDecryptClicked(object sender, EventArgs e)
     {
-        otlib.PrettyPrint pp = new otlib.PrettyPrint();
-        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), otlib.Settings.codeCharset);
+        PrettyPrint pp = new PrettyPrint();
+        byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
         string ciphertext = pp.UnPrettify(msgCipherInput.Buffer.Text);
 
-        byte[] msg = otp.Decrypt(ciphertext, ks, otlib.Settings.codeCharset,otlib.Settings.textCharset);
-        output.Buffer.Text = otp.ToString(msg, otlib.Settings.textCharset);
+        byte[] msg = otp.Decrypt(ciphertext, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+        output.Buffer.Text = otp.ToString(msg, appSettings.TextCharSetString);
     }
 
     protected void OnHelpClicked(object sender, EventArgs e)
@@ -64,5 +65,4 @@ public class CryptDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
-
 }
