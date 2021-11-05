@@ -178,6 +178,13 @@ public class SettingsDialog : Gtk.Dialog
     }
     protected void On_themeComboBox_changed(object sender, EventArgs e)
     {
-
+        if (themeComboBox.ActiveText == "Default")
+        {
+            appSettings.Theme = null;
+        }
+        else
+        {
+            appSettings.Theme = themeComboBox.ActiveText;
+        }
     }
 }

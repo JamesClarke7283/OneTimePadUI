@@ -21,6 +21,8 @@ namespace otlib
         public CharSetTypes TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC;
         public string CodeCharSetCustom = "";
         public string TextCharSetCustom = "";
+        [XmlElement(IsNullable = true)]
+        public string Theme = null;
         [XmlIgnore]
         public string CodeCharSetString
         {
