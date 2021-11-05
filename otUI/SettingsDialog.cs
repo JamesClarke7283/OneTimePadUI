@@ -103,6 +103,23 @@ public class SettingsDialog : Gtk.Dialog
         {
             appSettings.TextCharSetCustom = textCustom.Text;
         }
+
+        if (appSettings.Theme == "Dark")
+        {
+            Gtk.CssProvider css_provider = new Gtk.CssProvider();
+            css_provider.LoadFromPath("insertcssfilepathhere");                                  //need to find an appropriate theme/ css file to inject
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+        }
+
+        if (appSettings.Theme == "Light")
+        {
+            Gtk.CssProvider css_provider = new Gtk.CssProvider();
+            css_provider.LoadFromPath("insertcssfilepathhere");                                  //need to find an appropriate theme/ css file to inject
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+        }
+
+
+
         appSettings.Write();
         Destroy();
     }
@@ -182,9 +199,9 @@ public class SettingsDialog : Gtk.Dialog
         {
             appSettings.Theme = null;
         }
-        else
+        if (themeComboBox.ActiveText == "Dark")
         {
-            appSettings.Theme = themeComboBox.ActiveText;
+            appSettings.Theme = "Dark";
         }
     }
 }
