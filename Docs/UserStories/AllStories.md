@@ -1,7 +1,5 @@
 Story 1:
 
-  
-
 As a Case Officer  
 
 I want to send/recive messages securely to my Source.  
@@ -78,3 +76,13 @@ As a person who has limited time,
 I want to be able to print out the ciphertext/key.
 
 To save time
+
+
+
+Story 11:
+
+As a person who has dislexia,
+
+I struggle read letters,  which makes copying letter based keys hard.
+
+Need to be

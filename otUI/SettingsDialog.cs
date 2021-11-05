@@ -2,6 +2,7 @@
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
+using System.Runtime.InteropServices;
 
 public class SettingsDialog : Gtk.Dialog
 {
@@ -39,6 +40,11 @@ public class SettingsDialog : Gtk.Dialog
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
         RNGDeviceComboBox.AppendText("test");
+
+        if(OperatingSystem.IsWindows()) 
+        {
+            RNGDeviceComboBox.Sensitive = false;
+        }
     }
 
     protected void On_Save_clicked(object sender, EventArgs e)
