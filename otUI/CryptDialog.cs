@@ -46,6 +46,10 @@ public class CryptDialog : Gtk.Dialog
         {
             ErrorDialog.ShowAlert(this, "Message contains character that is not in textCode characterset");
         }
+        catch (Exception error2) 
+        {
+            ErrorDialog.ShowAlert(this, error2.Message);
+        }
     }
 
     protected void OnDecryptClicked(object sender, EventArgs e)
