@@ -107,15 +107,15 @@ public class SettingsDialog : Gtk.Dialog
         if (appSettings.Theme == "Dark")
         {
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            css_provider.LoadFromPath("insertcssfilepathhere");                                  //need to find an appropriate theme/ css file to inject
+            css_provider.LoadFromPath("K:\\UNI\\Software Engineering\\onetimepadgtk\\otUI\\themes\\dark.css");                                  //need to find an appropriate theme/ css file to inject
             Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
         }
 
         if (appSettings.Theme == "Light")
         {
-            Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            css_provider.LoadFromPath("insertcssfilepathhere");                                  //need to find an appropriate theme/ css file to inject
-            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+           // Gtk.CssProvider css_provider = new Gtk.CssProvider();
+          //  css_provider.LoadFromPath("insertcssfilepathhere");                                  
+         //   Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
         }
 
 
