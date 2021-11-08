@@ -41,7 +41,15 @@ public class CryptDialog : Gtk.Dialog
             string msg = msgCipherInput.Buffer.Text;
 
             byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
-            output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, appSettings.CodeCharSetString));
+
+            if (appSettings.hasPadding)
+            {
+                output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, appSettings.CodeCharSetString));
+            }
+            else 
+            {
+                output.Buffer.Text = otp.ToString(ciphertext, appSettings.CodeCharSetString);
+            }
         }
         catch (System.Collections.Generic.KeyNotFoundException error)
         {

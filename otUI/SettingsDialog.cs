@@ -161,7 +161,8 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_codeEmoji_clicked(object sender, EventArgs e)
     {
-        appSettings.TextCharSet = CharSetTypes.EMOJI;
+        appSettings.CodeCharSet = CharSetTypes.EMOJI;
+        appSettings.hasPadding = false;
         textCustom.IsEditable = false;
     }
 
@@ -230,6 +231,10 @@ public class SettingsDialog : Gtk.Dialog
         {
             appSettings.Theme = "Dark";
         }
+    }
+    protected void On_hasPadding_clicked(object sender, EventArgs e)
+    {
+        appSettings.hasPadding = !appSettings.hasPadding;
     }
 
 

@@ -395,12 +395,6 @@
                           <item translatable="yes">Default</item>
                         </items>
                         <signal name="changed" handler="On_RNGDeviceComboBox_changed" swapped="no"/>
-                        <child internal-child="entry">
-                          <object class="GtkEntry">
-                            <property name="can-focus">False</property>
-                            <property name="editable">False</property>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -418,7 +412,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -433,39 +427,91 @@
                     <property name="can-focus">False</property>
                     <property name="left-padding">12</property>
                     <child>
-                      <object class="GtkFrame">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label-xalign">0</property>
-                        <property name="shadow-type">none</property>
+                        <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkAlignment">
+                          <object class="GtkFrame">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="left-padding">12</property>
+                            <property name="label-xalign">0</property>
+                            <property name="shadow-type">none</property>
                             <child>
-                              <object class="GtkComboBoxText" id="themeComboBox">
+                              <object class="GtkAlignment">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="active">0</property>
-                                <items>
-                                  <item id="0" translatable="yes">Default</item>
-                                  <item id="1" translatable="yes">Light</item>
-                                  <item id="2" translatable="yes">Dark</item>
-                                </items>
-                                <signal name="changed" handler="On_themeComboBox_changed" swapped="no"/>
+                                <property name="left-padding">12</property>
+                                <child>
+                                  <object class="GtkComboBoxText" id="themeComboBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="active">0</property>
+                                    <items>
+                                      <item id="0" translatable="yes">Default</item>
+                                      <item id="1" translatable="yes">Light</item>
+                                      <item id="2" translatable="yes">Dark</item>
+                                    </items>
+                                    <signal name="changed" handler="On_themeComboBox_changed" swapped="no"/>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label">
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="xpad">5</property>
+                                <property name="ypad">5</property>
+                                <property name="label" translatable="yes">Change Theme</property>
                               </object>
                             </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
-                        <child type="label">
-                          <object class="GtkLabel">
+                        <child>
+                          <object class="GtkFrame">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="xpad">5</property>
-                            <property name="ypad">5</property>
-                            <property name="label" translatable="yes">Change Theme</property>
+                            <property name="label-xalign">0</property>
+                            <property name="shadow-type">none</property>
+                            <child>
+                              <object class="GtkAlignment">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="left-padding">12</property>
+                                <child>
+                                  <object class="GtkToggleButton" id="hasPadding">
+                                    <property name="label" translatable="yes">Has Padding</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
+                                    <property name="halign">start</property>
+                                    <property name="valign">start</property>
+                                    <property name="active">True</property>
+                                    <signal name="clicked" handler="On_hasPadding_clicked" swapped="no"/>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label">
+                              <object class="GtkLabel">
+                                <property name="name">hasPadding</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Has Padding</property>
+                              </object>
+                            </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -484,7 +530,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
