@@ -14,6 +14,7 @@ public class SettingsDialog : Gtk.Dialog
     [UI] Gtk.RadioButton codeNumerical;
     [UI] Gtk.RadioButton codeCustomBtn;
     [UI] Gtk.RadioButton codeEmoji;
+
     [UI] Gtk.Entry codeCustom = new Gtk.Entry();
 
     [UI] Gtk.RadioButton textUpperLowerNum;
@@ -158,11 +159,9 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_codeEmoji_clicked(object sender, EventArgs e)
     {
-        appSettings.CodeCharSet = CharSetTypes.EMOJI;
-        codeCustom.IsEditable = false;
+        appSettings.TextCharSet = CharSetTypes.EMOJI;
+        textCustom.IsEditable = false;
     }
-
-
 
     // Text charset events
 
@@ -195,6 +194,9 @@ public class SettingsDialog : Gtk.Dialog
         appSettings.TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC;
         textCustom.IsEditable = false;
     }
+
+   
+
 
 
 

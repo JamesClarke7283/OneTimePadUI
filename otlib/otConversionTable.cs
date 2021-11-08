@@ -6,9 +6,9 @@ namespace otlib
 {
     public class otConversionTable
     {
-        public static Dictionary<string, char> GenerateConversionTable(string chr1, string chr2)
+        public static Dictionary<string, string> GenerateConversionTable(string[] chr1, string[] chr2)
         {
-            Dictionary<string, char> dict = new Dictionary<string, char>();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
 
             int maxencodelen = (int)Math.Ceiling(chr2.Length / (decimal)chr1.Length);
             int spaceReserved = chr1.Length * maxencodelen;
@@ -52,18 +52,18 @@ namespace otlib
             return dict;
         }
 
-        public static string Encode(Dictionary<string, char> d, string msg)
+        public static string Encode(Dictionary<string, string> d, string msg)
         {
             string trans = "";
-            Dictionary<char, string> dict2 = d.ToDictionary(x => x.Value, x => x.Key);
+            Dictionary<string, string> dict2 = d.ToDictionary(x => x.Value, x => x.Key);
             foreach (char i in msg)
             {
-                trans += dict2[i];
+                trans += dict2[i.ToString()];
             }
             return trans;
         }
 
-        public static string Decode(Dictionary<string, char> d, string code)
+        public static string Decode(Dictionary<string, string> d, string code)
         {
 
             string trans = "";

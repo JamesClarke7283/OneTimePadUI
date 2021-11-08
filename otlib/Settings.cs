@@ -26,7 +26,7 @@ namespace otlib
         [XmlElement(IsNullable = true)]
         public string Theme = null;
         [XmlIgnore]
-        public string CodeCharSetString
+        public string[] CodeCharSetString
         {
             get
             {
@@ -41,12 +41,12 @@ namespace otlib
                     case CharSetTypes.NUMERIC:
                         return Constants.NUMERIC;
                     default:
-                        return CodeCharSetCustom;
+                        return CodeCharSetCustom.Split(",");
                 }
             }
         }
         [XmlIgnore]
-        public string TextCharSetString
+        public string[] TextCharSetString
         {
             get
             {
@@ -61,7 +61,7 @@ namespace otlib
                     case CharSetTypes.NUMERIC:
                         return Constants.NUMERIC;
                     default:
-                        return TextCharSetCustom;
+                        return TextCharSetCustom.Split(",");
                 }
             }
         }

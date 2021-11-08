@@ -28,24 +28,24 @@ namespace otlib
         }
 
 
-        public static byte[] ToBytes(string txt, string charset) 
+        public static byte[] ToBytes(string txt, string[] charset) 
         {
             List<byte> byteArr = new List<byte> {};
             foreach(char c in txt) 
             {
-                int index = Array.IndexOf(charset.ToCharArray(), c);
+                int index = Array.IndexOf(charset, c.ToString());
                 byteArr.Add((byte)index);
             }
             return byteArr.ToArray();
         }
 
-        public static string ToString(byte[] byteArr, string charset) 
+        public static string ToString(byte[] byteArr, string[] charset) 
         {
             string cipherString = "";
             foreach (byte cipherByte in byteArr) 
             {
                 int charInt = ((int)cipherByte);
-                cipherString += charset.ToCharArray()[nfmod(charInt, charset.Length)];
+                cipherString += charset[nfmod(charInt, charset.Length)];
             }
             return cipherString;
         }
@@ -55,7 +55,7 @@ namespace otlib
             return (int)(a - b * Math.Floor(a / b));
         }
 
-        private static byte[] OTP(byte[] msg, byte[] key, bool dir , string charset)
+        private static byte[] OTP(byte[] msg, byte[] key, bool dir , string[] charset)
         {
             if (msg.Length == key.Length)
             {
@@ -87,16 +87,16 @@ namespace otlib
             return new byte[] { };
         }
 
-        public static byte[] Encrypt(string msg, byte[] keystream, string codeCharset, string textCharset) 
+        public static byte[] Encrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset) 
         {
-            Dictionary<string, char> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
+            Dictionary<string, string> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
             msg = otConversionTable.Encode(dict, msg); 
             return OTP(ToBytes(msg, codeCharset), keystream, true, codeCharset);
         }
 
-        public static byte[] Decrypt(string msg, byte[] keystream, string codeCharset, string textCharset)
+        public static byte[] Decrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset)
         {
-            Dictionary<string, char> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
+            Dictionary<string, string> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
             string plainCode = ToString(OTP(ToBytes(msg, codeCharset), keystream, false, codeCharset),codeCharset);
             string plainText = otConversionTable.Decode(dict, plainCode);
             return ToBytes(plainText,textCharset);
