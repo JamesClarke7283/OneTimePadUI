@@ -12,22 +12,34 @@ namespace otlib
 
             int maxencodelen = (int)Math.Ceiling(chr2.Length / (decimal)chr1.Length);
             int spaceReserved = chr1.Length * maxencodelen;
-            int spaceLeft = chr1.Length * chr2.Length;
+            int spaceLeft = chr1.Length * chr1.Length;
 
-            for (int i = 0, j = 0, k = 0; i < chr2.Length; i++)
+            if (spaceReserved > spaceLeft)
             {
-                if (spaceLeft > spaceReserved)
+                throw new ArgumentOutOfRangeException($"You reserved {spaceReserved} space, maximum of {spaceLeft} is allowed\nTry increasing the amount of characters in the codeCharset");
+            }
+
+            bool hasInitilised = false;
+
+            for (int chr2Index = 0, j = 0, k = 0; chr2Index < chr2.Length; chr2Index++)
+            {
+                if ((spaceLeft - chr1.Length) > spaceReserved)
                 {
-                    dict.Add(chr1[i].ToString(), chr2[i]);
-                    spaceLeft = (chr1.Length - i) * chr1.Length;
+                    dict.Add(chr1[chr2Index].ToString(), chr2[chr2Index]);
+                    spaceLeft = (chr1.Length - chr2Index) * chr1.Length;
                 }
                 else
                 {
-                    if (k == 0)
+                    // decides whether to move to the next diget space, from 09 to 10 for example
+
+                    if (hasInitilised == false)
                     {
-                        k = i;
+                        k = chr2Index;
+                        hasInitilised = true;
                     }
-                    dict.Add(string.Concat(chr1[k].ToString(), chr1[j].ToString()), chr2[i]);
+
+                    dict.Add(string.Concat(chr1[k].ToString(), chr1[j].ToString()), chr2[chr2Index]);
+                    spaceLeft--;
                     j++;
 
                     if (j >= chr1.Length)
