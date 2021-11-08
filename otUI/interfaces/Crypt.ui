@@ -103,6 +103,7 @@
                     <property name="can-focus">True</property>
                     <property name="resize-mode">immediate</property>
                     <property name="wrap-mode">char</property>
+                    <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
                   </object>
                 </child>
               </object>
@@ -140,7 +141,7 @@
                     <property name="resize-mode">immediate</property>
                     <property name="wrap-mode">char</property>
                     <property name="buffer">textbuffer1</property>
-                    <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
+                    <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
                   </object>
                 </child>
               </object>
