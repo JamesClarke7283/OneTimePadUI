@@ -5,9 +5,11 @@ namespace otlib
 {
     public enum CharSetTypes
     {
+        UPPER_LOWER_NUMERIC_PUNC_SPC,
         UPPER_LOWER_NUMERIC,
         UPPER_NUMERIC,
         NUMERIC,
+        EMOJI,
         CUSTOM
     }
     [XmlRoot("Settings", IsNullable = true)]
@@ -30,6 +32,8 @@ namespace otlib
             {
                 switch (CodeCharSet)
                 {
+                    case CharSetTypes.EMOJI:
+                        return Constants.EMOJI;
                     case CharSetTypes.UPPER_LOWER_NUMERIC:
                         return Constants.UPPER_LOWER_NUMERIC;
                     case CharSetTypes.UPPER_NUMERIC:
@@ -48,6 +52,8 @@ namespace otlib
             {
                 switch (TextCharSet)
                 {
+                    case CharSetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC:
+                        return Constants.UPPER_LOWER_NUMERIC_PUNC_SPC;
                     case CharSetTypes.UPPER_LOWER_NUMERIC:
                         return Constants.UPPER_LOWER_NUMERIC;
                     case CharSetTypes.UPPER_NUMERIC:

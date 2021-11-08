@@ -13,12 +13,16 @@ public class SettingsDialog : Gtk.Dialog
     [UI] Gtk.RadioButton codeUpperNum;
     [UI] Gtk.RadioButton codeNumerical;
     [UI] Gtk.RadioButton codeCustomBtn;
+    [UI] Gtk.RadioButton codeEmoji;
     [UI] Gtk.Entry codeCustom = new Gtk.Entry();
 
     [UI] Gtk.RadioButton textUpperLowerNum;
     [UI] Gtk.RadioButton textUpperNum;
     [UI] Gtk.RadioButton textNumerical;
+    [UI] Gtk.RadioButton textUpperLowerNumSPCPunc;
+
     [UI] Gtk.RadioButton textCustomBtn;
+
     [UI] Gtk.Entry textCustom = new Gtk.Entry();
 
     [UI] Gtk.ComboBoxText RNGDeviceComboBox = new Gtk.ComboBoxText();
@@ -61,6 +65,9 @@ public class SettingsDialog : Gtk.Dialog
     {
         switch (appSettings.CodeCharSet)
         {
+            case CharSetTypes.EMOJI:
+                codeEmoji.Click();
+                break;
             case CharSetTypes.UPPER_LOWER_NUMERIC:
                 codeUpperLowerNum.Click();
                 break;
@@ -76,6 +83,9 @@ public class SettingsDialog : Gtk.Dialog
         }
         switch (appSettings.TextCharSet)
         {
+            case CharSetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC:
+                textUpperLowerNumSPCPunc.Click();
+                break;
             case CharSetTypes.UPPER_LOWER_NUMERIC:
                 textUpperLowerNum.Click();
                 break;
@@ -146,6 +156,14 @@ public class SettingsDialog : Gtk.Dialog
         codeCustom.IsEditable = false;
     }
 
+    protected void On_codeEmoji_clicked(object sender, EventArgs e)
+    {
+        appSettings.CodeCharSet = CharSetTypes.EMOJI;
+        codeCustom.IsEditable = false;
+    }
+
+
+
     // Text charset events
 
     protected void On_textCustomBtn_clicked(object sender, EventArgs e)
@@ -171,6 +189,14 @@ public class SettingsDialog : Gtk.Dialog
         appSettings.TextCharSet = CharSetTypes.NUMERIC;
         textCustom.IsEditable = false;
     }
+
+    protected void On_textUpperLowerNumSPCPunc_clicked(object sender, EventArgs e)
+    {
+        appSettings.TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC;
+        textCustom.IsEditable = false;
+    }
+
+
 
     protected void On_RNGDeviceComboBox_changed(object sender, EventArgs e)
     {
@@ -201,4 +227,6 @@ public class SettingsDialog : Gtk.Dialog
             appSettings.Theme = "Dark";
         }
     }
+
+
 }
