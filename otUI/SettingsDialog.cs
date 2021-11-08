@@ -119,13 +119,15 @@ public class SettingsDialog : Gtk.Dialog
         {
             CssProviderPatched css_provider = new();
             css_provider.LoadFromResource("otUI.themes.dark.css");
-            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800); 
         }
         else if (appSettings.Theme == "Light")
         {
-            CssProviderPatched css_provider = new();
-            css_provider.LoadFromResource("otUI.themes.light.css");
-            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+            //THIS HAS BEEN USING dark.css
+
+            //CssProviderPatched css_provider = new();
+            //css_provider.LoadFromResource("otUI.themes.light.css");
+            //Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
         }
 
         appSettings.Write();
