@@ -15,8 +15,10 @@
     <EmbeddedResource Include="interfaces\Crypt.ui" />
     <EmbeddedResource Include="interfaces\HelpDialog.glade" />
     <EmbeddedResource Include="interfaces\SettingsDialog.glade" />
+    <EmbeddedResource Include="themes\dark.css" />
+    <EmbeddedResource Include="themes\light.css" />
   </ItemGroup>
-	
+
   <ItemGroup>
     <None Remove="interfaces\Crypt.ui" />
     <None Remove="interfaces\CharSet.glade" />
