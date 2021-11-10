@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Globalization;
+using System.Text;
+
 namespace otlib
 {
     public class PrettyPrint
@@ -9,15 +12,23 @@ namespace otlib
         {
             this.separator = Separator;
         }
-        public string Prettify(string key)
+        public string Prettify(string input)
         {
+            StringBuilder builder = new StringBuilder();
 
-            for (int i = 4; i <= key.Length; i += 4)
+            TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(input);
+
+            int textElementCount = 1;
+            while (enumerator.MoveNext())
             {
-                key = key.Insert(i, separator.ToString());
-                i++;
+                builder.Append(enumerator.Current);
+                if (textElementCount % 4 == 0 && textElementCount > 0)
+                {
+                    builder.Append(separator);
+                }
+                textElementCount++;
             }
-            return key;
+            return builder.ToString();
         }
 
         public string UnPrettify(string key)
