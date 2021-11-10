@@ -1,22 +1,16 @@
-﻿using otlib;
-using System.Drawing;
-using System.Data;
-using System.Text;
+﻿using System.Drawing;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
-using otUI;
 
 namespace otUI
 {
-   
+
     public class PrintPreview: Gtk.Dialog
     {
         Builder builder;
 
-        [UI] Gtk.Image KeyImage;
+        [UI] Gtk.Image KeyImage= new Gtk.Image();
 
         public static PrintPreview Create()
         {
@@ -53,12 +47,15 @@ namespace otUI
             return bmp;
 
         }
+
+
         //protected void OnPrintClicked(object sender, EventArgs e)
         //{
-        //    KeyImage = this.ConvertTextToImage(x.Text, "Bookman Old Style", 10, Color.Yellow, Color.Red, txt.Width, txt.Height);
+        //    KeyImage = this.ConvertTextToImage(x.Text, "Bookman Old Style", 10, Color.Yellow, Color.Red, x.Width, x.Height);
 
         //}
 
+        
 
 
 
