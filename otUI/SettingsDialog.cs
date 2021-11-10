@@ -32,6 +32,7 @@ public class SettingsDialog : Gtk.Dialog
 
 
     [UI] Gtk.Button btn_help = new Gtk.Button();
+    [UI] Gtk.Switch hasPrettyPrint;
 
     public static SettingsDialog Create(AppSettings appSettings)
     {
@@ -64,6 +65,9 @@ public class SettingsDialog : Gtk.Dialog
     }
     private void LoadConfig()
     {
+
+       hasPrettyPrint.Active = appSettings.hasPrettyPrint; 
+        
         switch (appSettings.CodeCharSet)
         {
             case CharSetTypes.EMOJI:
@@ -170,7 +174,6 @@ public class SettingsDialog : Gtk.Dialog
     protected void On_codeEmoji_clicked(object sender, EventArgs e)
     {
         appSettings.CodeCharSet = CharSetTypes.EMOJI;
-        appSettings.hasPadding = false;
         textCustom.IsEditable = false;
     }
 
@@ -229,9 +232,9 @@ public class SettingsDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
-    protected void On_hasPadding_clicked(object sender, EventArgs e)
+    protected void On_hasPrettyPrint_state_set(object sender, Gtk.StateSetArgs e)
     {
-        appSettings.hasPadding = !appSettings.hasPadding;
+        appSettings.hasPrettyPrint = hasPrettyPrint.Active;
     }
 
 

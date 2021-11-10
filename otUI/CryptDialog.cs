@@ -42,7 +42,7 @@ public class CryptDialog : Gtk.Dialog
 
             byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
 
-            if (appSettings.hasPadding)
+            if (appSettings.hasPrettyPrint)
             {
                 output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, appSettings.CodeCharSetString));
             }

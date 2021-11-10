@@ -19,7 +19,7 @@ namespace otlib
         public string Filename;
         [XmlElement(IsNullable = true)]
         public string RngDevicePath = null;
-        public bool hasPadding = true;
+        public bool hasPrettyPrint = true;
         public CharSetTypes CodeCharSet = CharSetTypes.NUMERIC;
         public CharSetTypes TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC;
         public string CodeCharSetCustom = "";

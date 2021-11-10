@@ -489,15 +489,12 @@
                                 <property name="can-focus">False</property>
                                 <property name="left-padding">12</property>
                                 <child>
-                                  <object class="GtkToggleButton" id="hasPadding">
-                                    <property name="label" translatable="yes">Has Padding</property>
+                                  <object class="GtkSwitch" id="hasPrettyPrint">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
                                     <property name="halign">start</property>
                                     <property name="valign">start</property>
-                                    <property name="active">True</property>
-                                    <signal name="clicked" handler="On_hasPadding_clicked" swapped="no"/>
+                                    <signal name="state-set" handler="On_hasPrettyPrint_state_set" swapped="no"/>
                                   </object>
                                 </child>
                               </object>
@@ -507,7 +504,7 @@
                                 <property name="name">hasPadding</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Has Padding</property>
+                                <property name="label" translatable="yes">Has Pretty Print</property>
                               </object>
                             </child>
                           </object>
