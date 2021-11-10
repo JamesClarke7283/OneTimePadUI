@@ -1,9 +1,9 @@
 ﻿using System;
-using Gtk;
-using UI = Gtk.Builder.ObjectAttribute;
-using otlib;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using Gtk;
+using otlib;
+using UI = Gtk.Builder.ObjectAttribute;
 
 public class SettingsDialog : Gtk.Dialog
 {
@@ -100,6 +100,16 @@ public class SettingsDialog : Gtk.Dialog
                 textCustomBtn.Click();
                 break;
         }
+
+        if (appSettings.Theme == "Dark")
+        {
+            themeComboBox.ActiveId = "2";
+        }
+        else if (appSettings.Theme == "Light")
+        {
+            themeComboBox.ActiveId = "1";
+        }
+
         codeCustom.Text = appSettings.CodeCharSetCustom;
         textCustom.Text = appSettings.TextCharSetCustom;
     }
@@ -115,19 +125,17 @@ public class SettingsDialog : Gtk.Dialog
             appSettings.TextCharSetCustom = textCustom.Text;
         }
 
-        if (appSettings.Theme == "Dark")
+        if (themeComboBox.ActiveText == "Default")
         {
-            CssProviderPatched css_provider = new();
-            css_provider.LoadFromResource("otUI.themes.dark.css");
-            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800); 
+            appSettings.Theme = null;
         }
-        else if (appSettings.Theme == "Light")
+        else if (themeComboBox.ActiveText == "Dark")
         {
-            //THIS HAS BEEN USING dark.css
-
-            //CssProviderPatched css_provider = new();
-            //css_provider.LoadFromResource("otUI.themes.light.css");
-            //Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+            appSettings.Theme = "Dark";
+        }
+        else if (themeComboBox.ActiveText == "Light")
+        {
+            appSettings.Theme = "Light";
         }
 
         appSettings.Write();
@@ -198,7 +206,7 @@ public class SettingsDialog : Gtk.Dialog
         textCustom.IsEditable = false;
     }
 
-   
+
 
 
 
@@ -220,17 +228,6 @@ public class SettingsDialog : Gtk.Dialog
         HelpDialog hd = HelpDialog.Create(otUI.HelpConst.SettingsHelp);
         hd.Run();
         hd.Destroy();
-    }
-    protected void On_themeComboBox_changed(object sender, EventArgs e)
-    {
-        if (themeComboBox.ActiveText == "Default")
-        {
-            appSettings.Theme = null;
-        }
-        if (themeComboBox.ActiveText == "Dark")
-        {
-            appSettings.Theme = "Dark";
-        }
     }
     protected void On_hasPadding_clicked(object sender, EventArgs e)
     {

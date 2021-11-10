@@ -21,8 +21,23 @@ public partial class MainMenu : Gtk.Window
 
         builder.Autoconnect(this);
         DeleteEvent += OnDeleteEvent;
+        LoadTheme();
     }
-
+    public void LoadTheme()
+    {
+        if (appSettings.Theme == "Dark")
+        {
+            CssProviderPatched css_provider = new();
+            css_provider.LoadFromResource("otUI.themes.dark.css");
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+        }
+        else if (appSettings.Theme == "Light")
+        {
+            CssProviderPatched css_provider = new();
+            css_provider.LoadFromResource("otUI.themes.light.css");
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
+        }
+    }
     protected void OnKeygenClicked(object sender, EventArgs e)
     {
         GenerateKeys gk = GenerateKeys.Create(appSettings);

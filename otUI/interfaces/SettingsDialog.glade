@@ -395,6 +395,11 @@
                           <item translatable="yes">Default</item>
                         </items>
                         <signal name="changed" handler="On_RNGDeviceComboBox_changed" swapped="no"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -452,7 +457,6 @@
                                       <item id="1" translatable="yes">Light</item>
                                       <item id="2" translatable="yes">Dark</item>
                                     </items>
-                                    <signal name="changed" handler="On_themeComboBox_changed" swapped="no"/>
                                   </object>
                                 </child>
                               </object>
