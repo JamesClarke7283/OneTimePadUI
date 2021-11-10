@@ -1,0 +1,12 @@
+* {
+    background-color: #D3D3D3;
+    color: #000000;
+}
+
+button,
+label,
+entry {
+    border: none;
+    background-color: #a9a9a9;
+}
+
