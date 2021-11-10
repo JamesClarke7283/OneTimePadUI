@@ -43,13 +43,13 @@ public class GenerateKeys : Gtk.Dialog
             {
                 keystream = otp.GenerateKeystreamRNGDevice(appSettings.RngDevicePath, (int)keyLength.Value);
             }
-         
+
             if (appSettings.hasPadding)
             {
                 PrettyPrint pp = new PrettyPrint();
                 KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, appSettings.CodeCharSetString));
             }
-            else 
+            else
             {
                 KeyOutputView.Buffer.Text = otp.ToString(keystream, appSettings.CodeCharSetString);
             }
@@ -80,9 +80,8 @@ public class GenerateKeys : Gtk.Dialog
     protected void OnPrintClicked(object sender, EventArgs e)
     {
 
+        PrintPreview pp = PrintPreview.Create();
+        pp.Run();
+        pp.Destroy();
     }
-
-   
-
-
 }
