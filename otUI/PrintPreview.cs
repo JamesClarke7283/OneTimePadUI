@@ -39,9 +39,7 @@ namespace otUI
         public Bitmap CreateBitmapImage(string keyText)
             
         {
-            keyText= KeyOutputView.Buffer.Text;
-            
-
+                  
             Bitmap bmp = new Bitmap(1, 1);
 
             int intWidth = 0;
@@ -66,14 +64,15 @@ namespace otUI
 
 
             
-            bmp.Save(@"C:\\image1.png", ImageFormat.Png);
+            bmp.Save(@"image1.png", ImageFormat.Png);
 
-
-            //KeyImage= System.Drawing.Image.FromFile("C:\\image1.jpg");
+                        
             return (bmp);
         }
-       
+
         
+
+
 
         //public static void PrintOperation()
         //{
