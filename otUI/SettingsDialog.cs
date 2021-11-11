@@ -154,6 +154,7 @@ public class SettingsDialog : Gtk.Dialog
         appSettings.HasPadding = hasPadding.Active;
 
         appSettings.Write();
+        ThemeLoader.LoadTheme(appSettings);
         Destroy();
     }
 
