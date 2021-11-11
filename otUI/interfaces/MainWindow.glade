@@ -12,6 +12,11 @@
     <property name="can-focus">False</property>
     <property name="pixbuf">assets/key.ico</property>
   </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/settings.ico</property>
+  </object>
   <object class="GtkWindow" id="mainmenu">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">OTP GTK</property>
@@ -57,11 +62,11 @@
         </child>
         <child>
           <object class="GtkButton" id="SettingsButton">
-            <property name="label">gtk-preferences</property>
+            <property name="label">Settings</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="use-stock">True</property>
+            <property name="image">image3</property>
             <signal name="clicked" handler="On_SettingsButton_clicked" swapped="no"/>
           </object>
           <packing>
