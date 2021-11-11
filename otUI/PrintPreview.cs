@@ -17,7 +17,7 @@ namespace otUI
 
         [UI] Gtk.Image KeyImage= new Gtk.Image();
 
-        public static PrintPreview Create()
+        public static PrintPreview Create(object createBitmapImage)
         {
             Builder builder = new Builder(null, "otUI.interfaces.PrintPreview.glade",null);
             return new PrintPreview(builder, builder.GetObject("printdialog").Handle);
@@ -33,7 +33,7 @@ namespace otUI
 
         }
 
-        private Bitmap CreateBitmapImage(string exampleText)
+        public Bitmap CreateBitmapImage(string exampleText)
         {
             exampleText = "Example Text.";
 
@@ -60,36 +60,37 @@ namespace otUI
             objGraphics.Flush();
 
 
-            //Response.ContentType = "image/jpeg";
-
-            //objGraphics.Save(Response.OutputStream, ImageFormat.Jpeg);
-                        
-            //objGraphics.Load();
+            
+            bmp.Save(@"C:\image1.png", ImageFormat.Png);
+            
+            //KeyImage.Load();
 
             return (bmp);
         }
+       
         
-        //public PrintOperationAction()
-        //{
-        //    PrintOperation print = new PrintOperation();
-        //    print.BeginPrint += (obj, args) => { print.NPages = 1; };
-        //    print.DrawPage += (obj, args) =>
-        //    {
-        //        PrintContext context = args.Context;
-        //        Cairo.Context cr = context.CairoContext;
 
-        //        var imageSurface = new Cairo.ImageSurface(bmp.FileName);
+        public static void PrintOperation()
+        {
+            PrintOperation print = new PrintOperation();
+            print.BeginPrint += (obj, args) => { print.NPages = 1; };
+            print.DrawPage += (obj, args) =>
+            {
+                PrintContext context = args.Context;
+                Cairo.Context cr = context.CairoContext;
 
-        //        int w = imageSurface.Width;
-        //        int h = imageSurface.Height;
-        //        cr.Scale(256.0 / w, 256.0 / h);
-        //        cr.SetSourceSurface(imageSurface, 0, 0);
-        //        cr.Paint();
-        //    };
-        //    print.EndPrint += (obj, args) => { };
-        //    print.Run(PrintOperationAction.Print, null);
-        //}
-        
+                var imageSurface = new Cairo.ImageSurface("C:\\image1.png");
+
+                int w = imageSurface.Width;
+                int h = imageSurface.Height;
+                cr.Scale(256.0 / w, 256.0 / h);
+                cr.SetSourceSurface(imageSurface, 0, 0);
+                cr.Paint();
+            };
+            print.EndPrint += (obj, args) => { };
+            print.Run(PrintOperationAction.Print, null);
+        }
+
 
 
 
