@@ -77,12 +77,44 @@ I want to be able to print out the ciphertext/key.
 
 To save time
 
-
-
 Story 11:
 
 As a person who has dislexia,
 
 I struggle read letters,  which makes copying letter based keys hard.
 
-Need to be
+Need to be able to change the codeCharset to emoji or numerical values.
+
+Story 12:
+
+As someone who is busy,
+
+I need to be able to copy the keys quickly,
+
+Therefor i need a copy button on the GenerateKeys and Crypt output.
+
+
+
+Story 13:
+
+As someone who prefers consise text,
+
+I want the ability to disable padding on the messages so the message ciphertext contains less text.
+
+
+
+Story 14:
+
+As someone who wants simplicity in key material,
+
+I want to be able to input the key as numeric and write regular text.
+
+Therefore i need seperate charsets for key and cipher, and message.
+
+
+
+Story 15:
+
+As a domestic user who likes pretty icons,
+
+I want an application icon for this app.
