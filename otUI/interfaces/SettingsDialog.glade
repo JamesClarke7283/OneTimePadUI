@@ -273,7 +273,6 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
-                                <property name="xalign">0</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">codeNumerical</property>
                                 <signal name="clicked" handler="On_codeEmoji_clicked" swapped="no"/>
