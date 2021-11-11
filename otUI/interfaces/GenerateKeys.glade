@@ -15,7 +15,6 @@
     <property name="page-increment">10</property>
   </object>
   <object class="GtkEntryCompletion" id="entrycompletion1"/>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkDialog" id="generatekeysdialog">
     <property name="name">Generate Keys</property>
     <property name="can-focus">False</property>
@@ -179,26 +178,17 @@
             <property name="vscrollbar-policy">always</property>
             <property name="shadow-type">in</property>
             <child>
-              <object class="GtkViewport">
-                <property name="width-request">250</property>
-                <property name="height-request">250</property>
+              <object class="GtkTextView" id="KeyOutputView">
+                <property name="width-request">200</property>
+                <property name="height-request">200</property>
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkTextView" id="KeyOutputView">
-                    <property name="width-request">200</property>
-                    <property name="height-request">200</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="margin-top">10</property>
-                    <property name="margin-bottom">10</property>
-                    <property name="resize-mode">immediate</property>
-                    <property name="vadjustment">adjustment1</property>
-                    <property name="wrap-mode">word-char</property>
-                    <property name="buffer">textbuffer1</property>
-                    <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
-                  </object>
-                </child>
+                <property name="can-focus">True</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="vadjustment">adjustment1</property>
+                <property name="wrap-mode">word-char</property>
+                <property name="buffer">textbuffer1</property>
+                <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
               </object>
             </child>
           </object>
@@ -211,5 +201,6 @@
       </object>
     </child>
   </object>
+  <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkTextBuffer" id="textbuffer2"/>
 </interface>
