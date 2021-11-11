@@ -66,8 +66,8 @@ public class SettingsDialog : Gtk.Dialog
     private void LoadConfig()
     {
 
-       hasPrettyPrint.Active = appSettings.hasPrettyPrint; 
-        
+       hasPrettyPrint.Active = appSettings.hasPrettyPrint;
+
         switch (appSettings.CodeCharSet)
         {
             case CharSetTypes.EMOJI:
@@ -143,6 +143,9 @@ public class SettingsDialog : Gtk.Dialog
         }
 
         appSettings.Write();
+
+        ThemeLoader.LoadTheme(appSettings);
+
         Destroy();
     }
 
