@@ -81,7 +81,7 @@ public class GenerateKeys : Gtk.Dialog
     {
                 
         PrintPreview pp = PrintPreview.Create();
-        pp.CreateBitmapImage(KeyOutputView.Buffer.Text);
+        //pp.CreateBitmapImage(KeyOutputView.Buffer.Text);
         pp.Run();
         pp.Destroy();
               
