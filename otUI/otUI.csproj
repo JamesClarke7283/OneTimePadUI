@@ -20,6 +20,7 @@
     <EmbeddedResource Include="assets\icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="interfaces\AboutDialog.glade" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <None Remove="interfaces\GenHelp.glade" />
     <None Remove="interfaces\SettingsDialog.glade" />
     <None Remove="assets\lock.ico" />
+    <None Remove="interfaces\AboutDialog.glade" />
   </ItemGroup>
 
 <ItemGroup>

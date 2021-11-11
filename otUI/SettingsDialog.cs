@@ -60,23 +60,19 @@ public class SettingsDialog : Gtk.Dialog
         {
             IEnumerable<string> l = Directory.EnumerateFiles("/dev", "*", SearchOption.AllDirectories);
 
-            try
+            foreach (string item in l)
             {
-                foreach (string item in l)
-                {
-                    RNGDeviceComboBox.AppendText(item);
-                }
+                RNGDeviceComboBox.AppendText(item);
             }
-            catch (UnauthorizedAccessException) { }
         }
         LoadConfig();
     }
     private void LoadConfig()
     {
 
-        hasPrettyPrint.Active = appSettings.HasPrettyPrint;
-        hasPadding.Active = appSettings.HasPadding;
-
+       hasPrettyPrint.Active = appSettings.HasPrettyPrint;
+       hasPadding.Active = appSettings.HasPadding;
+        
         switch (appSettings.CodeCharSet)
         {
             case CharSetTypes.EMOJI:
@@ -244,6 +240,17 @@ public class SettingsDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
+
+    protected void On_about_clicked(object sender, EventArgs e)
+    {
+
+        AboutDialog ad = AboutDialog.Create();
+        ad.Run();
+        ad.Destroy();
+           
+    }
+
+
 
 
 
