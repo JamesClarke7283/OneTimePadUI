@@ -376,7 +376,7 @@
                             <property name="active">0</property>
                             <property name="has-entry">True</property>
                             <items>
-                              <item translatable="yes">Default</item>
+                              <item id="0" translatable="yes">None</item>
                             </items>
                             <signal name="changed" handler="On_RNGDeviceComboBox_changed" swapped="no"/>
                             <child internal-child="entry">

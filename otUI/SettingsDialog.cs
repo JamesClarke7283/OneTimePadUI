@@ -216,7 +216,7 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_RNGDeviceComboBox_changed(object sender, EventArgs e)
     {
-        if (RNGDeviceComboBox.ActiveText == "Default")
+        if (RNGDeviceComboBox.ActiveText == "None")
         {
             appSettings.RngDevicePath = null;
         }
