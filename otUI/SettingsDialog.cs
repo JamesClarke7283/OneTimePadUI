@@ -33,6 +33,10 @@ public class SettingsDialog : Gtk.Dialog
 
     [UI] Gtk.Button btn_help = new Gtk.Button();
     [UI] Gtk.Switch hasPrettyPrint;
+    [UI] Gtk.Switch hasPadding;
+
+    public bool stateHasPrettyPrint = true;
+    public bool stateHasPadding = true;
 
     public static SettingsDialog Create(AppSettings appSettings)
     {
@@ -67,7 +71,8 @@ public class SettingsDialog : Gtk.Dialog
     {
 
        hasPrettyPrint.Active = appSettings.hasPrettyPrint;
-
+       hasPadding.Active = appSettings.hasPadding;
+        
         switch (appSettings.CodeCharSet)
         {
             case CharSetTypes.EMOJI:
@@ -142,10 +147,10 @@ public class SettingsDialog : Gtk.Dialog
             appSettings.Theme = "Light";
         }
 
+        appSettings.hasPrettyPrint = hasPrettyPrint.Active;
+        appSettings.hasPadding = hasPadding.Active;
+
         appSettings.Write();
-
-        ThemeLoader.LoadTheme(appSettings);
-
         Destroy();
     }
 
@@ -235,10 +240,7 @@ public class SettingsDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
-    protected void On_hasPrettyPrint_state_set(object sender, Gtk.StateSetArgs e)
-    {
-        appSettings.hasPrettyPrint = hasPrettyPrint.Active;
-    }
+
 
 
 }

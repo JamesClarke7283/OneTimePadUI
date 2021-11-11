@@ -40,7 +40,7 @@ public class CryptDialog : Gtk.Dialog
             byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
             string msg = msgCipherInput.Buffer.Text;
 
-            byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+            byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString, appSettings.hasPadding);
 
             if (appSettings.hasPrettyPrint)
             {
@@ -67,7 +67,7 @@ public class CryptDialog : Gtk.Dialog
         byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
         string ciphertext = pp.UnPrettify(msgCipherInput.Buffer.Text);
 
-        byte[] msg = otp.Decrypt(ciphertext, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+        byte[] msg = otp.Decrypt(ciphertext, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString, appSettings.hasPadding);
         output.Buffer.Text = otp.ToString(msg, appSettings.TextCharSetString);
     }
 

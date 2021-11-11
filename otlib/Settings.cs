@@ -20,6 +20,7 @@ namespace otlib
         [XmlElement(IsNullable = true)]
         public string RngDevicePath = null;
         public bool hasPrettyPrint = true;
+        public bool hasPadding = true;
         public CharSetTypes CodeCharSet = CharSetTypes.NUMERIC;
         public CharSetTypes TextCharSet = CharSetTypes.UPPER_LOWER_NUMERIC;
         public string CodeCharSetCustom = "";
