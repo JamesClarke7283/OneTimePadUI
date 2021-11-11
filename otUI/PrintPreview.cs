@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using Cairo;
 
 namespace otUI
 {
@@ -37,7 +38,7 @@ namespace otUI
             
         }
 
-        void OnExpose(object o, EventArgs args)
+        void OnExpose(object o, Gtk.DrawnArgs args)
         {
             //DrawingArea area = (DrawingArea)o;
             using (Cairo.Context g = Gdk.CairoHelper.Create(area.GdkWindow))
@@ -47,6 +48,8 @@ namespace otUI
                 int width, height;
                 width = Allocation.Width;
                 height = Allocation.Height;
+
+                g.Color = new Cairo.Color(250, 0, 0);
 
                 g.Translate(width / 2, height / 2);
                 g.Arc(0, 0, 120, 0, 2 * Math.PI);
