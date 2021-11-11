@@ -17,11 +17,14 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkDialog" id="cryptdialog">
     <property name="can-focus">False</property>
     <property name="is-focus">True</property>
+    <property name="title" translatable="yes">Crypt</property>
     <property name="default-width">450</property>
     <property name="default-height">400</property>
+    <property name="icon">assets/icon.ico</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -262,5 +265,4 @@
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
 </interface>

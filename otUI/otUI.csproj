@@ -17,6 +17,9 @@
     <EmbeddedResource Include="interfaces\SettingsDialog.glade" />
     <EmbeddedResource Include="themes\dark.css" />
     <EmbeddedResource Include="themes\light.css" />
+    <EmbeddedResource Include="assets\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,9 +27,15 @@
     <None Remove="interfaces\CharSet.glade" />
     <None Remove="interfaces\GenHelp.glade" />
     <None Remove="interfaces\SettingsDialog.glade" />
+    <None Remove="assets\lock.ico" />
   </ItemGroup>
 
 <ItemGroup>
 <ProjectReference Include="..\otlib\otlib.csproj" />
+</ItemGroup>
+<ItemGroup>
+  <None Update="assets\LICENCE">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
 </ItemGroup>
 </Project>
