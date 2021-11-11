@@ -167,8 +167,8 @@
         </child>
         <child>
           <object class="GtkScrolledWindow">
-            <property name="width-request">200</property>
-            <property name="height-request">200</property>
+            <property name="width-request">250</property>
+            <property name="height-request">250</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="vadjustment">adjustment1</property>
@@ -177,8 +177,8 @@
             <property name="shadow-type">in</property>
             <child>
               <object class="GtkViewport">
-                <property name="width-request">200</property>
-                <property name="height-request">200</property>
+                <property name="width-request">250</property>
+                <property name="height-request">250</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
