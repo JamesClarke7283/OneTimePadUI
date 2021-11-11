@@ -14,6 +14,8 @@ namespace otUI
                                                 "Selects the amount of characters in the produced key. Use the + and - sign to add or subtract the amount of characters, or enter manually.\n" +
                                                 "\nGenerate Button\n " +
                                                 "Generates the key and displays it in the box below.\n" +
+                                                "\nPrint\n"+
+                                                "Prints the key into a booklet that can be printed as a hardcopy.\n" +
                                                 "\nClose Button\n" +
                                                 "Closes the window back to the main menu.\n";
 
