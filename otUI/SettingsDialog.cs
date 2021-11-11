@@ -129,7 +129,7 @@ public class SettingsDialog : Gtk.Dialog
             appSettings.TextCharSetCustom = textCustom.Text;
         }
 
-        if (themeComboBox.ActiveText == "Default")
+        if (themeComboBox.ActiveText == "System")
         {
             appSettings.Theme = null;
         }
