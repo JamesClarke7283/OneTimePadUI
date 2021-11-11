@@ -39,11 +39,16 @@ namespace otUI
                                             "Input the Character Set that is going to be used in the message that needs to be encrypted or Decrypted. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
                                             "\nRNG Device\n" +
                                             "Select Random Number Device to get random key material.\n" +
+                                            "\nMessage Padding\n" +
+                                            "Message padding is where the size of the message is made to be always the same size as the key,\n " +
+                                            "random bytes get added on the end, this obscures details about the message to an adversary.\n" +
                                             "\nChange Theme\n"+
                                             "Dark Theme\n" +
                                             "Dark theme alters the UI to display mostly dark colours. This is displayed as light text on a dark background. Dark theme is used to relieve eye strain and match the current lighting conditions of the user.\n"+
                                             "\nLight Theme\n" +
-                                            "Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.\n";
+                                            "Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.\n" +
+                                            "\nPretty print\n" +
+                                            "Pretty print adds spaces between every 4 characters in the generate keys and crypt dialog.";
                                             
     }
 }
