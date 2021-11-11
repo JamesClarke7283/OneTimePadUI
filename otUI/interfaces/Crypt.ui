@@ -2,7 +2,21 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
+  <object class="GtkAdjustment" id="CiphMsgAdjustment">
+    <property name="upper">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="KeyInputAdjustment">
+    <property name="upper">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="OutputAdjustment">
+    <property name="upper">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
   <object class="GtkDialog" id="cryptdialog">
     <property name="can-focus">False</property>
     <property name="is-focus">True</property>
@@ -98,12 +112,29 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView" id="keyInput">
+                  <object class="GtkScrolledWindow">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="resize-mode">immediate</property>
-                    <property name="wrap-mode">char</property>
-                    <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                    <property name="vadjustment">KeyInputAdjustment</property>
+                    <property name="shadow-type">in</property>
+                    <child>
+                      <object class="GtkViewport">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="hscroll-policy">natural</property>
+                        <property name="vscroll-policy">natural</property>
+                        <child>
+                          <object class="GtkTextView" id="keyInput">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="resize-mode">immediate</property>
+                            <property name="vadjustment">KeyInputAdjustment</property>
+                            <property name="wrap-mode">char</property>
+                            <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -135,13 +166,28 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView" id="msgCipherInput">
+                  <object class="GtkScrolledWindow">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="resize-mode">immediate</property>
-                    <property name="wrap-mode">char</property>
-                    <property name="buffer">textbuffer1</property>
-                    <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                    <property name="vadjustment">CiphMsgAdjustment</property>
+                    <property name="shadow-type">in</property>
+                    <child>
+                      <object class="GtkViewport">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkTextView" id="msgCipherInput">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="resize-mode">immediate</property>
+                            <property name="vadjustment">CiphMsgAdjustment</property>
+                            <property name="wrap-mode">char</property>
+                            <property name="buffer">textbuffer1</property>
+                            <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -173,12 +219,27 @@
                 <property name="can-focus">False</property>
                 <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkTextView" id="output">
+                  <object class="GtkScrolledWindow">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="resize-mode">immediate</property>
-                    <property name="editable">False</property>
-                    <property name="wrap-mode">char</property>
+                    <property name="vadjustment">OutputAdjustment</property>
+                    <property name="shadow-type">in</property>
+                    <child>
+                      <object class="GtkViewport">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkTextView" id="output">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="resize-mode">immediate</property>
+                            <property name="vadjustment">OutputAdjustment</property>
+                            <property name="editable">False</property>
+                            <property name="wrap-mode">char</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -201,4 +262,5 @@
       </object>
     </child>
   </object>
+  <object class="GtkTextBuffer" id="textbuffer1"/>
 </interface>
