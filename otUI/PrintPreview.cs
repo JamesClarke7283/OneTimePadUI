@@ -14,12 +14,12 @@ namespace otUI
         [UI] Gtk.DrawingArea area = new Gtk.DrawingArea();
         [UI] Gtk.Image KeyImage = new Gtk.Image();
 
-        public static PrintPreview Create()
+        public static PrintPreview Create(int keySize=200)
         {
             Builder builder = new Builder(null, "otUI.interfaces.PrintPreview.glade", null);
-            return new PrintPreview(builder, builder.GetObject("printdialog").Handle);
+            return new PrintPreview(builder, builder.GetObject("printdialog").Handle, keySize);
         }
-        protected PrintPreview(Builder builder, IntPtr handle) : base(handle)
+        protected PrintPreview(Builder builder, IntPtr handle, int keySize) : base(handle)
         {
 
             this.builder = builder;
@@ -44,8 +44,11 @@ namespace otUI
                         Weight = Pango.Weight.Bold
                     };
 
-                    string text = "8873 2357 3753 1118 2547 3653 2752 4692 5408 1538 3552 1509 2354 2299 2432 7893 8170 9799 5717 3368 5077 5537 5976 8135 5591 2546 4122 5812 7273 6762 6071 3255 5459 8214 9358 2200 7359 4564 1437 6425 9498 6275 4479 4384 1644 8145 3128 3081 3011 0339";
+                    byte[] ks = otlib.otp.GenerateKeystream(keySize);
+                    string text = otlib.otp.ToString(ks,MainClass.appSettings.CodeCharSetString);
+
                     PrettyPrint pp = new();
+                    text = pp.Prettify(text);
                     text = pp.GridPrettify(text);
 
                     Pango.Layout layout = CreatePangoLayout(text);
