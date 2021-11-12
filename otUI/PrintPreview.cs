@@ -13,6 +13,10 @@ namespace otUI
 
         [UI] Gtk.DrawingArea area = new Gtk.DrawingArea();
         [UI] Gtk.Image KeyImage = new Gtk.Image();
+        [UI] Gtk.Button printBtn = new Gtk.Button();
+        [UI] Gtk.SpinButton padNumber;
+
+        int keySize;
 
         public static PrintPreview Create(int keySize=200)
         {
@@ -30,6 +34,29 @@ namespace otUI
             //DrawingArea area = new DrawingArea();
             //area.Drawn += OnExpose;
 
+            this.keySize = keySize;
+
+
+            // Add(area);
+            ShowAll();
+
+        }
+
+        protected void On_printBtn_clicked(object sender, EventArgs e) 
+        {
+            Print(keySize);
+        }
+
+        protected void On_padNumber_value_changed(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+
+        void Print(int keySize=200) 
+        {
             var print = new PrintOperation();
             print.BeginPrint += (obj, args) => { print.NPages = 1; };
             print.DrawPage += (obj, args) =>
@@ -38,16 +65,16 @@ namespace otUI
                 {
                     Cairo.Context cr = context.CairoContext;
 
-                    Pango.FontDescription font = new()
+                    Pango.FontDescription font = new ()
                     {
                         Family = "Monospace",
                         Weight = Pango.Weight.Bold
                     };
 
                     byte[] ks = otlib.otp.GenerateKeystream(keySize);
-                    string text = otlib.otp.ToString(ks,MainClass.appSettings.CodeCharSetString);
+                    string text = otlib.otp.ToString(ks, MainClass.appSettings.CodeCharSetString);
 
-                    PrettyPrint pp = new();
+                    PrettyPrint pp = new ();
                     text = pp.Prettify(text);
                     text = pp.GridPrettify(text);
 
@@ -60,10 +87,6 @@ namespace otUI
             };
             print.EndPrint += (obj, args) => { };
             print.Run(PrintOperationAction.PrintDialog, this);
-
-            // Add(area);
-            ShowAll();
-
         }
 
         void OnExpose(object o, Gtk.DrawnArgs args)
