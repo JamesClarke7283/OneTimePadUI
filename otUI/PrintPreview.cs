@@ -46,7 +46,6 @@ namespace otUI
             text = pp.GridPrettify(text);
             textArr.Add(text);
 
-
             // Add(area);
             ShowAll();
 
@@ -59,11 +58,20 @@ namespace otUI
 
         protected void On_padNumber_value_changed(object sender, EventArgs e)
         {
-           
+            textArr = new List<string>(){};
+            PrettyPrint pp = new ();
+
+            for (int i=0; i < padNumber.Value; i++) 
+           {
+                byte[] ks = otlib.otp.GenerateKeystream(keySize);
+                string text = otlib.otp.ToString(ks, MainClass.appSettings.CodeCharSetString);
+
+                text = pp.Prettify(text);
+                text = pp.GridPrettify(text);
+                textArr.Add(text);
+            }
+
         }
-
-
-
 
         void Print(List<string> textArr,int keySize=200) 
         {
