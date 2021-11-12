@@ -58,8 +58,10 @@ namespace otUI
 
         protected void On_padNumber_value_changed(object sender, EventArgs e)
         {
+
             textArr = new List<string>(){};
             PrettyPrint pp = new ();
+
 
             for (int i=0; i < padNumber.Value; i++) 
            {
@@ -71,7 +73,43 @@ namespace otUI
                 textArr.Add(text);
             }
 
+
         }
+        public static Dictionary<char, List<int>> CalculateOffset(int padnumber, int text_width, int text_height)
+        {
+            List<int> x = new List<int>() { };
+            List<int> y = new List<int>() { };
+            Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
+
+            for (int padIndex = 0; padIndex < padnumber; padIndex++)
+            {
+
+                if (padIndex % 2 == 0)
+                {
+                    if (padIndex > 0)
+                    {
+                        x.Add(0);
+                        y.Add(y[padIndex - 1] + text_height);
+                    }
+                    else
+                    {
+                        x.Add(0);
+                        y.Add(0);
+                    }
+                }
+                else
+                {
+                    y.Add(y[padIndex - 1]);
+                    x.Add(text_width);
+                }
+
+            }
+
+            dict.Add('x', x);
+            dict.Add('y', y);
+            return dict;
+        }
+
 
         void Print(List<string> textArr,int keySize=200) 
         {
@@ -104,6 +142,7 @@ namespace otUI
 
         void OnExpose(object o, Gtk.DrawnArgs args)
         {
+            Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
             string text = textArr[0];
             int rectangle_width = 300;
             int rectangle_height = 300;
@@ -124,6 +163,8 @@ namespace otUI
 
             //get the text dimensions (it updates the variables -- by reference)
             layout.GetPixelSize(out text_width, out text_height);
+
+            dict = CalculateOffset(textArr.Count, text_width, text_height);
 
             // Position the text in the middle
             cr.MoveTo((rectangle_width - text_width) / 2d, (rectangle_height - text_height) / 2d);
