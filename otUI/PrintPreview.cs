@@ -24,7 +24,7 @@ namespace otUI
             Builder builder = new Builder(null, "otUI.interfaces.PrintPreview.glade", null);
             return new PrintPreview(builder, builder.GetObject("printdialog").Handle);
 
-
+            
         }
 
         protected PrintPreview(Builder builder, IntPtr handle) : base(handle)
@@ -35,7 +35,12 @@ namespace otUI
             builder.Autoconnect(this);
             AddButton("Close", ResponseType.Close);
 
-            
+            DrawingArea area = new DrawingArea();
+            area.Drawn += OnExpose;
+
+            Add(area);
+            ShowAll();
+
         }
 
         void OnExpose(object o, Gtk.DrawnArgs args)
@@ -43,18 +48,23 @@ namespace otUI
             //DrawingArea area = (DrawingArea)o;
             using (Cairo.Context g = Gdk.CairoHelper.Create(area.GdkWindow))
             {
-                g.LineWidth = 0.5;
-
+                g.LineWidth = 0.1;
+                g.SetSourceRGB(250, 0, 0);
+                g.Rectangle(0.25, 0.25, 0.5, 0.5);
+                g.Stroke();
+                
+                
                 int width, height;
                 width = Allocation.Width;
                 height = Allocation.Height;
 
-                g.Color = new Cairo.Color(250, 0, 0);
-
+               
                 g.Translate(width / 2, height / 2);
                 g.Arc(0, 0, 120, 0, 2 * Math.PI);
-                g.Stroke();
+                
 
+                
+                //g.Paint();
                 g.Save();
 
                 for (int i = 0; i < 36; i++)

@@ -29,10 +29,11 @@
             <property name="visible">True</property>
             <property name="app-paintable">True</property>
             <property name="can-focus">False</property>
+            <property name="events">GDK_EXPOSURE_MASK | GDK_STRUCTURE_MASK</property>
             <signal name="draw" handler="OnExpose" swapped="no"/>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
