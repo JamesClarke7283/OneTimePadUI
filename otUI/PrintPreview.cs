@@ -103,10 +103,27 @@ namespace otUI
             dict.Add('y', y);
             return dict;
         }
-        void PrintPage(Cairo.Context context, string[] textArr)
+        int CalculateNumberOfPages(List<string> textArr, int maxPerPage)
+        {
+            return (int)Math.Ceiling((double)textArr.Count / maxPerPage);
+        }
+        void PrintPage(Cairo.Context context, List<string> grids, int maxPerPage, int currPage)
         {
             Dictionary<char, List<int>> dict = new() { };
-            for (int i = 0; i < textArr.Length; i++)
+
+            int startingGrid = 0;
+            if (grids.Count > maxPerPage)
+            {
+                startingGrid = maxPerPage * currPage;
+                grids = textArr.GetRange(startingGrid, maxPerPage);
+                if (grids.Count > maxPerPage)
+                {
+                    int removeCount = grids.Count - maxPerPage;
+                    grids.RemoveRange(maxPerPage, removeCount);
+                }
+            }
+
+            for (int i = 0; i < grids.Count; i++)
             {
                 Pango.FontDescription font = new()
                 {
@@ -114,34 +131,35 @@ namespace otUI
                     Weight = Pango.Weight.Bold
                 };
 
-                string text = textArr[i];
+                string text = grids[i];
 
                 Pango.Layout layout = CreatePangoLayout(text);
                 layout.FontDescription = font;
                 layout.GetPixelSize(out int text_width, out int text_height);
 
-                dict = CalculateOffset(textArr.Length, text_width, text_height);
+                dict = CalculateOffset(grids.Count, text_width, text_height);
 
                 context.MoveTo(dict['x'][i], dict['y'][i]);
 
                 Pango.CairoHelper.ShowLayout(context, layout);
             }
         }
-        void PrintPage(PrintContext printContext, string[] textArr)
+        void PrintPage(PrintContext printContext, List<string> grids, int maxPerPage, int currPage)
         {
             using (printContext)
             {
                 Cairo.Context context = printContext.CairoContext;
-                PrintPage(context, textArr);
+                PrintPage(context, grids, maxPerPage, currPage);
             }
         }
         void Print(List<string> textArr, int keySize = 200)
         {
+            int maxPerPage = 10;
             var print = new PrintOperation();
-            print.BeginPrint += (obj, args) => { print.NPages = (int)Math.Ceiling((double)textArr.Count / 10); };
+            print.BeginPrint += (obj, args) => { print.NPages = CalculateNumberOfPages(textArr, maxPerPage); };
             print.DrawPage += (obj, args) =>
             {
-                PrintPage(args.Context, textArr.ToArray());
+                PrintPage(args.Context, textArr, maxPerPage, args.PageNr);
             };
             print.EndPrint += (obj, args) => { };
             print.Run(PrintOperationAction.PrintDialog, this);
@@ -149,7 +167,7 @@ namespace otUI
         void OnExpose(object o, Gtk.DrawnArgs args)
         {
             Context cr = args.Cr;
-            PrintPage(cr, textArr.ToArray());
+            PrintPage(cr, textArr, 10, 0);
         }
     }
 }
