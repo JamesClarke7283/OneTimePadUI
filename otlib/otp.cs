@@ -35,15 +35,19 @@ namespace otlib
             List<byte> byteArr = new List<byte> {};
 
             TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(txt);
-            int textElementCount = 0;
+
+            int index;
+            List<string> textArr = new List<string>(){};
 
             while (enumerator.MoveNext())
             {
+                textArr.Add((string)enumerator.Current);
+            }
 
-                int index = Array.IndexOf(charset, enumerator.Current);
+            foreach (string item in textArr) {
+                index = Array.IndexOf(charset, item);
+                Console.WriteLine($"{item}=>{index}");
                 byteArr.Add((byte)index);
-
-                textElementCount++;
             }
 
             return byteArr.ToArray();
