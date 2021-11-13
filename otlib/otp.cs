@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace otlib
 {
@@ -31,11 +33,19 @@ namespace otlib
         public static byte[] ToBytes(string txt, string[] charset) 
         {
             List<byte> byteArr = new List<byte> {};
-            foreach(char c in txt) 
+
+            TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(txt);
+            int textElementCount = 1;
+
+            while (enumerator.MoveNext())
             {
-                int index = Array.IndexOf(charset, c.ToString());
+
+                int index = Array.IndexOf(charset, enumerator.Current);
                 byteArr.Add((byte)index);
+
+                textElementCount++;
             }
+
             return byteArr.ToArray();
         }
 
