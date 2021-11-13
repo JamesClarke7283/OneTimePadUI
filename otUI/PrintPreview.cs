@@ -114,7 +114,7 @@ namespace otUI
             Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
 
             var print = new PrintOperation();
-            print.BeginPrint += (obj, args) => { print.NPages = 1; };
+            print.BeginPrint += (obj, args) => { print.NPages = (int)Math.Ceiling((double)textArr.Count / 10); ; };
             print.DrawPage += (obj, args) =>
             {
                 using (PrintContext context = args.Context)
