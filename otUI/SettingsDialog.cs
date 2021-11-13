@@ -1,9 +1,9 @@
 ﻿using System;
-using Gtk;
-using UI = Gtk.Builder.ObjectAttribute;
-using otlib;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using Gtk;
+using otlib;
+using UI = Gtk.Builder.ObjectAttribute;
 
 public class SettingsDialog : Gtk.Dialog
 {
@@ -32,6 +32,11 @@ public class SettingsDialog : Gtk.Dialog
 
 
     [UI] Gtk.Button btn_help = new Gtk.Button();
+    [UI] Gtk.Switch hasPrettyPrint;
+    [UI] Gtk.Switch hasPadding;
+
+    public bool stateHasPrettyPrint = true;
+    public bool stateHasPadding = true;
 
     public static SettingsDialog Create(AppSettings appSettings)
     {
@@ -54,16 +59,23 @@ public class SettingsDialog : Gtk.Dialog
         else
         {
             IEnumerable<string> l = Directory.EnumerateFiles("/dev", "*", SearchOption.AllDirectories);
-
-            foreach (string item in l)
+            try
             {
-                RNGDeviceComboBox.AppendText(item);
+                foreach (string item in l)
+                {
+                    RNGDeviceComboBox.AppendText(item);
+                }
             }
+            catch (UnauthorizedAccessException) { }
         }
         LoadConfig();
     }
     private void LoadConfig()
     {
+
+        hasPrettyPrint.Active = appSettings.HasPrettyPrint;
+        hasPadding.Active = appSettings.HasPadding;
+
         switch (appSettings.CodeCharSet)
         {
             case CharSetTypes.EMOJI:
@@ -100,6 +112,16 @@ public class SettingsDialog : Gtk.Dialog
                 textCustomBtn.Click();
                 break;
         }
+
+        if (appSettings.Theme == "Dark")
+        {
+            themeComboBox.ActiveId = "2";
+        }
+        else if (appSettings.Theme == "Light")
+        {
+            themeComboBox.ActiveId = "1";
+        }
+
         codeCustom.Text = appSettings.CodeCharSetCustom;
         textCustom.Text = appSettings.TextCharSetCustom;
     }
@@ -115,22 +137,24 @@ public class SettingsDialog : Gtk.Dialog
             appSettings.TextCharSetCustom = textCustom.Text;
         }
 
-        if (appSettings.Theme == "Dark")
+        if (themeComboBox.ActiveText == "System")
         {
-            CssProviderPatched css_provider = new();
-            css_provider.LoadFromResource("otUI.themes.dark.css");
-            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800); 
+            appSettings.Theme = null;
         }
-        else if (appSettings.Theme == "Light")
+        else if (themeComboBox.ActiveText == "Dark")
         {
-            //THIS HAS BEEN USING dark.css
+            appSettings.Theme = "Dark";
+        }
+        else if (themeComboBox.ActiveText == "Light")
+        {
+            appSettings.Theme = "Light";
+        }
 
-            //CssProviderPatched css_provider = new();
-            //css_provider.LoadFromResource("otUI.themes.light.css");
-            //Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, css_provider, 800);
-        }
+        appSettings.HasPrettyPrint = hasPrettyPrint.Active;
+        appSettings.HasPadding = hasPadding.Active;
 
         appSettings.Write();
+        ThemeLoader.LoadTheme(appSettings);
         Destroy();
     }
 
@@ -162,7 +186,6 @@ public class SettingsDialog : Gtk.Dialog
     protected void On_codeEmoji_clicked(object sender, EventArgs e)
     {
         appSettings.CodeCharSet = CharSetTypes.EMOJI;
-        appSettings.hasPadding = false;
         textCustom.IsEditable = false;
     }
 
@@ -198,14 +221,14 @@ public class SettingsDialog : Gtk.Dialog
         textCustom.IsEditable = false;
     }
 
-   
+
 
 
 
 
     protected void On_RNGDeviceComboBox_changed(object sender, EventArgs e)
     {
-        if (RNGDeviceComboBox.ActiveText == "Default")
+        if (RNGDeviceComboBox.ActiveText == "None")
         {
             appSettings.RngDevicePath = null;
         }
@@ -221,21 +244,18 @@ public class SettingsDialog : Gtk.Dialog
         hd.Run();
         hd.Destroy();
     }
-    protected void On_themeComboBox_changed(object sender, EventArgs e)
+
+    protected void On_about_clicked(object sender, EventArgs e)
     {
-        if (themeComboBox.ActiveText == "Default")
-        {
-            appSettings.Theme = null;
-        }
-        if (themeComboBox.ActiveText == "Dark")
-        {
-            appSettings.Theme = "Dark";
-        }
+
+        AboutDialog ad = AboutDialog.Create();
+        ad.Run();
+        ad.Destroy();
+
     }
-    protected void On_hasPadding_clicked(object sender, EventArgs e)
-    {
-        appSettings.hasPadding = !appSettings.hasPadding;
-    }
+
+
+
 
 
 }

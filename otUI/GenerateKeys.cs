@@ -43,8 +43,7 @@ public class GenerateKeys : Gtk.Dialog
             {
                 keystream = otp.GenerateKeystreamRNGDevice(appSettings.RngDevicePath, (int)keyLength.Value);
             }
-
-            if (appSettings.hasPadding)
+            if (appSettings.HasPrettyPrint)
             {
                 PrettyPrint pp = new PrettyPrint();
                 KeyOutputView.Buffer.Text = pp.Prettify(otp.ToString(keystream, appSettings.CodeCharSetString));

@@ -6,7 +6,6 @@
 button,
 label,
 entry {
-    padding: 0;
     border: none;
     background-color: #202020;
 }

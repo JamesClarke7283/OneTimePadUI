@@ -21,8 +21,8 @@ public partial class MainMenu : Gtk.Window
 
         builder.Autoconnect(this);
         DeleteEvent += OnDeleteEvent;
+        ThemeLoader.LoadTheme(appSettings);
     }
-
     protected void OnKeygenClicked(object sender, EventArgs e)
     {
         GenerateKeys gk = GenerateKeys.Create(appSettings);

@@ -40,13 +40,13 @@ public class CryptDialog : Gtk.Dialog
             byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
             string msg = msgCipherInput.Buffer.Text;
 
-            byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+            byte[] ciphertext = otp.Encrypt(msg, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString, appSettings.HasPadding);
 
-            if (appSettings.hasPadding)
+            if (appSettings.HasPrettyPrint)
             {
                 output.Buffer.Text = pp.Prettify(otp.ToString(ciphertext, appSettings.CodeCharSetString));
             }
-            else 
+            else
             {
                 output.Buffer.Text = otp.ToString(ciphertext, appSettings.CodeCharSetString);
             }
@@ -55,7 +55,7 @@ public class CryptDialog : Gtk.Dialog
         {
             ErrorDialog.ShowAlert(this, "Message contains character that is not in textCode characterset");
         }
-        catch (Exception error2) 
+        catch (Exception error2)
         {
             ErrorDialog.ShowAlert(this, error2.Message);
         }
@@ -67,7 +67,7 @@ public class CryptDialog : Gtk.Dialog
         byte[] ks = otp.ToBytes(pp.UnPrettify(keyInput.Buffer.Text), appSettings.CodeCharSetString);
         string ciphertext = pp.UnPrettify(msgCipherInput.Buffer.Text);
 
-        byte[] msg = otp.Decrypt(ciphertext, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString);
+        byte[] msg = otp.Decrypt(ciphertext, ks, appSettings.CodeCharSetString, appSettings.TextCharSetString, appSettings.HasPadding);
         output.Buffer.Text = otp.ToString(msg, appSettings.TextCharSetString);
     }
 

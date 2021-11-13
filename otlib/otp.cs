@@ -55,9 +55,9 @@ namespace otlib
             return (int)(a - b * Math.Floor(a / b));
         }
 
-        private static byte[] OTP(byte[] msg, byte[] key, bool dir , string[] charset)
+        private static byte[] OTP(byte[] msg, byte[] key, bool dir , string[] charset, bool hasPadding)
         {
-            if (msg.Length == key.Length)
+            if (msg.Length == key.Length || (key.Length > msg.Length && hasPadding == false))
             {
                 List<byte> cipherBytes = new List<byte> { };
 
@@ -69,7 +69,7 @@ namespace otlib
 
                 return cipherBytes.ToArray();
             }
-            else if (msg.Length < key.Length)
+            else if (msg.Length < key.Length && hasPadding == true)
             {
                 otlib.otp o = new otlib.otp();
 
@@ -77,7 +77,7 @@ namespace otlib
                 string addedmsg = ToString(otp.GenerateKeystream(addedkeys), charset);
                 string strMsg = ToString(msg, charset);
                 strMsg += addedmsg;
-                return OTP(ToBytes(strMsg,charset), key, dir, charset);
+                return OTP(ToBytes(strMsg,charset), key, dir, charset, hasPadding);
 
             } else if (msg.Length > key.Length)
             {
@@ -87,17 +87,17 @@ namespace otlib
             return new byte[] { };
         }
 
-        public static byte[] Encrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset) 
+        public static byte[] Encrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset, bool hasPadding) 
         {
             Dictionary<string, string> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
             msg = otConversionTable.Encode(dict, msg); 
-            return OTP(ToBytes(msg, codeCharset), keystream, true, codeCharset);
+            return OTP(ToBytes(msg, codeCharset), keystream, true, codeCharset, hasPadding);
         }
 
-        public static byte[] Decrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset)
+        public static byte[] Decrypt(string msg, byte[] keystream, string[] codeCharset, string[] textCharset, bool hasPadding)
         {
             Dictionary<string, string> dict = otConversionTable.GenerateConversionTable(codeCharset, textCharset);
-            string plainCode = ToString(OTP(ToBytes(msg, codeCharset), keystream, false, codeCharset),codeCharset);
+            string plainCode = ToString(OTP(ToBytes(msg, codeCharset), keystream, false, codeCharset, hasPadding),codeCharset);
             string plainText = otConversionTable.Decode(dict, plainCode);
             return ToBytes(plainText,textCharset);
         }
