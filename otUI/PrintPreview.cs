@@ -20,7 +20,7 @@ namespace otUI
         int keySize;
         List<string> textArr = new List<string>() { };
 
-        public static PrintPreview Create(int keySize=200)
+        public static PrintPreview Create(int keySize = 200)
         {
             Builder builder = new Builder(null, "otUI.interfaces.PrintPreview.glade", null);
             return new PrintPreview(builder, builder.GetObject("printdialog").Handle, keySize);
@@ -37,7 +37,7 @@ namespace otUI
             //area.Drawn += OnExpose;
 
             this.keySize = keySize;
-            PrettyPrint pp = new ();
+            PrettyPrint pp = new();
 
             byte[] ks = otlib.otp.GenerateKeystream(keySize);
             string text = otlib.otp.ToString(ks, MainClass.appSettings.CodeCharSetString);
@@ -51,20 +51,20 @@ namespace otUI
 
         }
 
-        protected void On_printBtn_clicked(object sender, EventArgs e) 
+        protected void On_printBtn_clicked(object sender, EventArgs e)
         {
-            Print(textArr,keySize);
+            Print(textArr, keySize);
         }
 
         protected void On_padNumber_value_changed(object sender, EventArgs e)
         {
 
-            textArr = new List<string>(){};
-            PrettyPrint pp = new ();
+            textArr = new List<string>() { };
+            PrettyPrint pp = new();
 
 
-            for (int i=0; i < padNumber.Value; i++) 
-           {
+            for (int i = 0; i < padNumber.Value; i++)
+            {
                 byte[] ks = otlib.otp.GenerateKeystream(keySize);
                 string text = otlib.otp.ToString(ks, MainClass.appSettings.CodeCharSetString);
 
@@ -83,13 +83,12 @@ namespace otUI
 
             for (int padIndex = 0; padIndex < padnumber; padIndex++)
             {
-
                 if (padIndex % 2 == 0)
                 {
                     if (padIndex > 0)
                     {
                         x.Add(0);
-                        y.Add(y[padIndex - 1] - text_height);
+                        y.Add(y[padIndex - 1] + text_height);
                     }
                     else
                     {
@@ -100,9 +99,8 @@ namespace otUI
                 else
                 {
                     y.Add(y[padIndex - 1]);
-                    x.Add((text_width*2)+50);
+                    x.Add(text_width + 20);
                 }
-
             }
 
             dict.Add('x', x);
@@ -111,7 +109,7 @@ namespace otUI
         }
 
 
-        void Print(List<string> textArr,int keySize=200) 
+        void Print(List<string> textArr, int keySize = 200)
         {
             Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
 
@@ -125,7 +123,7 @@ namespace otUI
                     {
                         Cairo.Context cr = context.CairoContext;
 
-                        Pango.FontDescription font = new ()
+                        Pango.FontDescription font = new()
                         {
                             Family = "Monospace",
                             Weight = Pango.Weight.Bold
@@ -139,9 +137,7 @@ namespace otUI
 
                         dict = CalculateOffset(textArr.Count, text_width, text_height);
 
-                        // Position the text in the middle
-                        cr.MoveTo(((300 - text_width) + dict['x'][i]) / 2d, ((300 - text_height) - dict['y'][i] + 300 / 2d));
-
+                        cr.MoveTo(dict['x'][i], dict['y'][i]);
 
                         Pango.CairoHelper.ShowLayout(cr, layout);
                     }
@@ -182,7 +178,7 @@ namespace otUI
                 dict = CalculateOffset(textArr.Count, text_width, text_height);
 
                 // Position the text in the middle
-                cr.MoveTo(((rectangle_width - text_width)+dict['x'][i]) / 2d, ((rectangle_height - text_height) - dict['y'][i] + rectangle_height / 2d));
+                cr.MoveTo(((rectangle_width - text_width) + dict['x'][i]) / 2d, ((rectangle_height - text_height) - dict['y'][i] + rectangle_height / 2d));
 
                 Pango.CairoHelper.ShowLayout(cr, layout);
             }
