@@ -35,7 +35,7 @@ namespace otlib
             List<byte> byteArr = new List<byte> {};
 
             TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(txt);
-            int textElementCount = 1;
+            int textElementCount = 0;
 
             while (enumerator.MoveNext())
             {

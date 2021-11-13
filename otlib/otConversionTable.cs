@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace otlib
@@ -56,10 +57,22 @@ namespace otlib
         {
             string trans = "";
             Dictionary<string, string> dict2 = d.ToDictionary(x => x.Value, x => x.Key);
+
+            TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(msg);
+            int textElementCount = 0;
+
+            while (enumerator.MoveNext())
+            {
+                trans += dict2[(string)enumerator.Current];          
+
+                textElementCount++;
+            }
+            /*
             foreach (char i in msg)
             {
                 trans += dict2[i.ToString()];
             }
+            */
             return trans;
         }
 
@@ -68,6 +81,40 @@ namespace otlib
 
             string trans = "";
             string twostring = "";
+
+            TextElementEnumerator enumerator = StringInfo.GetTextElementEnumerator(code);
+
+            bool isNext = true;
+            bool hasRun = false;
+
+            List<string> codeLst = new List<string>() { };
+
+            while (enumerator.MoveNext())
+            {
+                codeLst.Add((string)enumerator.Current);
+            }
+
+            for (int i = 0; i < codeLst.Count; i++)
+            {
+                if (i < codeLst.Count - 1 && d.ContainsKey(codeLst[i]) == false)
+                {
+                    twostring = string.Concat(codeLst[i], codeLst[i + 1]);
+                }
+
+                if (d.ContainsKey(codeLst[i]))
+                {
+                    trans += d[codeLst[i]];
+                }
+                else if (d.ContainsKey(twostring))
+                {
+                    trans += d[twostring];
+                    i += 1;
+                }
+
+            }
+
+            return trans;
+            /*
             for (int i = 0; i < code.Length; i++)
             {
                 if (i < code.Length - 1 && d.ContainsKey(code[i].ToString()) == false)
@@ -84,10 +131,11 @@ namespace otlib
                     trans += d[twostring];
                     i += 1;
                 }
-
+                    
             }
+            */           
 
-            return trans;
+            //return trans;
         }
     }
 }
