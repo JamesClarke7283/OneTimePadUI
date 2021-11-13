@@ -89,7 +89,7 @@ namespace otUI
                     if (padIndex > 0)
                     {
                         x.Add(0);
-                        y.Add(y[padIndex - 1] + text_height);
+                        y.Add(y[padIndex - 1] - text_height);
                     }
                     else
                     {
@@ -100,7 +100,7 @@ namespace otUI
                 else
                 {
                     y.Add(y[padIndex - 1]);
-                    x.Add(text_width);
+                    x.Add((text_width*2)+50);
                 }
 
             }
@@ -113,27 +113,38 @@ namespace otUI
 
         void Print(List<string> textArr,int keySize=200) 
         {
+            Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
+
             var print = new PrintOperation();
             print.BeginPrint += (obj, args) => { print.NPages = 1; };
             print.DrawPage += (obj, args) =>
             {
                 using (PrintContext context = args.Context)
                 {
-                    Cairo.Context cr = context.CairoContext;
-
-                    Pango.FontDescription font = new ()
+                    for (int i = 0; i < textArr.Count; i++)
                     {
-                        Family = "Monospace",
-                        Weight = Pango.Weight.Bold
-                    };
+                        Cairo.Context cr = context.CairoContext;
 
-                    string text = textArr[0];
+                        Pango.FontDescription font = new ()
+                        {
+                            Family = "Monospace",
+                            Weight = Pango.Weight.Bold
+                        };
 
-                    Pango.Layout layout = CreatePangoLayout(text);
-                    layout.FontDescription = font;
-                    layout.GetPixelSize(out int text_width, out int text_height);
+                        string text = textArr[i];
 
-                    Pango.CairoHelper.ShowLayout(cr, layout);
+                        Pango.Layout layout = CreatePangoLayout(text);
+                        layout.FontDescription = font;
+                        layout.GetPixelSize(out int text_width, out int text_height);
+
+                        dict = CalculateOffset(textArr.Count, text_width, text_height);
+
+                        // Position the text in the middle
+                        cr.MoveTo(((300 - text_width) + dict['x'][i]) / 2d, ((300 - text_height) - dict['y'][i] + 300 / 2d));
+
+
+                        Pango.CairoHelper.ShowLayout(cr, layout);
+                    }
                 }
             };
             print.EndPrint += (obj, args) => { };
@@ -143,33 +154,38 @@ namespace otUI
         void OnExpose(object o, Gtk.DrawnArgs args)
         {
             Dictionary<char, List<int>> dict = new Dictionary<char, List<int>>() { };
-            string text = textArr[0];
+            string text;
             int rectangle_width = 300;
             int rectangle_height = 300;
             Context cr = args.Cr;
 
-            Pango.FontDescription font = new Pango.FontDescription();
 
-            font.Family = "Monospace";
-            font.Weight = Pango.Weight.Bold;
+            for (int i = 0; i < textArr.Count; i++)
+            {
+                text = textArr[i];
+                Pango.FontDescription font = new Pango.FontDescription();
 
-            // http://developer.gnome.org/pangomm/unstable/classPango_1_1Layout.html
-            Pango.Layout layout = CreatePangoLayout(text);
+                font.Family = "Monospace";
+                font.Weight = Pango.Weight.Bold;
 
-            layout.FontDescription = font;
+                // http://developer.gnome.org/pangomm/unstable/classPango_1_1Layout.html
+                Pango.Layout layout = CreatePangoLayout(text);
 
-            int text_width;
-            int text_height;
+                layout.FontDescription = font;
 
-            //get the text dimensions (it updates the variables -- by reference)
-            layout.GetPixelSize(out text_width, out text_height);
+                int text_width;
+                int text_height;
 
-            dict = CalculateOffset(textArr.Count, text_width, text_height);
+                //get the text dimensions (it updates the variables -- by reference)
+                layout.GetPixelSize(out text_width, out text_height);
 
-            // Position the text in the middle
-            cr.MoveTo((rectangle_width - text_width) / 2d, (rectangle_height - text_height) / 2d);
+                dict = CalculateOffset(textArr.Count, text_width, text_height);
 
-            Pango.CairoHelper.ShowLayout(cr, layout);
+                // Position the text in the middle
+                cr.MoveTo(((rectangle_width - text_width)+dict['x'][i]) / 2d, ((rectangle_height - text_height) - dict['y'][i] + rectangle_height / 2d));
+
+                Pango.CairoHelper.ShowLayout(cr, layout);
+            }
         }
     }
 }
