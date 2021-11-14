@@ -2,17 +2,17 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkImage" id="image1">
+  <object class="GtkImage" id="CryptImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="pixbuf">assets/lock.ico</property>
   </object>
-  <object class="GtkImage" id="image2">
+  <object class="GtkImage" id="GenKeysImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/key.ico</property>
+    <property name="pixbuf">assets/settings.ico</property>
   </object>
-  <object class="GtkImage" id="image3">
+  <object class="GtkImage" id="SettingsImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="pixbuf">assets/settings.ico</property>
@@ -22,7 +22,6 @@
     <property name="title" translatable="yes">OTP GTK</property>
     <property name="default-width">440</property>
     <property name="default-height">250</property>
-    <property name="icon">assets/icon.ico</property>
     <child>
       <object class="GtkButtonBox" id="buttonBox">
         <property name="visible">True</property>
@@ -36,7 +35,8 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="image">image2</property>
+            <property name="image">GenKeysImg</property>
+            <property name="always-show-image">True</property>
             <signal name="clicked" handler="OnKeygenClicked" swapped="no"/>
           </object>
           <packing>
@@ -46,12 +46,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="crypto-decrypt">
+          <object class="GtkButton" id="cryptodecrypt">
             <property name="label" translatable="yes">Encrypt/Decrypt</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="image">image1</property>
+            <property name="image">CryptImg</property>
             <signal name="clicked" handler="OnCryptoClicked" swapped="no"/>
           </object>
           <packing>
@@ -66,7 +66,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="image">image3</property>
+            <property name="image">SettingsImg</property>
             <signal name="clicked" handler="On_SettingsButton_clicked" swapped="no"/>
           </object>
           <packing>
