@@ -37,8 +37,10 @@ namespace otUI
                                             "\nChange Charset\n" +
                                             "Code Charset\n" +
                                             "Input the Character Set that is required to be used in the Key, in the 'Generate Keys' Feature. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
+                                            "For custom charset, Seperate every character with a ',' for example A,B,C\n" +
                                             "\nText Charset\n" +
                                             "Input the Character Set that is going to be used in the message that needs to be encrypted or Decrypted. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
+                                            "For custom charset, Seperate every character with a ',' for example A,B,C\n" +
                                             "\nRNG Device\n" +
                                             "Select Random Number Device to get random key material.\n" +
                                             "\nMessage Padding\n" +
