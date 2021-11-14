@@ -46,7 +46,7 @@ namespace otlib
 
             foreach (string item in textArr) {
                 index = Array.IndexOf(charset, item);
-                Console.WriteLine($"{item}=>{index}");
+                //Console.WriteLine($"{item}=>{index}");
                 byteArr.Add((byte)index);
             }
 
