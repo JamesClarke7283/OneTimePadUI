@@ -27,26 +27,13 @@ namespace otUI
         }
         protected PrintPreview(Builder builder, IntPtr handle, int keySize) : base(handle)
         {
-
             this.builder = builder;
 
             builder.Autoconnect(this);
             AddButton("Close", ResponseType.Close);
 
-            //DrawingArea area = new DrawingArea();
-            //area.Drawn += OnExpose;
-
             this.keySize = keySize;
-            PrettyPrint pp = new();
-
-            byte[] ks = otlib.otp.GenerateKeystream(keySize);
-            string text = otlib.otp.ToString(ks, MainClass.appSettings.CodeCharSetString);
-
-            text = pp.Prettify(text);
-            text = pp.GridPrettify(text);
-            textArr.Add(text);
-
-            // Add(area);
+                       
             ShowAll();
 
         }
