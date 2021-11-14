@@ -2,12 +2,27 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/help.ico</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/info.ico</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/save.ico</property>
+  </object>
   <object class="GtkDialog" id="settingsdialog">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Preferences</property>
     <property name="default-width">320</property>
     <property name="default-height">260</property>
-    <property name="icon">assets/icon.ico</property>
+    <property name="icon">assets/lock.ico</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -20,11 +35,11 @@
             <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="btn_help">
-                <property name="label">gtk-help</property>
+                <property name="label">Help</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image1</property>
                 <signal name="clicked" handler="On_btn_help_clicked" swapped="no"/>
               </object>
               <packing>
@@ -35,11 +50,11 @@
             </child>
             <child>
               <object class="GtkButton" id="about">
-                <property name="label">gtk-about</property>
+                <property name="label">About</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image2</property>
                 <signal name="clicked" handler="On_about_clicked" swapped="no"/>
               </object>
               <packing>
@@ -50,11 +65,11 @@
             </child>
             <child>
               <object class="GtkButton" id="SaveButton">
-                <property name="label">gtk-save</property>
+                <property name="label">Save</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image3</property>
                 <signal name="clicked" handler="On_Save_clicked" swapped="no"/>
               </object>
               <packing>

@@ -17,13 +17,34 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/lock.ico</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/unlock.ico</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/copy.ico</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">assets/help.ico</property>
+  </object>
+  <object class="GtkTextBuffer" id="textbuffer1"/>
   <object class="GtkDialog" id="cryptdialog">
     <property name="can-focus">False</property>
     <property name="is-focus">True</property>
     <property name="title" translatable="yes">Crypt</property>
     <property name="default-width">450</property>
-    <property name="default-height">400</property>
-    <property name="icon">assets/icon.ico</property>
+    <property name="default-height">500</property>
+    <property name="icon">assets/lock.ico</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -54,6 +75,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="image">image1</property>
                 <signal name="clicked" handler="OnEncryptClicked" swapped="no"/>
               </object>
             </child>
@@ -63,6 +85,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="image">image2</property>
                 <signal name="clicked" handler="OnDecryptClicked" swapped="no"/>
               </object>
               <packing>
@@ -71,11 +94,11 @@
             </child>
             <child>
               <object class="GtkButton" id="copy">
-                <property name="label">gtk-copy</property>
+                <property name="label">Copy</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image3</property>
                 <signal name="clicked" handler="OnCopyClicked" swapped="no"/>
               </object>
               <packing>
@@ -84,11 +107,11 @@
             </child>
             <child>
               <object class="GtkButton" id="btn_help">
-                <property name="label">gtk-help</property>
+                <property name="label">Help</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image4</property>
                 <signal name="clicked" handler="OnHelpClicked" swapped="no"/>
               </object>
               <packing>
@@ -220,5 +243,4 @@
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
 </interface>

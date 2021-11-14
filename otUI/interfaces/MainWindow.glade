@@ -5,7 +5,7 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icon.ico</property>
+    <property name="pixbuf">assets/lock.ico</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
