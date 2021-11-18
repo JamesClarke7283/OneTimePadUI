@@ -27,6 +27,11 @@ public class GenerateKeys : Gtk.Dialog
 
         builder.Autoconnect(this);
         AddButton("Close", ResponseType.Close);
+
+        if (OperatingSystem.IsWindows()) {
+            printBtn.Sensitive = false;
+        }
+
     }
 
     protected void OnGenerateClicked(object sender, EventArgs e)
@@ -78,7 +83,7 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnPrintClicked(object sender, EventArgs e)
     {
-                
+              
         PrintDialog pp = PrintDialog.Create((int)keyLength.Value);
         pp.Run();
         pp.Destroy();

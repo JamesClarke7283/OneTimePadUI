@@ -135,7 +135,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="print">
+                          <object class="GtkButton" id="printBtn">
                             <property name="label">Print</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
