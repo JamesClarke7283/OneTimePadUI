@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace onetimepadgtk
 {
-    public class PrintPreview : Gtk.Dialog
+    public class PrintDialog : Gtk.Dialog
     {
 
         Builder builder;
@@ -20,12 +20,12 @@ namespace onetimepadgtk
         int keySize;
         List<string> textArr = new List<string>() { };
 
-        public static PrintPreview Create(int keySize = 200)
+        public static PrintDialog Create(int keySize = 200)
         {
-            Builder builder = new Builder(null, "onetimepadgtk.interfaces.PrintPreview.glade", null);
-            return new PrintPreview(builder, builder.GetObject("printdialog").Handle, keySize);
+            Builder builder = new Builder(null, "onetimepadgtk.interfaces.PrintDialog.glade", null);
+            return new PrintDialog(builder, builder.GetObject("printdialog").Handle, keySize);
         }
-        protected PrintPreview(Builder builder, IntPtr handle, int keySize) : base(handle)
+        protected PrintDialog(Builder builder, IntPtr handle, int keySize) : base(handle)
         {
             this.builder = builder;
 

@@ -79,7 +79,7 @@ public class GenerateKeys : Gtk.Dialog
     protected void OnPrintClicked(object sender, EventArgs e)
     {
                 
-        PrintPreview pp = PrintPreview.Create((int)keyLength.Value);
+        PrintDialog pp = PrintDialog.Create((int)keyLength.Value);
         pp.Run();
         pp.Destroy();
               
