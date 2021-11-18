@@ -53,6 +53,11 @@ namespace otUI
                                             "Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.\n" +
                                             "\nPretty print\n" +
                                             "Pretty print adds spaces between every 4 characters in the generate keys and crypt dialog.";
-                                            
+
+        public static string PrintDialogHelp = "Print Dialog Help\n" + 
+                                                "\nNumber of pads spin button\n"+
+                                                "Lets you select how many one time pads you want to print out\n" +
+                                                "\nPrint\n"+
+                                                  "Button brings up print dialog with print settings\n";
     }
 }

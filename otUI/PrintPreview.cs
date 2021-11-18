@@ -43,6 +43,16 @@ namespace otUI
             Print(textArr, keySize);
         }
 
+
+        protected void onHelpClicked(object sender, EventArgs e)
+        {
+            HelpDialog hd = HelpDialog.Create(otUI.HelpConst.PrintDialogHelp);
+            hd.Run();
+            hd.Destroy();
+        }
+
+
+
         protected void On_padNumber_value_changed(object sender, EventArgs e)
         {
             textArr = new List<string>() { };
