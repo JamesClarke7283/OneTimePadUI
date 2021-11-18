@@ -128,6 +128,7 @@ namespace onetimepadgtk
                     Weight = Pango.Weight.Bold
                 };
 
+
                 string text = grids[i];
 
                 Pango.Layout layout = CreatePangoLayout(text);
@@ -151,7 +152,7 @@ namespace onetimepadgtk
         }
         void Print(List<string> textArr, int keySize = 200)
         {
-            int maxPerPage = 10;
+            int maxPerPage = 8;
             var print = new PrintOperation();
             print.BeginPrint += (obj, args) => { print.NPages = CalculateNumberOfPages(textArr, maxPerPage); };
             print.DrawPage += (obj, args) =>
@@ -164,7 +165,7 @@ namespace onetimepadgtk
         void OnExpose(object o, Gtk.DrawnArgs args)
         {
             Context cr = args.Cr;
-            PrintPage(cr, textArr, 10, 0);
+            PrintPage(cr, textArr, 8, 0);
         }
     }
 }
