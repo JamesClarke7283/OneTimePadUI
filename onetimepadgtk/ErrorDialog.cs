@@ -1,7 +1,7 @@
 ﻿using System;
 using Gtk;
 
-namespace otUI
+namespace onetimepadgtk
 {
     public static class ErrorDialog
     {

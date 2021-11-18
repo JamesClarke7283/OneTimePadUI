@@ -5,7 +5,7 @@ using Cairo;
 using otlib;
 using System.Collections.Generic;
 
-namespace otUI
+namespace onetimepadgtk
 {
     public class PrintPreview : Gtk.Dialog
     {
@@ -22,7 +22,7 @@ namespace otUI
 
         public static PrintPreview Create(int keySize = 200)
         {
-            Builder builder = new Builder(null, "otUI.interfaces.PrintPreview.glade", null);
+            Builder builder = new Builder(null, "onetimepadgtk.interfaces.PrintPreview.glade", null);
             return new PrintPreview(builder, builder.GetObject("printdialog").Handle, keySize);
         }
         protected PrintPreview(Builder builder, IntPtr handle, int keySize) : base(handle)
@@ -46,7 +46,7 @@ namespace otUI
 
         protected void onHelpClicked(object sender, EventArgs e)
         {
-            HelpDialog hd = HelpDialog.Create(otUI.HelpConst.PrintDialogHelp);
+            HelpDialog hd = HelpDialog.Create(onetimepadgtk.HelpConst.PrintDialogHelp);
             hd.Run();
             hd.Destroy();
         }

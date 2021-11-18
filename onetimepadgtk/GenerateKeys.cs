@@ -2,7 +2,7 @@
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 using otlib;
-using otUI;
+using onetimepadgtk;
 
 public class GenerateKeys : Gtk.Dialog
 {
@@ -16,7 +16,7 @@ public class GenerateKeys : Gtk.Dialog
 
     public static GenerateKeys Create(AppSettings appSettings)
     {
-        Builder builder = new Builder(null, "otUI.interfaces.GenerateKeys.glade", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.GenerateKeys.glade", null);
         return new GenerateKeys(builder, builder.GetObject("generatekeysdialog").Handle, appSettings);
     }
 
@@ -65,7 +65,7 @@ public class GenerateKeys : Gtk.Dialog
 
     protected void OnHelpClicked(object sender, EventArgs e)
     {
-        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.GenerateKeysHelp);
+        HelpDialog hd = HelpDialog.Create(onetimepadgtk.HelpConst.GenerateKeysHelp);
         hd.Run();
         hd.Destroy();
     }

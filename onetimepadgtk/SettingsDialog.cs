@@ -40,7 +40,7 @@ public class SettingsDialog : Gtk.Dialog
 
     public static SettingsDialog Create(AppSettings appSettings)
     {
-        Builder builder = new Builder(null, "otUI.interfaces.SettingsDialog.glade", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.SettingsDialog.glade", null);
         return new SettingsDialog(builder, builder.GetObject("settingsdialog").Handle, appSettings);
     }
 
@@ -240,7 +240,7 @@ public class SettingsDialog : Gtk.Dialog
 
     protected void On_btn_help_clicked(object sender, EventArgs e)
     {
-        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.SettingsHelp);
+        HelpDialog hd = HelpDialog.Create(onetimepadgtk.HelpConst.SettingsHelp);
         hd.Run();
         hd.Destroy();
     }

@@ -2,9 +2,7 @@
 using Gtk;
 using otlib;
 using UI = Gtk.Builder.ObjectAttribute;
-using otUI;
-
-//[UI] Gtk.TextView tv = new Gtk.TextView();
+using onetimepadgtk;
 
 public class CryptDialog : Gtk.Dialog
 {
@@ -18,7 +16,7 @@ public class CryptDialog : Gtk.Dialog
 
     public static CryptDialog Create(AppSettings appSettings)
     {
-        Builder builder = new Builder(null, "otUI.interfaces.Crypt.ui", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.Crypt.ui", null);
         return new CryptDialog(builder, builder.GetObject("cryptdialog").Handle, appSettings);
     }
 
@@ -73,7 +71,7 @@ public class CryptDialog : Gtk.Dialog
 
     protected void OnHelpClicked(object sender, EventArgs e)
     {
-        HelpDialog hd = HelpDialog.Create(otUI.HelpConst.CryptKeysHelp);
+        HelpDialog hd = HelpDialog.Create(onetimepadgtk.HelpConst.CryptKeysHelp);
         hd.Run();
         hd.Destroy();
     }

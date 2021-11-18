@@ -10,8 +10,8 @@ public partial class MainMenu : Gtk.Window
     private AppSettings appSettings;
 
 
-    public static Gdk.Pixbuf SharedAppIcon = new Gdk.Pixbuf(null,"otUI.assets.lock.ico");
-    public static Gdk.Pixbuf GenKeyIcon = new Gdk.Pixbuf(null, "otUI.assets.key.ico");
+    public static Gdk.Pixbuf SharedAppIcon = new Gdk.Pixbuf(null,"onetimepadgtk.assets.lock.ico");
+    public static Gdk.Pixbuf GenKeyIcon = new Gdk.Pixbuf(null, "onetimepadgtk.assets.key.ico");
 
 
 
@@ -25,7 +25,7 @@ public partial class MainMenu : Gtk.Window
 
     public static MainMenu Create(AppSettings appSettings)
     {
-        Builder builder = new Builder(null, "otUI.interfaces.MainWindow.glade", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.MainWindow.glade", null);
         return new MainMenu(builder, builder.GetObject("mainmenu").Handle, appSettings);
         
     }

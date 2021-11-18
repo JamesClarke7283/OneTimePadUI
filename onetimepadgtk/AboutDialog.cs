@@ -10,7 +10,7 @@ public class AboutDialog : Gtk.AboutDialog
     public static AboutDialog Create()
     {
 
-        Builder builder = new Builder(null, "otUI.interfaces.AboutDialog.glade", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.AboutDialog.glade", null);
         return new AboutDialog(builder, builder.GetObject("aboutdialog").Handle);
     }
 

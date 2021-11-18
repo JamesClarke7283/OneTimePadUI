@@ -15,7 +15,7 @@ public class HelpDialog : Gtk.Dialog
     {
         
        
-        Builder builder = new Builder(null, "otUI.interfaces.HelpDialog.glade", null);
+        Builder builder = new Builder(null, "onetimepadgtk.interfaces.HelpDialog.glade", null);
         return new HelpDialog(builder, builder.GetObject("helpdialog").Handle,GenerateKeysHelp);
     }
 

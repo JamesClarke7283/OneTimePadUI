@@ -1,7 +1,7 @@
 ﻿using Gtk;
 using otlib;
 
-namespace otUI
+namespace onetimepadgtk
 {
     class MainClass
     {
