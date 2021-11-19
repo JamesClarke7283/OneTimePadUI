@@ -10,6 +10,6 @@ entry {
     background-color: #a9a9a9;
 }
 
-button:active {
+ToggleButton:active {
   background-color: #4dd902;
 }
