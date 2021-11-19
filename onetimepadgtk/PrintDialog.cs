@@ -146,8 +146,10 @@ namespace onetimepadgtk
         {
             using (printContext)
             {
-                Cairo.Context context = printContext.CairoContext;
-                PrintPage(context, grids, maxPerPage, currPage);
+                using(Cairo.Context context = printContext.CairoContext)
+                {
+                    PrintPage(context, grids, maxPerPage, currPage);
+                }
             }
         }
         void Print(List<string> textArr, int keySize = 200)
