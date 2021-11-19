@@ -10,12 +10,12 @@ public static class ThemeLoader
     {
         if (appSettings.Theme == "Dark")
         {
-            currentCssProvider.LoadFromResource("otUI.themes.dark.css");
+            currentCssProvider.LoadFromResource("onetimepadgtk.themes.dark.css");
             StyleContext.AddProviderForScreen(Gdk.Screen.Default, currentCssProvider, 800);
         }
         else if (appSettings.Theme == "Light")
         {
-            currentCssProvider.LoadFromResource("otUI.themes.light.css");
+            currentCssProvider.LoadFromResource("onetimepadgtk.themes.light.css");
             StyleContext.AddProviderForScreen(Gdk.Screen.Default, currentCssProvider, 800);
         }
         else
