@@ -5,11 +5,15 @@
 
 button,
 label,
-entry {
+switch slider {
     border: none;
     background-color: #a9a9a9;
 }
 
-SwitchButton:active {
-  background-color: #4dd902;
+switch slider {
+  border-radius: 12px;
+}
+
+switch slider:checked {
+  background-color: #308800;
 }
