@@ -2,6 +2,10 @@
 
 A Libre, One Time Pad program written in .net 5 and GTK for UI.
 
+# !!Attention Users!!
+Use the csharp branch at the moment, python is not stable yet.
+[Csharp branch](https://gitlab.com/jc1234/onetimepadgtk/-/tree/csharp)
+
 # Functionalities
 
 - Generate Keys
