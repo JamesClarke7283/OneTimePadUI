@@ -1,10 +1,7 @@
-# CSharp
-bin/
-obj/
-
 # System
 *~
+\#*\#
 
 # IDE
-.vs/
-.vscode/*
+/venv/
+.idea
