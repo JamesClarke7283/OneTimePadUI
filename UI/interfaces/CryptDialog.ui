@@ -38,7 +38,7 @@
     <property name="pixbuf">assets/help.ico</property>
   </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
-  <object class="GtkDialog" id="cryptdialog">
+  <template class="CryptDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
     <property name="is-focus">True</property>
     <property name="title" translatable="yes">Crypt</property>
@@ -56,7 +56,19 @@
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <placeholder/>
+              <object class="GtkButton" id="close">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="use-stock">True</property>
+                <signal name="clicked" handler="onCloseClicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -76,7 +88,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="image">image1</property>
-                <signal name="clicked" handler="OnEncryptClicked" swapped="no"/>
+                <signal name="clicked" handler="onEncryptClicked" swapped="no"/>
               </object>
             </child>
             <child>
@@ -86,7 +98,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="image">image2</property>
-                <signal name="clicked" handler="OnDecryptClicked" swapped="no"/>
+                <signal name="clicked" handler="onDecryptClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -99,7 +111,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="image">image3</property>
-                <signal name="clicked" handler="OnCopyClicked" swapped="no"/>
+                <signal name="clicked" handler="onCopyClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -112,7 +124,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="image">image4</property>
-                <signal name="clicked" handler="OnHelpClicked" swapped="no"/>
+                <signal name="clicked" handler="onHelpClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="position">3</property>
@@ -242,5 +254,5 @@
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>

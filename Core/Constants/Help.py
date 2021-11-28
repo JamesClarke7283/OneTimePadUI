@@ -1,5 +1,4 @@
-
-GENERATE_KEYS_HELP = """Generate Keys Help
+GENERATE_KEYS = """Generate Keys Help
 
 Welcome to the Generate Keys feature of OneTimePad.
 
@@ -17,8 +16,7 @@ Close Button
 
 """
 
-
-CRYPT_HELP = """Crypt Help
+CRYPT = """Crypt Help
 
 Welcome to the Crypt Feature of OneTimePad.
 
@@ -38,33 +36,44 @@ Output Box
 Will Display the Finished text, whether Encypted or Decrypted.
 """
 
+SETTINGS = """Settings Help
 
+Welcome to the Preferences help box!
 
+Change Charset
 
-SettingsHelp = "Settings Help\n" +
-"Welcome to the Preferences help box!\n" +
-"\nChange Charset\n" +
-"Code Charset\n" +
-"Input the Character Set that is required to be used in the Key, in the 'Generate Keys' Feature. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
-"For custom charset, Seperate every character with a ',' for example A,B,C\n" +
-"\nText Charset\n" +
-"Input the Character Set that is going to be used in the message that needs to be encrypted or Decrypted. If Custom is selected, then input the characters required to be used in the 'Custom' Box.\n" +
-"For custom charset, Seperate every character with a ',' for example A,B,C\n" +
-"\nRNG Device\n" +
-"Select Random Number Device to get random key material.\n" +
-"\nMessage Padding\n" +
-"Message padding is where the size of the message is made to be always the same size as the key,\n " +
-"random bytes get added on the end, this obscures details about the message to an adversary.\n" +
-"\nChange Theme\n" +
-"Dark Theme\n" +
-"Dark theme alters the UI to display mostly dark colours. This is displayed as light text on a dark background. Dark theme is used to relieve eye strain and match the current lighting conditions of the user.\n" +
-"\nLight Theme\n" +
-"Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.\n" +
-"\nPretty print\n" +
-"Pretty print adds spaces between every 4 characters in the generate keys and crypt dialog.";
+Code Charset
+Input the Character Set that is required to be used in the Key, in the 'Generate Keys' Feature. If Custom is selected, then input the characters required to be used in the 'Custom' Box.
+For custom charset, Seperate every character with a ',' for example A,B,C
 
-PrintDialogHelp = "Print Dialog Help\n" +
-"\nNumber of pads spin button\n" +
-"Lets you select how many one time pads you want to print out\n" +
-"\nPrint\n" +
-"Button brings up print dialog with print settings\n";
+Text Charset
+Input the Character Set that is going to be used in the message that needs to be encrypted or Decrypted. If Custom is selected, then input the characters required to be used in the 'Custom' Box.
+For custom charset, Seperate every character with a ',' for example A,B,C
+
+RNG Device
+Select Random Number Device to get random key material.
+
+Message Padding
+Message padding is where the size of the message is made to be always the same size as the key
+random bytes get added on the end, this obscures details about the message to an adversary.
+
+Change Theme
+
+Dark Theme
+Dark theme alters the UI to display mostly dark colours. This is displayed as light text on a dark background. Dark theme is used to relieve eye strain and match the current lighting conditions of the user.
+
+Light Theme
+Light Theme is the standard format of the UI. Dark text on a light background. Good for use in bright surroundings.
+
+Pretty print
+Pretty print adds spaces between every 4 characters in the generate keys and crypt dialog.
+"""
+
+PRINT = """Print Dialog Help
+
+Number of pads spin button
+Lets you select how many one time pads you want to print out
+
+Print
+Button brings up print dialog with print settings
+"""

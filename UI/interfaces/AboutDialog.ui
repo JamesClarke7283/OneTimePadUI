@@ -2,11 +2,14 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkAboutDialog" id="aboutdialog">
+  <template class="AboutDialog" parent="GtkAboutDialog">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">About</property>
+    <property name="default-width">400</property>
+    <property name="default-height">450</property>
     <property name="type-hint">dialog</property>
     <property name="program-name">OTP GTK</property>
+    <property name="version">2.0.0</property>
     <property name="comments" translatable="yes">A Libre, One Time Pad program written in .net 5 and GTK for UI.</property>
     <property name="website">https://gitlab.com/jc1234/onetimepadgtk/</property>
     <property name="authors">James Clarke
@@ -19,7 +22,7 @@ Leo Spratt</property>
     <property name="logo">assets/lock.ico</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
-      <object class="GtkBox">
+      <object class="GtkBox" id="AboutBox">
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
@@ -39,5 +42,5 @@ Leo Spratt</property>
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>

@@ -1,38 +1,32 @@
 import gi
 
-gi.require_version("Gtk", "3.0")
+from Core.Constants.Help import PRINT
+from UI import HelpDialog
+
+
+gi.require_version('Gtk', '3.0')
 
 from gi.repository import Gtk
 
 
-@Gtk.Template(filename="UI/interfaces/CryptDialog.ui")
-class CryptDialog(Gtk.Dialog):
-    __gtype_name__ = "CryptDialog"
-
-    @Gtk.Template.Callback()
-    def onEncryptClicked(self, button):
-        print("encrypt clicked")
-
-    @Gtk.Template.Callback()
-    def onDecryptClicked(self, button):
-        print("decrypt clicked")
-
-    @Gtk.Template.Callback()
-    def onCopyClicked(self, button):
-        print("Copy clicked")
+@Gtk.Template(filename="UI/interfaces/PrintDialog.ui")
+class PrintDialog(Gtk.Dialog):
+    __gtype_name__ = "PrintDialog"
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        print("help clicked")
+        HelpDialog.main(PRINT)
+
+    @Gtk.Template.Callback()
+    def onPrintClicked(self, button):
+        print("print clicked")
 
     @Gtk.Template.Callback()
     def onCloseClicked(self, button):
         self.destroy()
 
-
-
 def main():
-    dialog = CryptDialog()
+    dialog = PrintDialog()
     dialog.show()
 
     Gtk.main()

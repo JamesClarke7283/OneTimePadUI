@@ -1,32 +1,31 @@
 import gi
 
-gi.require_version("Gtk", "3.0")
+from Core.Constants.Help import SETTINGS
+from UI import AboutDialog, HelpDialog
+
+gi.require_version('Gtk', '3.0')
 
 from gi.repository import Gtk
 
 
-@Gtk.Template(filename="UI/interfaces/CryptDialog.ui")
-class CryptDialog(Gtk.Dialog):
-    __gtype_name__ = "CryptDialog"
+@Gtk.Template(filename="UI/interfaces/SettingsDialog.ui")
+class SettingsDialog(Gtk.Dialog):
+    __gtype_name__ = "SettingsDialog"
 
     @Gtk.Template.Callback()
-    def onEncryptClicked(self, button):
-        print("encrypt clicked")
+    def onAboutClicked(self, button):
+        AboutDialog.main()
 
     @Gtk.Template.Callback()
-    def onDecryptClicked(self, button):
-        print("decrypt clicked")
-
-    @Gtk.Template.Callback()
-    def onCopyClicked(self, button):
-        print("Copy clicked")
+    def onSaveClicked(self, button):
+        print("save clicked")
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        print("help clicked")
+        HelpDialog.main(SETTINGS)
 
 def main():
-    dialog = CryptDialog()
+    dialog = SettingsDialog()
     dialog.show()
 
     Gtk.main()
