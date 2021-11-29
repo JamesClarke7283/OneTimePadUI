@@ -8,7 +8,6 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 
-
 @Gtk.Template(filename="UI/interfaces/CryptDialog.ui")
 class CryptDialog(Gtk.Dialog):
     __gtype_name__ = "CryptDialog"

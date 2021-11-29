@@ -17,6 +17,8 @@ class Create:
             n_padding_added = len(key) - len(msg)
             padding_text = Generate.key_stream(n_padding_added, self.code_charset)
             return Vernam.cipher(msg + padding_text, key, direction, self.code_charset)
+        elif len(msg) > len(key):
+            raise Exception(f"Message is longer than the key by {0} characters", len(msg) - len(key))
 
     def encrypt(self, msg, key):
         plain_code = self.conversion_table.encode(msg)
