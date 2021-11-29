@@ -13,7 +13,8 @@ app_settings = AppSettings(file_path)
 def __init__():
     global app_settings
 
-    if file_path.is_file() is not True:
+    path = Path(file_path)
+    if path.is_file() is not True:
         write(file_path, app_settings)
     else:
         app_settings = read(file_path)
