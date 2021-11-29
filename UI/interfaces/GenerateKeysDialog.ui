@@ -127,7 +127,7 @@
                         <property name="can-focus">False</property>
                         <property name="layout-style">start</property>
                         <child>
-                          <object class="GtkSpinButton" id="keyLength">
+                          <object class="GtkSpinButton" id="key_length">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="max-length">2000</property>
@@ -212,7 +212,7 @@
             <property name="vscrollbar-policy">always</property>
             <property name="shadow-type">in</property>
             <child>
-              <object class="GtkTextView" id="KeyOutputView">
+              <object class="GtkTextView" id="key_output_view">
                 <property name="width-request">200</property>
                 <property name="height-request">200</property>
                 <property name="visible">True</property>

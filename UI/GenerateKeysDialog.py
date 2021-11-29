@@ -1,23 +1,56 @@
 import gi
+
+
 from UI import PrintDialog, HelpDialog
 from Core.Constants.Help import GENERATE_KEYS
 
+
+gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
 
 from gi.repository import Gtk
+from gi.overrides import Gdk
+
+from Core.Crypto.Keys import Generate
+from Core.PrettyPrint import prettyfy
+from main import app_settings
+
 
 
 @Gtk.Template(filename="UI/interfaces/GenerateKeysDialog.ui")
 class GenerateKeysDialog(Gtk.Dialog):
     __gtype_name__ = "GenerateKeysDialog"
 
+    key_output_view = Gtk.Template.Child()
+    key_length = Gtk.Template.Child()
+
+    def __init__(self):
+        super().__init__()
+        self.init_template()
+
     @Gtk.Template.Callback()
     def onGenerateClicked(self, button):
-        print("Generate clicked")
+        length = int(self.key_length.get_value())
+        key = ""
+
+        if app_settings.rng_device_path is None:
+            key = Generate.key_stream(length, app_settings.get_code_charset())
+        else:
+            key = Generate.key_stream_device(length, app_settings.rng_device_path, app_settings.code_charset)
+
+        if app_settings.has_pretty_print:
+            key = prettyfy(key)
+
+        self.key_output_view.get_buffer().set_text(key)
 
     @Gtk.Template.Callback()
     def onCopyClicked(self, button):
-        print("Copy clicked")
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        textbuffer = self.key_output_view.get_buffer()
+        start_iter, end_iter = textbuffer.get_start_iter(), textbuffer.get_end_iter()
+        text = textbuffer.get_text(start_iter, end_iter, True)
+        clipboard.set_text(text, -1)
+
 
     @Gtk.Template.Callback()
     def onPrintClicked(self, button):

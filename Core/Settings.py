@@ -17,12 +17,12 @@ class CharsetTypes(IntEnum):
 
 @dataclass
 class AppSettings:
-    code_charset_custom: list = tuple("1")
-    text_charset_custom: list = tuple("a")
+    code_charset_custom: list = tuple()
+    text_charset_custom: list = tuple()
     rng_device_path: str = None
     has_pretty_print: bool = True
     has_padding: bool = True
-    theme_path: str = "./themes"
+    theme: str = None
     code_charset: int = int(CharsetTypes.NUMERIC)
     text_charset: int = int(CharsetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC)
 
@@ -68,13 +68,11 @@ def read(file_path):
 
 
 def write(file_path, app_settings):
-    dir_path = os.path.dirname(file_path)
-    wd_path = Path(dir_path)
-    if wd_path.is_dir() is not True:
-        os.mkdir(dir_path)
+    file = Path(file_path)
+    Path.mkdir(file.parent, parents=True, exist_ok=True)
 
     with open(file_path, 'w') as f:
-        json_str = json.dumps(asdict(app_settings))
+        json_str = json.dumps(asdict(app_settings), indent=4)
         f.writelines(json_str)
 
 

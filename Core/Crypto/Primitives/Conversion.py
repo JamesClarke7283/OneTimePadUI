@@ -44,7 +44,6 @@ class Table:
         conversion_table = dict(zip(self.conversion_table.values(), self.conversion_table.keys()))
         for item in msg:
             trans += conversion_table[item]
-        print(conversion_table)
         return trans
 
     def decode(self, code):

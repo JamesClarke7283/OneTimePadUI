@@ -115,13 +115,13 @@
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkRadioButton" id="textUpperLowerNumSPCPunc">
+                              <object class="GtkRadioButton" id="text_upper_lower_num_spc_punc">
                                 <property name="label" translatable="yes">Upper Case, Lowercase, Num, SPC,Punctuation</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">textUpperLowerNum</property>
+                                <property name="group">text_upper_lower_num</property>
                                 <signal name="clicked" handler="On_textUpperLowerNumSPCPunc_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -131,7 +131,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="textUpperLowerNum">
+                              <object class="GtkRadioButton" id="text_upper_lower_num">
                                 <property name="label" translatable="yes">Upper Case, Lowercase, Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
@@ -147,13 +147,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="textUpperNum">
+                              <object class="GtkRadioButton" id="text_upper_num">
                                 <property name="label" translatable="yes">Uppercase, Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">textUpperLowerNum</property>
+                                <property name="group">text_upper_lower_num</property>
                                 <signal name="clicked" handler="On_textUpperNum_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -163,13 +163,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="textNumerical">
+                              <object class="GtkRadioButton" id="text_numerical">
                                 <property name="label" translatable="yes">Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">textUpperLowerNum</property>
+                                <property name="group">text_upper_lower_num</property>
                                 <signal name="clicked" handler="On_textNumerical_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -179,13 +179,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="textCustomBtn">
+                              <object class="GtkRadioButton" id="text_custom_btn">
                                 <property name="label" translatable="yes">Custom</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">textUpperLowerNum</property>
+                                <property name="group">text_upper_lower_num</property>
                                 <signal name="clicked" handler="On_textCustomBtn_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -202,7 +202,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="textCustom">
+                          <object class="GtkEntry" id="text_custom">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="editable">False</property>
@@ -252,13 +252,13 @@
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkRadioButton" id="codeUpperLowerNum">
+                              <object class="GtkRadioButton" id="code_upper_lower_num">
                                 <property name="label" translatable="yes">Upper Case, Lowercase, Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">codeNumerical</property>
+                                <property name="group">code_numerical</property>
                                 <signal name="clicked" handler="On_codeUpperLowerNum_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -268,13 +268,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="codeUpperNum">
+                              <object class="GtkRadioButton" id="code_upper_num">
                                 <property name="label" translatable="yes">Uppercase, Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">codeNumerical</property>
+                                <property name="group">code_numerical</property>
                                 <signal name="clicked" handler="On_codeUpperNum_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -284,7 +284,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="codeNumerical">
+                              <object class="GtkRadioButton" id="code_numerical">
                                 <property name="label" translatable="yes">Numerical</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
@@ -300,13 +300,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="codeEmoji">
+                              <object class="GtkRadioButton" id="code_emoji">
                                 <property name="label" translatable="yes">Emoji</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">codeNumerical</property>
+                                <property name="group">code_numerical</property>
                                 <signal name="clicked" handler="On_codeEmoji_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -316,13 +316,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="codeCustomBtn">
+                              <object class="GtkRadioButton" id="code_custom_btn">
                                 <property name="label" translatable="yes">Custom</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">codeNumerical</property>
+                                <property name="group">code_numerical</property>
                                 <signal name="clicked" handler="On_codeCustomBtn_clicked" swapped="no"/>
                               </object>
                               <packing>
@@ -339,7 +339,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="codeCustom">
+                          <object class="GtkEntry" id="code_custom">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="editable">False</property>
@@ -402,7 +402,7 @@
                         <property name="can-focus">False</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <object class="GtkComboBoxText" id="RNGDeviceComboBox">
+                          <object class="GtkComboBoxText" id="rng_device_combo_box">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="active">0</property>
@@ -448,7 +448,7 @@
                         <property name="can-focus">False</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <object class="GtkSwitch" id="hasPadding">
+                          <object class="GtkSwitch" id="has_padding">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="halign">start</property>
@@ -509,7 +509,7 @@
                         <property name="can-focus">False</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <object class="GtkComboBoxText" id="themeComboBox">
+                          <object class="GtkComboBoxText" id="theme_combo_box">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="active">0</property>
@@ -550,7 +550,7 @@
                         <property name="can-focus">False</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <object class="GtkSwitch" id="hasPrettyPrint">
+                          <object class="GtkSwitch" id="has_pretty_print">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="halign">start</property>

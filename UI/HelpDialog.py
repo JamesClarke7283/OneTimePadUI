@@ -7,21 +7,22 @@ from gi.repository import Gtk
 
 @Gtk.Template(filename="UI/interfaces/HelpDialog.ui")
 class HelpDialog(Gtk.Dialog):
-    helptext = "TEST"
-
     __gtype_name__ = "HelpDialog"
+
+    HelpText = Gtk.Template.Child()
+
+    def __init__(self, help_text):
+        super().__init__()
+        self.init_template()
+
+        self.HelpText.get_buffer().set_text(help_text)
 
     @Gtk.Template.Callback()
     def onCloseClicked(self, button):
         self.destroy()
 
-    @Gtk.Template.Callback()
-    def onHelpTextMoveCursor(self, textview, step, count, extend_selection):
-        textbuffer = textview.get_buffer()
-        textbuffer.set_text(self.helptext)
-
 
 def main(helpText):
-    dialog = HelpDialog()
+    dialog = HelpDialog(helpText)
     dialog.show()
     Gtk.main()

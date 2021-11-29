@@ -46,6 +46,7 @@
         </child>
         <child>
           <object class="GtkTextView" id="HelpText">
+            <property name="name">HelpText</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="vadjustment">adjustment1</property>

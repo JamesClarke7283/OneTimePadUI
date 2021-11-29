@@ -150,7 +150,7 @@
                 <property name="vadjustment">KeyInputAdjustment</property>
                 <property name="shadow-type">in</property>
                 <child>
-                  <object class="GtkTextView" id="keyInput">
+                  <object class="GtkTextView" id="key_input">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="vadjustment">KeyInputAdjustment</property>
@@ -188,7 +188,7 @@
                 <property name="vadjustment">CiphMsgAdjustment</property>
                 <property name="shadow-type">in</property>
                 <child>
-                  <object class="GtkTextView" id="msgCipherInput">
+                  <object class="GtkTextView" id="msg_cipher_input">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="vadjustment">CiphMsgAdjustment</property>

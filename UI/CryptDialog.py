@@ -2,27 +2,61 @@ import gi
 
 from UI import HelpDialog
 from Core.Constants.Help import CRYPT
-
+from Core.PrettyPrint import prettyfy, unprettyfy
+gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
 
+from gi.overrides import Gdk
 from gi.repository import Gtk
+
+from Core.Crypto import OTP
+from main import app_settings
 
 
 @Gtk.Template(filename="UI/interfaces/CryptDialog.ui")
 class CryptDialog(Gtk.Dialog):
     __gtype_name__ = "CryptDialog"
 
+    output = Gtk.Template.Child()
+    key_input = Gtk.Template.Child()
+    msg_cipher_input = Gtk.Template.Child()
+
+    def __init__(self):
+        super().__init__()
+        self.init_template()
+        self.otp = OTP.Create(app_settings.get_code_charset(), app_settings.get_text_charset(), app_settings.has_padding)
+
+    def get_text(self, text_view):
+        text_buffer = text_view.get_buffer()
+        start_iter, end_iter = text_buffer.get_start_iter(), text_buffer.get_end_iter()
+        text = text_buffer.get_text(start_iter, end_iter, True)
+        return text
+
     @Gtk.Template.Callback()
     def onEncryptClicked(self, button):
-        print("encrypt clicked")
+        msg, key = self.get_text(self.msg_cipher_input), self.get_text(self.key_input)
+
+        cipher_text = self.otp.encrypt(msg, unprettyfy(key))
+
+        if app_settings.has_padding:
+            cipher_text = prettyfy(cipher_text)
+
+        self.output.get_buffer().set_text(cipher_text)
 
     @Gtk.Template.Callback()
     def onDecryptClicked(self, button):
-        print("decrypt clicked")
+        cipher_text, key = self.get_text(self.msg_cipher_input), self.get_text(self.key_input)
+
+        plain_text = self.otp.decrypt(unprettyfy(cipher_text), unprettyfy(key))
+        self.output.get_buffer().set_text(plain_text)
 
     @Gtk.Template.Callback()
     def onCopyClicked(self, button):
-        print("Copy clicked")
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        textbuffer = self.output.get_buffer()
+        start_iter, end_iter = textbuffer.get_start_iter(), textbuffer.get_end_iter()
+        text = textbuffer.get_text(start_iter, end_iter, True)
+        clipboard.set_text(text, -1)
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
