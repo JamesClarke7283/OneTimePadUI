@@ -112,12 +112,12 @@
                         <property name="can-focus">False</property>
                         <property name="left-padding">12</property>
                         <child>
-                          <object class="GtkSpinButton" id="padNumber">
+                          <object class="GtkSpinButton" id="pad_number">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="text" translatable="yes">10</property>
                             <property name="adjustment">adjustment1</property>
-                            <signal name="value-changed" handler="On_padNumber_value_changed" swapped="no"/>
+                            <signal name="value-changed" handler="onPadNumberChanged" swapped="no"/>
                           </object>
                         </child>
                       </object>

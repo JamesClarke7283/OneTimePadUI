@@ -122,7 +122,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">text_upper_lower_num</property>
-                                <signal name="clicked" handler="On_textUpperLowerNumSPCPunc_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onTextUpperLowerNumSPCPuncClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -138,7 +138,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">True</property>
-                                <signal name="clicked" handler="On_textUpperLowerNum_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onTextUpperLowerNumClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -154,7 +154,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">text_upper_lower_num</property>
-                                <signal name="clicked" handler="On_textUpperNum_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onTextUpperNumClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -170,7 +170,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">text_upper_lower_num</property>
-                                <signal name="clicked" handler="On_textNumerical_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onTextNumericalClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -186,7 +186,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">text_upper_lower_num</property>
-                                <signal name="clicked" handler="On_textCustomBtn_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onTextCustomBtnClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -209,6 +209,7 @@
                             <property name="invisible-char">●</property>
                             <property name="text" translatable="yes">Custom</property>
                             <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                            <signal name="changed" handler="onTextCustomChanged" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -259,7 +260,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">code_numerical</property>
-                                <signal name="clicked" handler="On_codeUpperLowerNum_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onCodeUpperLowerNumClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -275,7 +276,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">code_numerical</property>
-                                <signal name="clicked" handler="On_codeUpperNum_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onCodeUpperNumClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -291,7 +292,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">True</property>
-                                <signal name="clicked" handler="On_codeNumerical_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onCodeNumericalClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -307,7 +308,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">code_numerical</property>
-                                <signal name="clicked" handler="On_codeEmoji_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onCodeEmojiClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -323,7 +324,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
                                 <property name="group">code_numerical</property>
-                                <signal name="clicked" handler="On_codeCustomBtn_clicked" swapped="no"/>
+                                <signal name="clicked" handler="onCodeCustomBtnClicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -346,6 +347,7 @@
                             <property name="invisible-char">●</property>
                             <property name="text" translatable="yes">Custom</property>
                             <property name="input-hints">GTK_INPUT_HINT_EMOJI | GTK_INPUT_HINT_NONE</property>
+                            <signal name="changed" handler="onCodeCustomChanged" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -410,7 +412,7 @@
                             <items>
                               <item id="0" translatable="yes">None</item>
                             </items>
-                            <signal name="changed" handler="On_RNGDeviceComboBox_changed" swapped="no"/>
+                            <signal name="changed" handler="onRNGDeviceComboboxChanged" swapped="no"/>
                             <child internal-child="entry">
                               <object class="GtkEntry">
                                 <property name="can-focus">False</property>
@@ -454,6 +456,7 @@
                             <property name="halign">start</property>
                             <property name="valign">start</property>
                             <property name="active">True</property>
+                            <signal name="state-set" handler="onHasPaddingStateSet" swapped="no"/>
                           </object>
                         </child>
                       </object>
@@ -518,6 +521,7 @@
                               <item id="1" translatable="yes">Light</item>
                               <item id="2" translatable="yes">Dark</item>
                             </items>
+                            <signal name="changed" handler="OnThemeComboBoxChanged" swapped="no"/>
                           </object>
                         </child>
                       </object>
@@ -555,6 +559,7 @@
                             <property name="can-focus">True</property>
                             <property name="halign">start</property>
                             <property name="valign">start</property>
+                            <signal name="state-set" handler="onHasPrettyPrintStateSet" swapped="no"/>
                           </object>
                         </child>
                       </object>

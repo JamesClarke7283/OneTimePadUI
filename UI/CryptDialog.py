@@ -10,6 +10,7 @@ from gi.overrides import Gdk
 from gi.repository import Gtk
 
 from Core.Crypto import OTP
+from UI.ErrorDialog import ShowAlert
 from main import app_settings
 
 
@@ -34,14 +35,20 @@ class CryptDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onEncryptClicked(self, button):
-        msg, key = self.get_text(self.msg_cipher_input), self.get_text(self.key_input)
+        try:
+            msg, key = self.get_text(self.msg_cipher_input), self.get_text(self.key_input)
 
-        cipher_text = self.otp.encrypt(msg, unprettyfy(key))
+            cipher_text = self.otp.encrypt(msg, unprettyfy(key))
 
-        if app_settings.has_padding:
-            cipher_text = prettyfy(cipher_text)
+            if app_settings.has_padding:
+                cipher_text = prettyfy(cipher_text)
 
-        self.output.get_buffer().set_text(cipher_text)
+            self.output.get_buffer().set_text(cipher_text)
+        except KeyError:
+            ShowAlert(self, "Message contains character that is not in textCode character set")
+        except Exception as e:
+            ShowAlert(self, str(e))
+
 
     @Gtk.Template.Callback()
     def onDecryptClicked(self, button):
@@ -65,7 +72,6 @@ class CryptDialog(Gtk.Dialog):
     @Gtk.Template.Callback()
     def onCloseClicked(self, button):
         self.destroy()
-
 
 
 def main():

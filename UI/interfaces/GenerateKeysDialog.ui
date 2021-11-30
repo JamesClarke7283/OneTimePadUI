@@ -139,6 +139,7 @@
                             <property name="adjustment">adjustment2</property>
                             <property name="climb-rate">1</property>
                             <property name="value">200</property>
+                            <signal name="value-changed" handler="onKeyLengthValueChanged" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -147,7 +148,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="printBtn">
+                          <object class="GtkButton" id="print_btn">
                             <property name="label">Print</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>

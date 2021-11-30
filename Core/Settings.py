@@ -17,17 +17,16 @@ class CharsetTypes(IntEnum):
 
 @dataclass
 class AppSettings:
+    key_length: int = 200
     code_charset_custom: list = tuple()
     text_charset_custom: list = tuple()
     rng_device_path: str = None
+    rng_device_id: str = None
     has_pretty_print: bool = True
     has_padding: bool = True
-    theme: str = None
+    theme_id: str = "0"
     code_charset: int = int(CharsetTypes.NUMERIC)
     text_charset: int = int(CharsetTypes.UPPER_LOWER_NUMERIC_PUNC_SPC)
-
-    def __init__(self, filepath):
-        self.filepath = filepath
 
     def get_code_charset(self):
         match self.code_charset:
@@ -63,8 +62,8 @@ def read(file_path):
         with open(file_path, 'r') as f:
             json_str = f.readlines()
     json_str = "".join(json_str)
-    app_settings = AppSettings(json.loads(json_str))
-    return app_settings
+    settings = AppSettings(**json.loads(json_str))
+    return settings
 
 
 def write(file_path, app_settings):
