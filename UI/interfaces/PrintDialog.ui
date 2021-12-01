@@ -15,12 +15,17 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/printer.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/printer.ico</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/help.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/help.ico</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="resource">/org/onetimepadui/assets/icons/close.ico</property>
   </object>
   <template class="PrintDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
@@ -70,11 +75,11 @@
             </child>
             <child>
               <object class="GtkButton" id="close">
-                <property name="label">gtk-close</property>
+                <property name="label">Close</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image3</property>
                 <signal name="clicked" handler="onCloseClicked" swapped="no"/>
               </object>
               <packing>

@@ -5,17 +5,17 @@
   <object class="GtkImage" id="CryptImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/lock.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/lock.ico</property>
   </object>
   <object class="GtkImage" id="GenKeysImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/key.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/key.ico</property>
   </object>
   <object class="GtkImage" id="SettingsImg">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/settings.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/settings.ico</property>
   </object>
   <template class="MainMenu" parent="GtkWindow">
     <property name="can-focus">False</property>

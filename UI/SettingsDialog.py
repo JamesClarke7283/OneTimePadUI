@@ -9,13 +9,18 @@ from UI.ThemeLoader import load_theme
 import os
 
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 
+from gi.repository import Gio
 from gi.repository import Gtk
-from main import app_settings
+
+from main import app_settings, resource
 from Core import RNGDevice
 
+Gio.Resource._register(resource)
 
-@Gtk.Template(filename="UI/interfaces/SettingsDialog.ui")
+
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/SettingsDialog.ui")
 class SettingsDialog(Gtk.Dialog):
     __gtype_name__ = "SettingsDialog"
 
@@ -96,17 +101,16 @@ class SettingsDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onAboutClicked(self, button):
-        AboutDialog.main()
+        AboutDialog.main(self)
 
     @Gtk.Template.Callback()
     def onSaveClicked(self, button):
-        print(app_settings)
         write(str(Config.path()), app_settings)
         self.destroy()
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        HelpDialog.main(SETTINGS)
+        HelpDialog.main(self,SETTINGS)
 
     @Gtk.Template.Callback()
     def onRNGDeviceComboboxChanged(self, combobox):

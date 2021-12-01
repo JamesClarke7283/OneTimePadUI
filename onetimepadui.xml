@@ -1,0 +1,28 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<gresources>
+
+<gresource prefix="/org/onetimepadui">
+
+<file>UI/interfaces/MainMenu.ui</file>
+<file>UI/interfaces/CryptDialog.ui</file>
+<file>UI/interfaces/GenerateKeysDialog.ui</file>
+<file>UI/interfaces/PrintDialog.ui</file>
+<file>UI/interfaces/SettingsDialog.ui</file>
+
+<file>assets/icons/copy.ico</file>
+<file>assets/icons/close.ico</file>
+<file>assets/icons/info.ico</file>
+<file>assets/icons/printer.ico</file>
+<file>assets/icons/settings.ico</file>
+<file>assets/icons/help.ico</file>
+<file>assets/icons/key.ico</file>
+<file>assets/icons/lock.ico</file>
+<file>assets/icons/save.ico</file>
+<file>assets/icons/unlock.ico</file>
+
+<file>assets/themes/dark.css</file>
+<file>assets/themes/light.css</file>
+</gresource>
+
+</gresources>
+

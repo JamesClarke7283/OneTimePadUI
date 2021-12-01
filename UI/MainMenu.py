@@ -3,13 +3,18 @@ import gi
 from UI import GenerateKeysDialog, CryptDialog, SettingsDialog
 from UI.ErrorDialog import ShowAlert
 from UI.ThemeLoader import load_theme
+from main import resource
 
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 
 from gi.repository import Gtk
+from gi.repository import Gio
 
 
-@Gtk.Template(filename="UI/interfaces/MainMenu.ui")
+Gio.Resource._register(resource)
+
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/MainMenu.ui")
 class MainMenu(Gtk.Window):
     __gtype_name__ = "MainMenu"
 

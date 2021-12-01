@@ -16,6 +16,5 @@ def ShowAlert(parent, text):
         text
     )
     dialog.run()
-    print("ERROR dialog closed")
 
     dialog.destroy()

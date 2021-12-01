@@ -20,22 +20,27 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/lock.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/lock.ico</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/unlock.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/unlock.ico</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/copy.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/copy.ico</property>
   </object>
   <object class="GtkImage" id="image4">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/help.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/help.ico</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="resource">/org/onetimepadui/assets/icons/close.ico</property>
   </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <template class="CryptDialog" parent="GtkDialog">
@@ -57,11 +62,11 @@
             <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="close">
-                <property name="label">gtk-close</property>
+                <property name="label">Close</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="use-stock">True</property>
+                <property name="image">image5</property>
                 <signal name="clicked" handler="onCloseClicked" swapped="no"/>
               </object>
               <packing>

@@ -3,18 +3,23 @@ import gi
 from UI import HelpDialog
 from Core.Constants.Help import CRYPT
 from Core.PrettyPrint import prettyfy, unprettyfy
+
 gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 
 from gi.overrides import Gdk
 from gi.repository import Gtk
+from gi.repository import Gio
 
 from Core.Crypto import OTP
 from UI.ErrorDialog import ShowAlert
-from main import app_settings
+from main import app_settings, resource
 
 
-@Gtk.Template(filename="UI/interfaces/CryptDialog.ui")
+Gio.Resource._register(resource)
+
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/CryptDialog.ui")
 class CryptDialog(Gtk.Dialog):
     __gtype_name__ = "CryptDialog"
 
@@ -67,7 +72,7 @@ class CryptDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        HelpDialog.main(CRYPT)
+        HelpDialog.main(self, CRYPT)
 
     @Gtk.Template.Callback()
     def onCloseClicked(self, button):

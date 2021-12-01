@@ -5,22 +5,25 @@ from UI import PrintDialog, HelpDialog
 from Core.Constants.Help import GENERATE_KEYS
 import os
 
-
 gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 
 from gi.repository import Gtk
 from gi.overrides import Gdk
+from gi.repository import Gio
 
 from Core.Crypto.Keys import Generate
 from Core.PrettyPrint import prettyfy
-from main import app_settings
+from main import app_settings, resource
 from Core.Constants import Config
 from Core.Settings import write
 
 
+Gio.Resource._register(resource)
 
-@Gtk.Template(filename="UI/interfaces/GenerateKeysDialog.ui")
+
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/GenerateKeysDialog.ui")
 class GenerateKeysDialog(Gtk.Dialog):
     __gtype_name__ = "GenerateKeysDialog"
 
@@ -66,7 +69,7 @@ class GenerateKeysDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        HelpDialog.main(GENERATE_KEYS)
+        HelpDialog.main(self, GENERATE_KEYS)
 
     @Gtk.Template.Callback()
     def onCloseClicked(self, button):

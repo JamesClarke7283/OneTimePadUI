@@ -5,17 +5,17 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/help.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/help.ico</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/info.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/info.ico</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/icons/save.ico</property>
+    <property name="resource">/org/onetimepadui/assets/icons/save.ico</property>
   </object>
   <template class="SettingsDialog" parent="GtkDialog">
     <property name="can-focus">False</property>

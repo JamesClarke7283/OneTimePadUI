@@ -8,24 +8,27 @@ from Core.Crypto.Keys import Generate
 
 from UI import HelpDialog
 from Core.PrettyPrint import grid_prettyfy, prettyfy, unprettyfy
-from main import app_settings
+from main import app_settings, resource
+from Core.Settings import CharsetTypes
 
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
 
+
 from gi.repository import Gtk
+from gi.repository import Gio
 from gi.repository import Pango, PangoCairo
 
-import cairo
 
+Gio.Resource._register(resource)
 
-@Gtk.Template(filename="UI/interfaces/PrintDialog.ui")
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/PrintDialog.ui")
 class PrintDialog(Gtk.Dialog):
     __gtype_name__ = "PrintDialog"
 
     pad_number = Gtk.Template.Child()
-    GRID_GROUP_N = 5
 
     def populate_text_list(self, n_pads):
         text_list = []
@@ -45,6 +48,12 @@ class PrintDialog(Gtk.Dialog):
         self.text_list = self.populate_text_list(self.pad_number.get_value_as_int())
         self.max_per_page = 8
         self.layout = []
+        self.GRID_GROUP_N = 5
+        self.font_text = "Monospace 12"
+
+        if app_settings.code_charset == CharsetTypes.EMOJI:
+            self.GRID_GROUP_N = 4
+            self.font_text = "Monospace 9"
 
     def otp_print(self):
         p = Gtk.PrintOperation()
@@ -55,8 +64,7 @@ class PrintDialog(Gtk.Dialog):
 
     def begin_print(self, print_operation, context):
         context = context.get_cairo_context()
-
-        font = Pango.FontDescription("Monospace 12")
+        font = Pango.FontDescription(self.font_text)
         font.set_weight(Pango.Weight.BOLD)
 
         self.layout = PangoCairo.create_layout(context)
@@ -71,7 +79,7 @@ class PrintDialog(Gtk.Dialog):
         self.print_page(context, self.text_list, self.max_per_page, page_number)
         print_operation.draw_page_finish()
 
-    def print_page(self,context, text_list, max_per_page, current_page_n):
+    def print_page(self, context, text_list, max_per_page, current_page_n):
         d = dict()
         starting_grid = 0
 
@@ -94,7 +102,7 @@ class PrintDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        HelpDialog.main(PRINT)
+        HelpDialog.main(self, PRINT)
 
     @Gtk.Template.Callback()
     def onPrintClicked(self, button):

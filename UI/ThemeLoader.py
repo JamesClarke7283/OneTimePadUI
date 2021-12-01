@@ -1,11 +1,15 @@
-from main import app_settings
+from main import app_settings, resource
 import gi
 
 gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gio', '2.0')
 
 from gi.repository import Gdk
 from gi.repository import Gtk
+from gi.repository import Gio
+
+Gio.Resource._register(resource)
 
 
 def load_theme():
@@ -16,9 +20,9 @@ def load_theme():
 
     match app_settings.theme_id:
         case "1":
-            css_provider.load_from_path("assets/themes/light.css")
+            css_provider.load_from_resource("/org/onetimepadui/assets/themes/light.css")
         case "2":
-            css_provider.load_from_path("assets/themes/dark.css")
+            css_provider.load_from_resource("/org/onetimepadui/assets/themes/dark.css")
         case _:
             context.remove_provider_for_screen(screen, css_provider)
             is_default = True
