@@ -2,6 +2,7 @@ from UI import MainMenu
 from Core.Settings import AppSettings, read, write
 from Core.Constants.Config import path
 from UI.ErrorDialog import ShowAlert
+from Core.PrettyPrint import prettyfy, grid_prettyfy
 
 file_path = path()
 if file_path.exists() is not True:

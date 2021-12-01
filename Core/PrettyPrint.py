@@ -1,3 +1,6 @@
+import itertools
+
+
 def prettyfy(text):
     return ' '.join([text[i:i + 4] for i in range(0, len(text), 4)])
 
@@ -6,13 +9,13 @@ def unprettyfy(text):
     return text.replace(" ", "")
 
 
-def grid_prettyfy(text):
+def grid_prettyfy(text, group_n):
     text = prettyfy(text)
 
-    text = text.split(" ")
-    for i, word in enumerate(text):
-        if i != 0 and i % 5 == 0:
-            text[i] = word + '\n'
+    words = text.split()
+    grouped_words = [' '.join(words[i: i + group_n]) for i in range(0, len(words), group_n)]
 
-    text = ' '.join(text)
+    text = ""
+    for group in grouped_words:
+        text += group+"\n"
     return text

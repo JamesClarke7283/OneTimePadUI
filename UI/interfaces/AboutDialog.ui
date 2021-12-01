@@ -19,7 +19,7 @@ Shaina Anthony</property>
     <property name="documenters">James Clarke
 Leo Spratt</property>
     <property name="artists">Ryan Jones</property>
-    <property name="logo">assets/lock.ico</property>
+    <property name="logo">assets/icons/lock.ico</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="AboutBox">

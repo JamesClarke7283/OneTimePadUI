@@ -15,19 +15,19 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/printer.ico</property>
+    <property name="pixbuf">assets/icons/printer.ico</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="pixbuf">assets/help.ico</property>
+    <property name="pixbuf">assets/icons/help.ico</property>
   </object>
   <template class="PrintDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">OTP Print Dialog</property>
     <property name="default-width">250</property>
     <property name="default-height">50</property>
-    <property name="icon">assets/lock.ico</property>
+    <property name="icon">assets/icons/lock.ico</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -91,64 +91,43 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkFrame">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">none</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkAlignment">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
+                <property name="left-padding">12</property>
                 <child>
-                  <object class="GtkFrame">
+                  <object class="GtkSpinButton" id="pad_number">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label-xalign">0</property>
-                    <property name="shadow-type">none</property>
-                    <child>
-                      <object class="GtkAlignment">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="left-padding">12</property>
-                        <child>
-                          <object class="GtkSpinButton" id="pad_number">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="text" translatable="yes">10</property>
-                            <property name="adjustment">adjustment1</property>
-                            <signal name="value-changed" handler="onPadNumberChanged" swapped="no"/>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="label">
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Number of Pads</property>
-                      </object>
-                    </child>
+                    <property name="can-focus">True</property>
+                    <property name="text" translatable="yes">0</property>
+                    <property name="adjustment">adjustment1</property>
+                    <signal name="value-changed" handler="onPadNumberChanged" swapped="no"/>
                   </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Number of Pads</property>
+              </object>
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
