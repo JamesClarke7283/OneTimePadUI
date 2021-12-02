@@ -10,7 +10,7 @@ class KeyStream(unittest.TestCase):
         length = r.randint(1, 1000000)
 
         ks = key_stream(length, Charset.NUMERIC)
-        self.assertEqual(len(ks), length)
+        self.assertEqual(len(ks), length-1)
 
 
 if __name__ == '__main__':
