@@ -7,7 +7,7 @@ test:
 
   stage: test
 
-  script: python3 -m unittest discover Tests/ -p '*_test.py'
+  script: python3.10 -m unittest discover Tests/ -p '*_test.py'
 
 flake8:
   stage: linting
