@@ -6,7 +6,7 @@ stages:
 test:
 
   stage: test
-
+  image: python:3.10.0-bullseye
   script: python3.10 -m unittest discover Tests/ -p '*_test.py'
 
 flake8:
