@@ -1,9 +1,16 @@
 stages:
 
   - test
+  - linting
 
 test:
 
   stage: test
 
   script: python3 -m unittest discover Tests/ -p '*_test.py'
+
+flake8:
+  stage: linting
+  image: registry.gitlab.com/mafda/python-linting
+  script: flake8 . --exclude=__pycache__ --exclude venv/
+

@@ -7,7 +7,7 @@ from random import SystemRandom
 class KeyStream(unittest.TestCase):
     def test_length(self):
         r = SystemRandom()
-        length = r.randint(1, 1000000)
+        length = r.randint(1, 100000)
 
         ks = key_stream(length, Charset.NUMERIC)
         self.assertEqual(len(ks), length)
