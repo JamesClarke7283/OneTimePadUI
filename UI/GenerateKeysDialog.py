@@ -44,7 +44,7 @@ class GenerateKeysDialog(Gtk.Dialog):
     def onGenerateClicked(self, button):
         key = ""
 
-        if app_settings.rng_device_path is None or app_settings.rng_device_path is "None":
+        if app_settings.rng_device_path is None or app_settings.rng_device_path == "None":
             key = Generate.key_stream(app_settings.key_length, app_settings.get_code_charset())
         else:
             key = Generate.key_stream_device(app_settings.key_length, app_settings.rng_device_path, app_settings.get_code_charset())

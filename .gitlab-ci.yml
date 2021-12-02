@@ -1,0 +1,9 @@
+stages:
+
+  - test
+
+test:
+
+  stage: test
+
+  script: python3 -m unittest Tests/Keys/key_stream_test.py

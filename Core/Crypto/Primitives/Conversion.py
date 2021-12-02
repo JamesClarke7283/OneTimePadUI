@@ -5,6 +5,7 @@ class Table:
     def __init__(self, code_charset, text_charset):
         self.conversion_table = self.__generate(code_charset, text_charset)
 
+    @staticmethod
     def __generate(self, code_charset, text_charset):
         conversion_table = dict()
 
