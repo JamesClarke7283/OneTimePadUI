@@ -2,9 +2,14 @@
 
 A Libre, One Time Pad program written in .net 5 and GTK for UI.
 
-# !!Attention Users!!
-Use the csharp branch at the moment, python is not stable yet.
+# !!Attention Assignment Marker!!
+Use the csharp branch or tag 1.0. As this is what was completed as part of the assignment.
+The application has since been rewritten in python in the 2.0.0 version.
+
 [Csharp branch](https://gitlab.com/jc1234/onetimepadgtk/-/tree/csharp)
+
+# !!Attention Users!!
+The main branch is now stable for general usage, use tag releases for more stability
 
 # Functionalities
 
