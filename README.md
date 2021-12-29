@@ -1,6 +1,6 @@
 # One Time Pad GTK
 
-A Libre, One Time Pad program written in .net 5 and GTK for UI.
+A Libre, One Time Pad program written in python3.10 and GTK for UI.
 
 # !!Attention Assignment Marker!!
 Use the csharp branch or tag 1.0. As this is what was completed as part of the assignment.
