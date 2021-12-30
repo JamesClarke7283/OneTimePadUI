@@ -37,6 +37,8 @@ The main branch is now stable for general usage, use tag releases for more stabi
 
 - python3.10-dev
 
+- evince
+
 ## Python
 
 - PyGObject>=3.4.2
