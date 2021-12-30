@@ -2,15 +2,6 @@
 
 A Libre, One Time Pad program written in python3.10 and GTK for UI.
 
-# !!Attention Assignment Marker!!
-Use the csharp branch or tag 1.0. As this is what was completed as part of the assignment.
-The application has since been rewritten in python in the 2.0.0 version.
-
-[Csharp branch](https://gitlab.com/jc1234/onetimepadgtk/-/tree/csharp)
-
-# !!Attention Users!!
-The main branch is now stable for general usage, use tag releases for more stability
-
 # Functionalities
 
 - Generate Keys
@@ -29,8 +20,6 @@ The main branch is now stable for general usage, use tag releases for more stabi
 
 # Dependencies
 
-
-
 ## System
 
 - python3.10
@@ -42,3 +31,49 @@ The main branch is now stable for general usage, use tag releases for more stabi
 ## Python
 
 - PyGObject>=3.4.2
+
+# Screenshots
+
+## Main Menu
+
+![Main Menu](./Docs/Screenshots/UI-Main_Menu.png)
+
+## Generate Keys
+
+![Generate Keys](./Docs/Screenshots/UI-Generate_Keys.png)
+
+## Printing
+
+![Generate Keys_Printing](./Docs/Screenshots/UI-Print_Hover.png)
+
+### Dialog
+
+![Generate Keys_Printing_Dialog](./Docs/Screenshots/UI-Print_Pad_Dialog.png)
+
+### Preview
+
+![Generate Keys_Printing_Preview](./Docs/Screenshots/UI_Print_Preview.png)
+
+## Encrypt
+
+![Encrypt](./Docs/Screenshots/UI-Encrypt.png)
+
+## Decrypt
+
+![Decrypt](./Docs/Screenshots/UI-Decrypt.png)
+
+## Settings
+
+![Settings](./Docs/Screenshots/UI-Settings.png)
+
+### Security
+
+![Settings Security](./Docs/Screenshots/UI_Settings_Security.png)
+
+![Settings Security RNG](./Docs/Screenshots/UI_Settings_RNG_Menu.png)
+
+![Settings Security Changed](./Docs/Screenshots/UI_Settings_Security_Changed.png)
+
+### Appearence
+
+![Settings Appearence](./Docs/Screenshots/UI_Settings_Appearence.png)
