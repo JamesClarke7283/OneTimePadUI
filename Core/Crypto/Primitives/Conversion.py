@@ -1,12 +1,21 @@
 from math import ceil, pow
 
 
+def extract_characters(string):
+    old = list(string)
+    new = []
+    for i in range(len(old)):
+        if ord(old[i]) != 65039:
+            new.append(old[i])
+    return new
+
+
 class Table:
     def __init__(self, code_charset, text_charset):
         self.conversion_table = self.__generate(code_charset, text_charset)
 
     @staticmethod
-    def __generate(self, code_charset, text_charset):
+    def __generate(code_charset, text_charset):
         conversion_table = dict()
 
         max_encode_len = ceil(len(text_charset) / len(code_charset))
@@ -43,13 +52,13 @@ class Table:
     def encode(self, msg):
         trans = ""
         conversion_table = dict(zip(self.conversion_table.values(), self.conversion_table.keys()))
-        for item in msg:
+        for item in extract_characters(msg):
             trans += conversion_table[item]
         return trans
 
     def decode(self, code):
         trans, two_string = "", ""
-        code_lst = list(code)
+        code_lst = extract_characters(code)
         i = 0
         while i < len(code_lst):
             if i < len(code_lst) - 1 and code_lst[i] not in self.conversion_table:

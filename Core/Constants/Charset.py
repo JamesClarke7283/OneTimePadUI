@@ -4,6 +4,6 @@ UPPER_LOWER_NUMERIC_PUNC_SPC = list(string.ascii_letters + string.digits + "." +
 UPPER_LOWER_NUMERIC = list(string.ascii_letters + string.digits)
 UPPER_NUMERIC = list(string.ascii_uppercase + string.digits)
 NUMERIC = list(string.digits)
-EMOJI = ['😀', '😥', '😂', '😉', '😎', '😊', '👎', '👆', '👈', '👉']
+EMOJI = ['😀', '😥', '😂', '😉', '😎', '😊', '❤', '♦', '♂', '♀', '☢', '♣', '♠', '😶']
 
-# '⭐', '️❤', '️♦', '️💲', '️♂', '️♀', '☢', '️♣','️♠', '️😶']
+
