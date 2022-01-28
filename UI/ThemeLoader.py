@@ -11,10 +11,13 @@ from gi.repository import Gio
 
 Gio.Resource._register(resource)
 
+css_provider = Gtk.CssProvider().new()
+context = Gtk.StyleContext()
 
 def load_theme():
-    css_provider = Gtk.CssProvider().new()
-    context = Gtk.StyleContext()
+    global css_provider
+    global context
+
     screen = Gdk.Screen.get_default()
     is_default = False
 
