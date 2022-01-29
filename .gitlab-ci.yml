@@ -12,5 +12,5 @@ test:
 flake8:
   stage: linting
   image: registry.gitlab.com/mafda/python-linting
-  script: flake8 . --exclude=__pycache__ --exclude venv/
+  script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --ignore=E402
 
