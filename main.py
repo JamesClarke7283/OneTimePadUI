@@ -3,21 +3,19 @@ import gi
 from UI import MainMenu
 from Core.Settings import AppSettings, read, write
 from Core.Constants.Config import path
-from UI.ErrorDialog import ShowAlert
-from Core.PrettyPrint import prettyfy, grid_prettyfy
+
 import os
 
 gi.require_version('Gio', '2.0')
 
 from gi.repository import Gio
 
-
-
 file_path = path()
 
 base_path = os.path.abspath(os.path.dirname(__file__))
 resource_path = os.path.join(base_path, 'onetimepadui.gresource')
 resource = Gio.Resource.load(resource_path)
+
 Gio.Resource._register(resource)
 
 
