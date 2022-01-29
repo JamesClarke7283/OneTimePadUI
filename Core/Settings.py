@@ -73,7 +73,3 @@ def write(file_path, app_settings):
     with open(file_path, 'w') as f:
         json_str = json.dumps(asdict(app_settings), indent=4)
         f.writelines(json_str)
-
-
-
-

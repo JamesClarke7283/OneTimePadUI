@@ -1,12 +1,5 @@
 from math import ceil
-import gi
 
-gi.require_version('Gtk', '3.0')
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-
-from gi.repository import Pango, PangoCairo
-from gi.repository import Gtk
 
 @staticmethod
 def calculate_offset(pad_number, text_width, text_height):
@@ -35,5 +28,3 @@ def calculate_offset(pad_number, text_width, text_height):
 @staticmethod
 def calculate_num_pages(text_list, max_per_page):
     return ceil(len(text_list) / max_per_page)
-
-

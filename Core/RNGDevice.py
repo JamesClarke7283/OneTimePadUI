@@ -1,7 +1,6 @@
-from platform import system
-
 from pathlib import PurePath
 import os
+
 
 def __posix():
     dev_list = []
@@ -11,6 +10,7 @@ def __posix():
             if os.access(pp, os.R_OK):
                 dev_list.append(pp)
     return dev_list
+
 
 def list():
     if os.name == "posix":
