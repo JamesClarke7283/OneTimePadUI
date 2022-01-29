@@ -1,16 +1,35 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-
-  - test
-  - linting
-
+- test
+- linting
+- build
+- deploy
+- review
+- dast
+- staging
+- canary
+- production
+- incremental rollout 10%
+- incremental rollout 25%
+- incremental rollout 50%
+- incremental rollout 100%
+- performance
+- cleanup
 test:
-
   stage: test
   image: python:3.10.0-bullseye
   script: python3.10 -m unittest discover Tests/ -p '*_test.py'
-
 flake8:
   stage: linting
   image: registry.gitlab.com/mafda/python-linting
-  script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --exclude Core/Constants/Help.py --ignore=E402,E999 --max-line-length 121
-
+  script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --exclude
+    Core/Constants/Help.py --ignore=E402,E999 --max-line-length 121
+sast:
+  stage: test
+include:
+- template: Auto-DevOps.gitlab-ci.yml
