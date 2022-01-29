@@ -19,6 +19,7 @@ from main import app_settings, resource
 
 Gio.Resource._register(resource)
 
+
 @Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/CryptDialog.ui")
 class CryptDialog(Gtk.Dialog):
     __gtype_name__ = "CryptDialog"
@@ -53,7 +54,6 @@ class CryptDialog(Gtk.Dialog):
             ShowAlert(self, "Message contains character that is not in textCode character set")
         except Exception as e:
             ShowAlert(self, str(e))
-
 
     @Gtk.Template.Callback()
     def onDecryptClicked(self, button):

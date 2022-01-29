@@ -14,6 +14,7 @@ Gio.Resource._register(resource)
 css_provider = Gtk.CssProvider().new()
 context = Gtk.StyleContext()
 
+
 def load_theme():
     global css_provider
     global context
@@ -32,6 +33,3 @@ def load_theme():
 
     if is_default is False:
         context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
-
-
-

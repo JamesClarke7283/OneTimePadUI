@@ -47,7 +47,8 @@ class GenerateKeysDialog(Gtk.Dialog):
         if app_settings.rng_device_path is None or app_settings.rng_device_path == "None":
             key = Generate.key_stream(app_settings.key_length, app_settings.get_code_charset())
         else:
-            key = Generate.key_stream_device(app_settings.key_length, app_settings.rng_device_path, app_settings.get_code_charset())
+            key = Generate.key_stream_device(app_settings.key_length, app_settings.rng_device_path,
+                                             app_settings.get_code_charset())
 
         if app_settings.has_pretty_print:
             key = prettyfy(key)
@@ -61,7 +62,6 @@ class GenerateKeysDialog(Gtk.Dialog):
         start_iter, end_iter = textbuffer.get_start_iter(), textbuffer.get_end_iter()
         text = textbuffer.get_text(start_iter, end_iter, True)
         clipboard.set_text(text, -1)
-
 
     @Gtk.Template.Callback()
     def onPrintClicked(self, button):
@@ -79,6 +79,7 @@ class GenerateKeysDialog(Gtk.Dialog):
     def onKeyLengthValueChanged(self, spin_button, scroll):
         app_settings.key_length = spin_button.get_value_as_int()
         write(str(Config.path()), app_settings)
+
 
 def main():
     dialog = GenerateKeysDialog()

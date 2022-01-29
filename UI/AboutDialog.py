@@ -2,12 +2,11 @@ import gi
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gio', '2.0')
-gi.require_version('Gdk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
 
 from gi.repository import Gtk
 from gi.repository import Gio
-from gi.repository import Gdk, GdkPixbuf
+from gi.repository import GdkPixbuf
 
 from main import resource
 from Core.Constants import About
@@ -32,6 +31,7 @@ class AboutDialog(Gtk.AboutDialog):
         self.add_credit_section("authors", About.AUTHORS)
         self.add_credit_section("artists", About.ARTISTS)
         self.add_credit_section("documenters", About.DOCUMENTERS)
+
 
 def main(parent):
     dialog = AboutDialog(parent)

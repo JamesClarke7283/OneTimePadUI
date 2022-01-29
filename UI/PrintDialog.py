@@ -1,5 +1,3 @@
-import math
-
 import gi
 
 from Core.Constants.Help import PRINT
@@ -7,7 +5,7 @@ from Core import Printing
 from Core.Crypto.Keys import Generate
 
 from UI import HelpDialog
-from Core.PrettyPrint import grid_prettyfy, prettyfy, unprettyfy
+from Core.PrettyPrint import grid_prettyfy
 from main import app_settings, resource
 from Core.Settings import CharsetTypes
 
@@ -23,6 +21,7 @@ from gi.repository import Pango, PangoCairo
 
 
 Gio.Resource._register(resource)
+
 
 @Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/PrintDialog.ui")
 class PrintDialog(Gtk.Dialog):
@@ -85,12 +84,7 @@ class PrintDialog(Gtk.Dialog):
 
         if len(text_list) > max_per_page:
             starting_grid = max_per_page * current_page_n
-            text_list = text_list[starting_grid:starting_grid+max_per_page]
-            """
-            if len(text_list) > max_per_page:
-                remove_count = len(text_list) - max_per_page
-                text_list = text_list[max_per_page:max_per_page+remove_count]
-            """
+            text_list = text_list[starting_grid:starting_grid + max_per_page]
 
         for i in range(0, len(text_list)):
             text = text_list[i]

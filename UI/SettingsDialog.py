@@ -98,7 +98,6 @@ class SettingsDialog(Gtk.Dialog):
         self.theme_combo_box.set_active_id(str(app_settings.theme_id))
         load_theme()
 
-
     @Gtk.Template.Callback()
     def onAboutClicked(self, button):
         AboutDialog.main(self)
@@ -110,7 +109,7 @@ class SettingsDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):
-        HelpDialog.main(self,SETTINGS)
+        HelpDialog.main(self, SETTINGS)
 
     @Gtk.Template.Callback()
     def onRNGDeviceComboboxChanged(self, combobox):
@@ -187,6 +186,7 @@ class SettingsDialog(Gtk.Dialog):
     def OnThemeComboBoxChanged(self, combo_box):
         app_settings.theme_id = combo_box.get_active_id()
         load_theme()
+
 
 def main():
     dialog = SettingsDialog()

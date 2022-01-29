@@ -1,7 +1,6 @@
 import gi
 
 from UI import GenerateKeysDialog, CryptDialog, SettingsDialog
-from UI.ErrorDialog import ShowAlert
 from UI.ThemeLoader import load_theme
 from main import resource
 
@@ -13,6 +12,7 @@ from gi.repository import Gio
 
 
 Gio.Resource._register(resource)
+
 
 @Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/MainMenu.ui")
 class MainMenu(Gtk.Window):

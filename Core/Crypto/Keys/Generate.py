@@ -16,4 +16,3 @@ def key_stream_device(length, device_path, code_charset):
             num = int.from_bytes(byte, "little")
             ks += code_charset[num % len(code_charset)]
     return ks
-

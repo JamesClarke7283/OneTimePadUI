@@ -12,5 +12,5 @@ test:
 flake8:
   stage: linting
   image: registry.gitlab.com/mafda/python-linting
-  script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --exclude Core/Constants/Help.py --ignore=E402 --max-line-length 121
+  script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --exclude Core/Constants/Help.py --ignore=E402,E999 --max-line-length 121
 
