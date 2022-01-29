@@ -18,7 +18,7 @@ resource = Gio.Resource.load(resource_path)
 
 Gio.Resource._register(resource)
 
-#test
+
 if file_path.exists() is not True:
     app_settings = AppSettings()
     write(str(file_path), app_settings)
