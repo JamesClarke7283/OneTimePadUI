@@ -10,9 +10,11 @@ import os
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gio', '2.0')
+gi.require_version('Pango', '1.0')
 
 from gi.repository import Gio
 from gi.repository import Gtk
+from gi.repository import Pango
 
 from main import app_settings, resource
 from Core import RNGDevice
@@ -186,6 +188,13 @@ class SettingsDialog(Gtk.Dialog):
     def OnThemeComboBoxChanged(self, combo_box):
         app_settings.theme_id = combo_box.get_active_id()
         load_theme()
+
+    @Gtk.Template.Callback()
+    def onSetFont(self, font_button):
+        font = font_button.get_font()
+        print(font)
+
+
 
 
 def main():
