@@ -31,6 +31,7 @@ A Libre, One Time Pad program written in python3.10 and GTK for UI.
 ## Python
 
 - PyGObject>=3.4.2
+- PyNaCl>=1.5.0
 
 # Screenshots
 
