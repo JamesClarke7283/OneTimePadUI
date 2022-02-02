@@ -76,7 +76,7 @@ class GenerateKeysDialog(Gtk.Dialog):
         self.destroy()
 
     @Gtk.Template.Callback()
-    def onKeyLengthValueChanged(self, spin_button, scroll):
+    def onKeyLengthValueChanged(self, spin_button):
         app_settings.key_length = spin_button.get_value_as_int()
         write(str(Config.path()), app_settings)
 
