@@ -1,7 +1,7 @@
 import gi
 
 
-from UI import PrintDialog, HelpDialog
+from UI import PrintDialog, HelpDialog, GenerateKeyfileDialog
 from Core.Constants.Help import GENERATE_KEYS
 import os
 
@@ -66,6 +66,10 @@ class GenerateKeysDialog(Gtk.Dialog):
     @Gtk.Template.Callback()
     def onPrintClicked(self, button):
         PrintDialog.main()
+
+    @Gtk.Template.Callback()
+    def onFileClicked(self, button):
+        GenerateKeyfileDialog.main()
 
     @Gtk.Template.Callback()
     def onHelpClicked(self, button):

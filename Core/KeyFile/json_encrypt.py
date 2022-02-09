@@ -1,4 +1,4 @@
-from primitives import encrypt, decrypt
+from Core.KeyFile.primitives import encrypt, decrypt
 import json
 
 

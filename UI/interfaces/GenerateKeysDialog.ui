@@ -40,6 +40,11 @@
     <property name="can-focus">False</property>
     <property name="resource">/org/onetimepadui/assets/icons/close.ico</property>
   </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="resource">/org/onetimepadui/assets/icons/file-plus.ico</property>
+  </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <template class="GenerateKeysDialog" parent="GtkDialog">
     <property name="name">Generate Keys</property>
@@ -168,6 +173,21 @@
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkButton" id="file_btn">
+                            <property name="label" translatable="yes">File</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="image">image6</property>
+                            <signal name="clicked" handler="onFileClicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkButton" id="help">
                             <property name="label">Help</property>
                             <property name="visible">True</property>
@@ -179,7 +199,7 @@
                           <packing>
                             <property name="expand">True</property>
                             <property name="fill">True</property>
-                            <property name="position">2</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                       </object>

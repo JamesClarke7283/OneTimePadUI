@@ -6,6 +6,7 @@
 <file>UI/interfaces/MainMenu.ui</file>
 <file>UI/interfaces/CryptDialog.ui</file>
 <file>UI/interfaces/GenerateKeysDialog.ui</file>
+<file>UI/interfaces/GenerateKeyfileDialog.ui</file>
 <file>UI/interfaces/PrintDialog.ui</file>
 <file>UI/interfaces/SettingsDialog.ui</file>
 

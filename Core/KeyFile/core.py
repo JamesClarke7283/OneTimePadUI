@@ -1,4 +1,4 @@
-from json_encrypt import json_decrypt, json_encrypt
+from Core.KeyFile.json_encrypt import json_decrypt, json_encrypt
 import json
 
 
