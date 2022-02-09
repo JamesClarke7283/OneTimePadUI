@@ -11,5 +11,10 @@ def save_keys(password, keys, path):
 def load_keys(password, path):
     with open(path, 'r') as f:
         json_ciphertext = f.read()
-    plaintext = json_decrypt(password, json_ciphertext)
-    return plaintext
+    plaintext = json.loads(json_decrypt(password, json_ciphertext))
+    return plaintext["keys"]
+
+
+def change_keys_password(old_pass, new_pass, path):
+    keys = load_keys(old_pass, path)
+    save_keys(new_pass, keys, path)

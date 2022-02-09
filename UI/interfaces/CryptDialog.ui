@@ -42,6 +42,11 @@
     <property name="can-focus">False</property>
     <property name="resource">/org/onetimepadui/assets/icons/close.ico</property>
   </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="resource">/org/onetimepadui/assets/icons/key.ico</property>
+  </object>
   <object class="GtkTextBuffer" id="textbuffer1"/>
   <template class="CryptDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
@@ -123,6 +128,49 @@
               </packing>
             </child>
             <child>
+              <object class="GtkMenuBar">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkMenuItem">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">_File</property>
+                    <property name="use-underline">True</property>
+                    <child type="submenu">
+                      <object class="GtkMenu">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImageMenuItem" id="load_key">
+                            <property name="label">gtk-open</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="use-underline">True</property>
+                            <property name="use-stock">True</property>
+                            <signal name="activate" handler="onLoadKeyActivate" swapped="no"/>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkImageMenuItem" id="change_password">
+                            <property name="label" translatable="yes">Change Password</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="image">image6</property>
+                            <property name="use-stock">False</property>
+                            <signal name="activate" handler="onChangePasswordActivate" swapped="no"/>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="btn_help">
                 <property name="label">Help</property>
                 <property name="visible">True</property>
@@ -132,7 +180,7 @@
                 <signal name="clicked" handler="onHelpClicked" swapped="no"/>
               </object>
               <packing>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
