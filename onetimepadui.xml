@@ -8,6 +8,7 @@
 <file>UI/interfaces/GenerateKeysDialog.ui</file>
 <file>UI/interfaces/GenerateKeyfileDialog.ui</file>
 <file>UI/interfaces/KeyfileChangePasswordDialog.ui</file>
+<file>UI/interfaces/KeyfileUseKeyDialog.ui</file>
 <file>UI/interfaces/PrintDialog.ui</file>
 <file>UI/interfaces/SettingsDialog.ui</file>
 

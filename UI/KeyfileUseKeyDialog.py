@@ -13,19 +13,17 @@ from gi.repository import Gio
 Gio.Resource._register(resource)
 
 
-@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/KeyfileChangePasswordDialog.ui")
-class KeyfileChangePassword(Gtk.Dialog):
-    __gtype_name__ = "ChangeKeyfilePassword"
+@Gtk.Template(resource_path="/org/onetimepadui/UI/interfaces/KeyfileUseKeyDialog.ui")
+class GenerateKeyfile(Gtk.Dialog):
+    __gtype_name__ = "KeyfileUseKey"
 
-    old_password_buffer = Gtk.Template.Child()
-    new_password_buffer = Gtk.Template.Child()
+    password_buffer = Gtk.Template.Child()
 
     def __init__(self):
         super().__init__()
         self.init_template()
         self.path = ""
-        self.old_password = ""
-        self.new_password = ""
+        self.password = ""
 
         self.add_buttons(
             Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OK, Gtk.ResponseType.OK
@@ -36,19 +34,16 @@ class KeyfileChangePassword(Gtk.Dialog):
         self.path = file_chooser_button.get_filename()
 
     @Gtk.Template.Callback()
-    def onOldPasswordChanged(self, editable):
-        self.old_password = self.old_password_buffer.get_text()
-
-    @Gtk.Template.Callback()
-    def onNewPasswordChanged(self, editable):
-        self.new_password = self.new_password_buffer.get_text()
+    def onPasswordChanged(self, editable):
+        self.password = self.password_buffer.get_text()
 
 
 def main():
-    dialog = KeyfileChangePassword()
+    dialog = GenerateKeyfile()
     response = dialog.run()
     if response == Gtk.ResponseType.OK:
-        keyfile.change_keys_password(dialog.old_password, dialog.new_password, dialog.path)
+        key = keyfile.use_key(dialog.password, dialog.path)
         dialog.destroy()
 
-    Gtk.main()
+    return key
+

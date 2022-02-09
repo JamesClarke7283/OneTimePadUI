@@ -14,7 +14,7 @@ from gi.repository import Gio
 
 from Core.Crypto import OTP
 from UI.ErrorDialog import ShowAlert
-from UI import KeyfileChangePasswordDialog
+from UI import KeyfileChangePasswordDialog, KeyfileUseKeyDialog
 from main import app_settings, resource
 
 
@@ -85,7 +85,8 @@ class CryptDialog(Gtk.Dialog):
 
     @Gtk.Template.Callback()
     def onLoadKeyActivate(self, menu_item):
-        print("Load Key Activated")
+        key = KeyfileUseKeyDialog.main()
+        self.key_input.get_buffer().set_text(key)
 
 
 def main():
