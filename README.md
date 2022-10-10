@@ -33,14 +33,13 @@ A Libre, One Time Pad program written in python3.10 and GTK for UI.
 - PyGObject>=3.4.2
 - PyNaCl>=1.5.0
 
-## Install Instructions
+## Run Instructions
 
 ```bash
 python3.10 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
-pyinstaller main.py --add-data "onetimepadui.gresource:." --add-data "assets:." --onefile
-./dist/bin/main
+python3.10 main.py
 ```
 
 # Screenshots
