@@ -2,6 +2,7 @@ stages:
 
   - test
   - linting
+  - release_job
 
 test:
 
@@ -22,7 +23,9 @@ release_job:
   script:
     - sh build.sh
   artifacts:
-    - ./dist/OneTimePadUI
+    paths:
+      - ./dist/OneTimePadUI
+    expire_in: 1 week
   release:
     tag_name: $CI_COMMIT_TAG
     name: 'Release $CI_COMMIT_TAG'
