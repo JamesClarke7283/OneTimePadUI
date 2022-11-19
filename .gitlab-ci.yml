@@ -14,3 +14,16 @@ flake8:
   image: registry.gitlab.com/mafda/python-linting
   script: flake8 . --exclude=__pycache__ --exclude venv/ --exclude Tests/ --exclude Core/Constants/Help.py --ignore=E402,E999 --max-line-length 121
 
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG                  
+  script:
+    - sh build.sh
+  artifacts:
+    paths: ./dist/OneTimePadUI
+  release:
+    tag_name: $CI_COMMIT_TAG
+    name: 'Release $CI_COMMIT_TAG'
+    description: 'Release created using the release-cli.'
