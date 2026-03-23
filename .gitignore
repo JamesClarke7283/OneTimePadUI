@@ -9,3 +9,8 @@ __pycache__/
 # IDE
 /venv/
 .idea
+
+# Pyinstaller
+/build
+/dist
+OneTimePadUI.spec

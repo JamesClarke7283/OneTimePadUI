@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 # Program which creates a virtual environment with dependencies (if not exists). And runs the OneTimePadUI program
 if [ -d venv ]
@@ -9,7 +8,7 @@ then
     pip3 install pyinstaller
 else
     echo "No Virtual Environment found"
-    python3.10 -m venv .venv
+    python3 -m venv .venv
     source .venv/bin/activate
     echo "Installing dependencies..."
     pip3 install -r requirements.txt
